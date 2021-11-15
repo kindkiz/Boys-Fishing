@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Equipment
 {
-    enum Type { Rod, Reel, Line, Ship }
+    public enum Type { Rod, Reel, Line, Ship }
 
     public string Name { get; set; }
     public Type EquipmentType { get; set; }
@@ -35,6 +35,8 @@ public class Equipment
                 return player.Line.Level + 1 == this.Level;
             case Type.Ship:
                 return player.Ship.Level + 1 == this.Level && player.GetAverageLevel() >= this.Level;
+            default:
+                return false;
         }
     }
 }
