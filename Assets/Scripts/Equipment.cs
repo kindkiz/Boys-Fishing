@@ -7,20 +7,20 @@ public class Equipment
 {
     public enum Type { Rod, Reel, Line, Ship }
 
-    public string Name { get; set; }
-    public Type EquipmentType { get; set; }
-    public int Level { get; set; }
-    public int Stat { get; set; }
-    public int Price { get; set; }
+    public string Name { get; }
+    public Type EquipmentType { get; }
+    public int Level { get; }
+    public int Stat { get; }
+    public int Price { get; }
 
     public Equipment() {}
-    public Equipment(string name, Type type, int level, int stat, int price)
+    public Equipment(Type type, Dictionary<string, object> data)
     {
-        this.Name = name;
+        this.Name = "없앨까"; // or 낚싯대 I, 낚싯대 IV 이런식으로 자동 생성 or 낡은 낚싯대, 최고급 낚싯대 이런식으로 데이터화
         this.EquipmentType = type;
-        this.Level = level;
-        this.Stat = stat;
-        this.Price = price;
+        this.Level = (int)data["Level"];
+        this.Stat = (int)data["Stat"];
+        this.Price = (int)data["Price"];
     }
 
     bool IsQualified(Player player)
@@ -38,5 +38,19 @@ public class Equipment
             default:
                 return false;
         }
+    }
+}
+
+public class Ship : Equipment
+{
+    public int MaxHp { get; }
+    public int Hp { get; set; }
+    public int RepairCostPerHp { get; }
+
+    public Ship(Type type, Dictionary<string, object> data) : base(Type.Ship, data)
+    {
+        this.MaxHp = (int)data["Hp"];
+        this.Hp = this.MaxHp;
+        this.RepairCostPerHp = (int)data["RepairCost"];
     }
 }
