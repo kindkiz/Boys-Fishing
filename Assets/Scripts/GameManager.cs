@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
         player = new Player();
         fishMarket = new FishMarket();
 
-        timeFlow = stageSetting.startDaytime;
+        timeFlow = 0;
+        daytime = stageSetting.startDaytime;
     }
 
     // Update is called once per frame
@@ -88,7 +89,7 @@ public class GameManager : MonoBehaviour
             if(timeFlow >= stageSetting.dayDuration)
             {
                 daytime = Daytime.Night;
-                timeFlow -= dayDuration;
+                timeFlow -= stageSetting.dayDuration;
             }
         }
         // if(daytime == Daytime.Night)
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
             if(timeFlow >= stageSetting.nightDuration)
             {
                 daytime = Daytime.Day;
-                timeFlow -= nightDuration;
+                timeFlow -= stageSetting.nightDuration;
             }
         }
 
