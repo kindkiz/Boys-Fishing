@@ -7,11 +7,11 @@ public class Equipment
 {
     public enum Type { Rod, Reel, Line, Ship }
 
-    public string Name { get; set; }
-    public Type EquipmentType { get; set; }
-    public int Level { get; set; }
-    public int Stat { get; set; }
-    public int Price { get; set; }
+    public string Name { get; }
+    public Type EquipmentType { get; }
+    public int Level { get; }
+    public int Stat { get; }
+    public int Price { get; }
 
     public Equipment() {}
     public Equipment(string name, Type type, int level, int stat, int price)
@@ -38,5 +38,19 @@ public class Equipment
             default:
                 return false;
         }
+    }
+}
+
+public class Ship : Equipment
+{
+    public int MaxHp { get; }
+    public int Hp { get; set; }
+    public int RepairCostPerHp { get; }
+
+    public Ship(string name, Type type, int level, int stat, int price, int maxHp, int repairCostPerHp) : base(name, type, level, stat, price)
+    {
+        this.MaxHp = maxHp;
+        this.Hp = maxHp;
+        this.RepairCostPerHp = repairCostPerHp;
     }
 }
