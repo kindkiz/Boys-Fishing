@@ -9,7 +9,7 @@ public class FishMarket
 
     public FishMarket()
     {
-        this.player = player;
+
     }
 
     public SellFish(Player player, Fish fish)
