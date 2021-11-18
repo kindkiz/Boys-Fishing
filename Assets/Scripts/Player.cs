@@ -12,7 +12,7 @@ public class Player
     public Equipment Reel { get; set; }
     public Equipment Line { get; set; }
     public Equipment Ship { get; set; }
-    // public List<Fish> FishTank { get; set; }
+    public List<Fish> FishTank { get; set; }
     
     public Player()
     {
@@ -20,7 +20,7 @@ public class Player
         this.Bait = new int[4];
         this.CurrentBait = 0;
         // + 초기 아이템 대입
-        // this.FishTank = new List<Fish>();
+        this.FishTank = new List<Fish>();
     }
 
     public int GetAverageLevel()

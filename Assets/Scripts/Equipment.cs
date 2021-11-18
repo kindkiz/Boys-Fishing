@@ -14,13 +14,13 @@ public class Equipment
     public int Price { get; }
 
     public Equipment() {}
-    public Equipment(string name, Type type, int level, int stat, int price)
+    public Equipment(Type type, Dictionary<string, object> data)
     {
-        this.Name = name;
+        this.Name = "없앨까"; // or 낚싯대 I, 낚싯대 IV 이런식으로 자동 생성 or 낡은 낚싯대, 최고급 낚싯대 이런식으로 데이터화
         this.EquipmentType = type;
-        this.Level = level;
-        this.Stat = stat;
-        this.Price = price;
+        this.Level = (int)data["Level"];
+        this.Stat = (int)data["Stat"];
+        this.Price = (int)data["Price"];
     }
 
     bool IsQualified(Player player)
@@ -47,10 +47,10 @@ public class Ship : Equipment
     public int Hp { get; set; }
     public int RepairCostPerHp { get; }
 
-    public Ship(string name, Type type, int level, int stat, int price, int maxHp, int repairCostPerHp) : base(name, type, level, stat, price)
+    public Ship(Type type, Dictionary<string, object> data) : base(Type.Ship, data)
     {
-        this.MaxHp = maxHp;
-        this.Hp = maxHp;
-        this.RepairCostPerHp = repairCostPerHp;
+        this.MaxHp = (int)data["Hp"];
+        this.Hp = this.MaxHp;
+        this.RepairCostPerHp = (int)data["RepairCost"];
     }
 }
