@@ -8,7 +8,7 @@ public class Player
     public int Money { get; set; }
     public int[] Bait { get; set; }
     public int CurrentBait { get; set; }
-    public Dictionary<Equipment.Type, Equipment> Equip { get; set; }
+    public Dictionary<Etype, Equipment> Equip { get; set; }
     public List<Fish> FishTank { get; set; }
     
     public Player()
@@ -18,13 +18,13 @@ public class Player
         this.CurrentBait = 0;
         this.FishTank = new List<Fish>();
 
-        Buy(Equipment.Type.Rod, 1);
-        Buy(Equipment.Type.Reel, 1);
-        Buy(Equipment.Type.Line, 1);
-        Buy(Equipment.Type.Ship, 1);
+        Buy(Etype.Rod, 1);
+        Buy(Etype.Reel, 1);
+        Buy(Etype.Line, 1);
+        Buy(Etype.Ship, 1);
     }
 
-    public void Buy(Equipment.Type type, int level)
+    public void Buy(Etype type, int level)
     {
         Store store = new Store();
         Equipment toBuy = store.Equipments[type][level-1];
@@ -44,6 +44,6 @@ public class Player
     
     public int GetAverageLevel()
     {
-        return (this.Equip[Equipment.Type.Rod].Level + this.Equip[Equipment.Type.Reel].Level + this.Equip[Equipment.Type.Line].Level) / 3;
+        return (this.Equip[Etype.Rod].Level + this.Equip[Etype.Reel].Level + this.Equip[Etype.Line].Level) / 3;
     }
 }
