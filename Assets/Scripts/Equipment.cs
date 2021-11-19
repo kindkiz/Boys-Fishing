@@ -25,9 +25,9 @@ public class Equipment
 
     public bool IsQualified(Player player)
     {
-        bool ret = player.Equip[Type].Level + 1 == this.Level;
+        bool ret = player.Equip[this.Type].Level + 1 == this.Level; // 직전 레벨의 장비를 구매했는지
         if(this.Type == Etype.Ship){
-            ret &= (player.GetAverageLevel() >= this.Level);
+            ret &= (player.GetAverageLevel() >= this.Level); // 배를 제외한 다른 장비들의 평균 레벨이 해당 레벨에 도달했는지
         }
         return ret;
     }
@@ -44,5 +44,18 @@ public class Ship : Equipment
         this.MaxHp = (int)data["Hp"];
         this.Hp = this.MaxHp;
         this.RepairCostPerHp = (int)data["RepairCost"];
+    }
+
+    public void Repair()
+    {
+        this.Hp = MaxHp;
+    }
+
+    public void WearOut(int hp)
+    {
+        this.Hp -= hp;
+        if(this.Hp < 0){
+            this.Hp = 0;
+        }
     }
 }
