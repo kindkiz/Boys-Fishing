@@ -16,14 +16,14 @@ public class Equipment
     public Equipment() {}
     public Equipment(Type type, Dictionary<string, object> data)
     {
-        this.Name = "없앨까"; // or 낚싯대 I, 낚싯대 IV 이런식으로 자동 생성 or 낡은 낚싯대, 최고급 낚싯대 이런식으로 데이터화
+        this.Name = "없앨까"; // or 낚싯대 I, 낚싯대 IV 이런식으로 자동 생성 or 낡은 낚싯대, 최고급 낚싯대 이런식으로 이름붙일까
         this.EquipmentType = type;
         this.Level = (int)data["Level"];
         this.Stat = (int)data["Stat"];
         this.Price = (int)data["Price"];
     }
 
-    bool IsQualified(Player player)
+    public bool IsQualified(Player player)
     {
         switch(EquipmentType)
         {
