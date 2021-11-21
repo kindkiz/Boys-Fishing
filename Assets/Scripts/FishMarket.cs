@@ -5,21 +5,19 @@ using UnityEngine.UI;
 
 public class FishMarket
 {
-    Player player;
-
     public FishMarket()
     {
 
     }
 
-    public void SellFish(Player player, Fish fish)
+    public void SellFish(Fish fish)
     {
-        player.Money += fish.Price;
-        player.FishTank.Remove(fish);
-        DrawMarket(player);
+        Player.Instance.Money += fish.Price;
+        Player.Instance.FishTank.Remove(fish);
+        DrawMarket();
     }
 
-    public void DrawMarket(Player player)
+    public void DrawMarket()
     {
         // 상점 그릴 정보들 정리 후 넘겨줌
     }

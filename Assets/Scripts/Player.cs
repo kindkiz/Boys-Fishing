@@ -5,6 +5,18 @@ using UnityEngine.UI;
 
 public class Player
 {
+    private static Player instance;
+    public static Player Instance
+    {
+        get
+        {
+            if(instance == null){
+                instance = new Player();
+            }
+            return instance;
+        }
+    }
+
     public int Money { get; set; }
     public int[] Bait { get; set; }
     public int CurrentBait { get; set; }
@@ -28,7 +40,7 @@ public class Player
     {
         Store store = new Store();
         Equipment toBuy = store.Equipments[type][level-1];
-        if(!toBuy.IsQualified(this)){
+        if(!toBuy.IsQualified()){
             Debug.Log("구매 자격을 만족하지 못함");
         }
         else if(this.Money < toBuy.Price){

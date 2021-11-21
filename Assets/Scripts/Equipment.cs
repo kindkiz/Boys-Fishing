@@ -23,11 +23,11 @@ public class Equipment
         this.Price = (int)data["Price"];
     }
 
-    public bool IsQualified(Player player)
+    public bool IsQualified()
     {
-        bool ret = player.Equip[this.Type].Level + 1 == this.Level; // 직전 레벨의 장비를 구매했는지
+        bool ret = Player.Instance.Equip[this.Type].Level + 1 == this.Level; // 직전 레벨의 장비를 구매했는지
         if(this.Type == Etype.Ship){
-            ret &= (player.GetAverageLevel() >= this.Level); // 배를 제외한 다른 장비들의 평균 레벨이 해당 레벨에 도달했는지
+            ret &= (Player.Instance.GetAverageLevel() >= this.Level); // 배를 제외한 다른 장비들의 평균 레벨이 해당 레벨에 도달했는지
         }
         return ret;
     }
