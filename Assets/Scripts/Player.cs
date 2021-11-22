@@ -22,6 +22,7 @@ public class Player
     public int CurrentBait { get; set; }
     public Dictionary<Etype, Equipment> Equip { get; set; }
     public List<Fish> FishTank { get; set; }
+    public List<Fish> SelectedFish { get; set; }
     
     public Player()
     {
@@ -51,7 +52,30 @@ public class Player
             this.Equip[type] = toBuy;
             Debug.Log("구매에 성공함");
         }
-        // 자격, 돈 검사를 여기서 하는게 맞나?
+    }
+
+    public void Select(Fish fish)
+    {
+        if(this.SelectedFish.Contains(fish)){
+            this.SelectedFish.Remove(fish);
+        }
+        else{
+            this.SelectedFish.Add(fish);
+        }
+    }
+
+    public void SelectAll()
+    {
+        this.SelectedFish = this.FishTank;
+    }
+
+    public void Sell()
+    {
+        foreach(Fish fish in this.SelectedFish){
+            this.Money += fish.Price;
+            this.SelectedFish.Remove(fish);
+            this.FishTank.Remove(fish);
+        }
     }
     
     public int GetAverageLevel()
