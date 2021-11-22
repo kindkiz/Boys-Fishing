@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour
     public List<FishInfo> fishInfo;
 
     // 배의 속도
-    private const float playerSpeed = 5.0f;
+    private const float playerSpeed = 10.0f;
     // 배위 회전 속도
-    private const float rotateSpeed = 3.0f;
+    private const float rotateSpeed = 180.0f;
 
     private const int OBJECT_NULL = 0;
     private const int OBJECT_STORE = 1;
@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
     {
         if(playerSetting.playerObject != null){
             Vector3 prevPosition = playerSetting.playerObject.transform.position;
+            Vector3 prevAngle = playerSetting.playerObject.transform.eulerAngles;
             MovePlayer(playerSetting.playerObject);
             int collision = CollisionTest(playerSetting.playerObject);
 
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour
                 case OBJECT_OBSTACLE:
                     // 플레이어 위치 롤백
                     playerSetting.playerObject.transform.position = prevPosition;
+                    playerSetting.playerObject.transform.eulerAngles = prevAngle;
                     break;
             }
         }
@@ -146,7 +148,35 @@ public class GameManager : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         float speed = playerSpeed * Time.deltaTime;
 
-        target.transform.position += new Vector3(horizontal, 0, vertical).normalized * speed;
+        if(horizontal != 0 || vertical != 0)
+        {
+            Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
+            target.transform.position += dir * speed;
+            float prevAngle = target.transform.eulerAngles.y;
+            float angle = Vector3.SignedAngle(Vector3.forward, dir, Vector3.up);
+            float deltaAngle = Mathf.Min(posMod(angle - prevAngle, 360), rotateSpeed * Time.deltaTime);
+
+            if(posMod(angle - prevAngle, 360) < posMod(prevAngle - angle, 360))
+            {
+                angle = posMod(prevAngle + deltaAngle, 360);
+            }
+            else
+            {
+                angle = posMod(prevAngle - deltaAngle, 360);
+            }
+
+            target.transform.eulerAngles = new Vector3(0, angle, 0);
+        }
+    }
+
+    private float posMod(float num, float mod)
+    {
+        num = num % mod;
+        while(num < 0)
+        {
+            num += mod;
+        }
+        return num;
     }
 
     int CollisionTest(GameObject target)
