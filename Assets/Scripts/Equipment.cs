@@ -35,13 +35,13 @@ public class Equipment
 
 public class Ship : Equipment
 {
-    public int MaxHp { get; }
-    public int Hp { get; set; }
+    public float MaxHp { get; }
+    public float Hp { get; set; }
     public int RepairCostPerHp { get; }
 
     public Ship(Etype type, Dictionary<string, object> data) : base(Etype.Ship, data)
     {
-        this.MaxHp = (int)data["Hp"];
+        this.MaxHp = (float)data["Hp"];
         this.Hp = this.MaxHp;
         this.RepairCostPerHp = (int)data["RepairCost"];
     }
@@ -51,7 +51,7 @@ public class Ship : Equipment
         this.Hp = MaxHp;
     }
 
-    public void WearOut(int hp)
+    public void WearOut(float hp)
     {
         this.Hp -= hp;
         if(this.Hp < 0){

@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct PlayerSetting{
     public GameObject playerObject;
-    public float speed;
 }
 
 public enum Daytime{
@@ -15,6 +15,7 @@ public enum Daytime{
 
 [System.Serializable]
 public struct StageSetting{
+    public int HPperSecond;
     public float dayDuration;
     public float nightDuration;
     public Daytime startDaytime;
@@ -25,6 +26,10 @@ public class GameManager : MonoBehaviour
 {
     public PlayerSetting playerSetting;
     public StageSetting stageSetting;
+    public List<FishInfo> fishInfo;
+
+    // 배의 속도
+    private const float playerSpeed = 5.0f;
 
     private const int OBJECT_NULL = 0;
     private const int OBJECT_STORE = 1;
@@ -32,18 +37,26 @@ public class GameManager : MonoBehaviour
     private const int OBJECT_PORTAL = 3;
     private const int OBJECT_OBSTACLE = 4;
 
-    private Player player;
-
     private Daytime daytime;
     private float timeFlow;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = new Player();
-
         timeFlow = 0;
         daytime = stageSetting.startDaytime;
+        Fish.FishList = fishInfo;
+        for(int i = 0; i < 100; i++)
+        {
+            Fish fish = Fish.RandomGenerate(1);
+            if(fish == null){
+                Debug.Log(fish);
+            }else{
+                Debug.Log("Name: " + fish.Name + ", Size: " + fish.Size + " , Price: " + fish.Price);
+            }
+        }
+        Debug.Log(Fish.FishList);
+        Debug.Log(Mathf.Pow(10, 1));
     }
 
     // Update is called once per frame
@@ -99,15 +112,15 @@ public class GameManager : MonoBehaviour
                 timeFlow -= stageSetting.nightDuration;
             }
         }
+        //((Ship)Player.Instance.Equip[Etype.Ship]).WearOut(stageSetting.HPperSecond * Time.deltaTime);
 
-        //player.내구도깎기()
     }
 
     void MovePlayer(GameObject target)
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        float speed = playerSetting.speed * Time.deltaTime;
+        float speed = playerSpeed * Time.deltaTime;
 
         target.transform.position += new Vector3(horizontal, 0, vertical).normalized * speed;
     }
