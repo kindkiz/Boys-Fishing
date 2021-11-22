@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     private const int OBJECT_PORTAL = 3;
     private const int OBJECT_OBSTACLE = 4;
 
-    private FishMarket fishMarket;
     private Player player;
 
     private Daytime daytime;
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = new Player();
-        fishMarket = new FishMarket();
 
         timeFlow = 0;
         daytime = stageSetting.startDaytime;
