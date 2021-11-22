@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     // 배의 속도
     private const float playerSpeed = 5.0f;
+    // 배위 회전 속도
+    private const float rotateSpeed = 3.0f;
 
     private const int OBJECT_NULL = 0;
     private const int OBJECT_STORE = 1;
@@ -46,17 +48,8 @@ public class GameManager : MonoBehaviour
         timeFlow = 0;
         daytime = stageSetting.startDaytime;
         Fish.FishList = fishInfo;
-        for(int i = 0; i < 100; i++)
-        {
-            Fish fish = Fish.RandomGenerate(1);
-            if(fish == null){
-                Debug.Log(fish);
-            }else{
-                Debug.Log("Name: " + fish.Name + ", Size: " + fish.Size + " , Price: " + fish.Price);
-            }
-        }
-        Debug.Log(Fish.FishList);
-        Debug.Log(Mathf.Pow(10, 1));
+
+        //RandomGenerateTest();
     }
 
     // Update is called once per frame
@@ -64,6 +57,37 @@ public class GameManager : MonoBehaviour
     {
         PlayerAction();
         TimeAction();
+    }
+
+    void RandomGenerateTest()
+    {
+        Dictionary<string, int> num = new Dictionary<string, int>();
+        Dictionary<string, float> size = new Dictionary<string, float>();
+        Dictionary<string, float> price = new Dictionary<string, float>();
+
+        foreach(FishInfo fish in Fish.FishList)
+        {
+            num.Add(fish.name, 0);
+            size.Add(fish.name, 0);
+            price.Add(fish.name, 0);
+        }
+
+        for(int i = 0; i < 10000; i++)
+        {
+            Fish fish = Fish.RandomGenerate(3);
+
+            num[fish.Name]++;
+            size[fish.Name] += fish.Size;
+            price[fish.Name] += fish.Price;
+        }
+
+        foreach(FishInfo fish in Fish.FishList)
+        {
+            size[fish.name] /= num[fish.name];
+            price[fish.name] /= num[fish.name];
+            Debug.Log("Name: " + fish.name + ", Num: " + num[fish.name] + ", Size: " + size[fish.name] + " , Price: " + price[fish.name]);
+        }
+
     }
 
     void PlayerAction()
