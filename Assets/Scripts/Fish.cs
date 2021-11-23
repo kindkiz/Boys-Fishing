@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct FishInfo{
     public string name;
-    public Image image;
+    public Texture2D image;
     public int uniqueness;
     public float minimumSize;
     public float maximumSize;
