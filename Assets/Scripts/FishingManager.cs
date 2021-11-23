@@ -2,19 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishingManager : MonoBehaviour
+public class FishingManager
 {
-    public FishingManager()
+    private float timeLimit;
+    private float barSize;
+    private float barForce;
+    public FishingManager(Fish fish)
+    {
+        this.timeLimit = CalcTimeLimit(fish.Dexterity);
+        this.barSize = CalcBarSize(fish.Dexterity);
+        this.barForce = CalcBarForce(fish.Dexterity);
+    }
+
+    public void StartGame()
     {
         
     }
 
-    public void StartFishing()
+    private float CalcTimeLimit(float dexterity)
     {
-        // 낚시 미니게임 시작
+        // 임시
+        float result = Player.Instance.Equip[Etype.Line].Stat - dexterity;
+        return result;
+    }
 
-        // GameManager 정보를 바탕으로 물고기 후보 추출
-        // 희귀도를 고려해서 미끼를 물 물고기 결정
-        // 게임
+    private float CalcBarSize(float speed)
+    {
+        // 임시
+        float result = Player.Instance.Equip[Etype.Rod].Stat - speed;
+        return result;
+    }
+
+    private float CalcBarForce(float strength)
+    {
+        // 임시
+        float result = Player.Instance.Equip[Etype.Reel].Stat - strength;
+        return result;
     }
 }
