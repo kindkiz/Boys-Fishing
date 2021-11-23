@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
 
     void MovePlayer(GameObject target)
     {
-        /*
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         float speed = playerSpeed * Time.deltaTime;
@@ -168,15 +168,7 @@ public class GameManager : MonoBehaviour
 
             target.transform.eulerAngles = new Vector3(0, angle, 0);
         }
-        */
-
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        Vector3 dir = new Vector3(h, 0, v).normalized;
-        target.transform.LookAt(target.transform.position + dir);
-        target.transform.position += dir * playerSpeed * Time.deltaTime;
-
+        
     }
 
     private float posMod(float num, float mod)
