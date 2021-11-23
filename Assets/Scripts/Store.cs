@@ -15,11 +15,14 @@ public class Store
         {
             Equipments[type] = new List<Equipment>();
             List<Dictionary<string, object>> data = CSVReader.Read(typeName[(int)type]);
-            for(int i = 0; i < data.Count; i++){
-                if(type == Etype.Ship){
+            for(int i = 0; i < data.Count; i++)
+            {
+                if(type == Etype.Ship)
+                {
                     Equipments[type].Add(new Ship(type, data[i]));
                 }
-                else{
+                else
+                {
                     Equipments[type].Add(new Equipment(type, data[i]));
                 }
             }

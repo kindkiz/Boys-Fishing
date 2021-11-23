@@ -41,13 +41,16 @@ public class Player
     {
         Store store = new Store();
         Equipment toBuy = store.Equipments[type][level-1];
-        if(!toBuy.IsQualified()){
+        if(!toBuy.IsQualified())
+        {
             Debug.Log("구매 자격을 만족하지 못함");
         }
-        else if(this.Money < toBuy.Price){
+        else if(this.Money < toBuy.Price)
+        {
             Debug.Log("돈이 충분하지 못함");
         }
-        else{
+        else
+        {
             this.Money -= toBuy.Price;
             this.Equip[type] = toBuy;
             Debug.Log("구매에 성공함");
@@ -56,7 +59,8 @@ public class Player
 
     public void Select(Fish fish)
     {
-        if(this.SelectedFish.Contains(fish)){
+        if(this.SelectedFish.Contains(fish))
+        {
             this.SelectedFish.Remove(fish);
         }
         else{
@@ -71,7 +75,8 @@ public class Player
 
     public void Sell()
     {
-        foreach(Fish fish in this.SelectedFish){
+        foreach(Fish fish in this.SelectedFish)
+        {
             this.Money += fish.Price;
             this.SelectedFish.Remove(fish);
             this.FishTank.Remove(fish);
