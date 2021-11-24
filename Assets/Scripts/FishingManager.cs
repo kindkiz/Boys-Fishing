@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class FishingManager
 {
-    private float timeLimit;
-    private float barSize;
-    private float barForce;
+    public float TimeLimit { get; }
+    public float SuccessAreaSize { get; }
+    public float CursorUpPower { get; }
+    public float CursorDownPower { get; } = 0.01f;
+    public float CursorSpeedLimit { get; } = -1f;
+    public float SuccessAreaStart { get; } // Used in UI
+    public float SuccessAreaEnd { get; } = 90f; // Used in UI
+    public float RemainTime { get; } // Used in UI ?
+    public float CursorPosition { get; } = 0f; // Used in UI
+    public float TimeToSuccess { get; } = 120f;
+    public float TimeInSuccessArea { get; } = 0f; // Used in UI ?
+
+
     public FishingManager(Fish fish)
     {
-        this.timeLimit = CalcTimeLimit(fish.Dexterity);
-        this.barSize = CalcBarSize(fish.Dexterity);
-        this.barForce = CalcBarForce(fish.Dexterity);
+        TimeLimit = CalcTimeLimit(fish.Dexterity);
+        SuccessAreaSize = CalcSuccessAreaSize(fish.Speed);
+        CursorUpPower = CalcCursorUpPower(fish.Strength);
+
+        SuccessAreaStart = SuccessAreaEnd - SuccessAreaSize;
+        RemainTime = TimeLimit;
     }
 
     public void StartGame()
     {
+        Player.Instance.Bait[Player.Instance.CurrentBait] -= 1;
         
     }
 
@@ -26,14 +40,14 @@ public class FishingManager
         return result;
     }
 
-    private float CalcBarSize(float speed)
+    private float CalcSuccessAreaSize(float speed)
     {
         // 임시
         float result = Player.Instance.Equip[Etype.Rod].Stat - speed;
         return result;
     }
 
-    private float CalcBarForce(float strength)
+    private float CalcCursorUpPower(float strength)
     {
         // 임시
         float result = Player.Instance.Equip[Etype.Reel].Stat - strength;
