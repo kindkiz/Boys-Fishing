@@ -16,7 +16,7 @@ public class Equipment
     public Equipment() {}
     public Equipment(Etype type, Dictionary<string, object> data)
     {
-        this.Name = "?"; // or 낚싯대 I, 낚싯대 IV 이런식으로 자동 생성 or 낡은 낚싯대, 최고급 낚싯대 이런식으로 이름붙일까
+        this.Name = "?"; // or 낚싯대 I, 낚싯대 IV 이런식으로 자동 생성 or 낡은 낚싯대, 최고급 낚싯대 이름 붙이기
         this.Type = type;
         this.Level = (int)data["Level"];
         this.Stat = (int)data["Stat"];
