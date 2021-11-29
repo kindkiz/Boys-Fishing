@@ -15,18 +15,28 @@ public enum Daytime{
 
 [System.Serializable]
 public struct StageSetting{
-    public int HPperSecond;
+    public int HPPerSecond;
     public float dayDuration;
     public float nightDuration;
     public Daytime startDaytime;
-    public GameObject uiManager;
+}
+
+[System.Serializable]
+public struct UISetting{
+    public GameObject marketObject;
 }
 
 public class GameManager : MonoBehaviour
 {
     public PlayerSetting playerSetting;
     public StageSetting stageSetting;
+    public UISetting uiSetting;
     public List<FishInfo> fishInfo;
+
+    public const string TAG_TERRAIN = "Terrain";
+    public const string TAG_MARKET = "Market";
+    public const string TAG_PORTAL = "Portal";
+    public const string TAG_STORE = "Store";
 
     // 배의 속도
     private const float playerSpeed = 10.0f;
@@ -48,7 +58,6 @@ public class GameManager : MonoBehaviour
         timeFlow = 0;
         daytime = stageSetting.startDaytime;
         Fish.FishList = fishInfo;
-
         //RandomGenerateTest();
     }
 
@@ -92,30 +101,22 @@ public class GameManager : MonoBehaviour
 
     void PlayerAction()
     {
-        if(playerSetting.playerObject != null){
-            Vector3 prevPosition = playerSetting.playerObject.transform.position;
-            Vector3 prevAngle = playerSetting.playerObject.transform.eulerAngles;
-            Vector3 prevCam = Camera.main.transform.position;
-            MovePlayer(playerSetting.playerObject);
-            int collision = CollisionTest(playerSetting.playerObject);
-
-            switch(CollisionTest(playerSetting.playerObject))
+        GameObject playerObject = playerSetting.playerObject;
+        if(playerObject != null)
+        {
+            MovePlayer(playerObject);
+            PlayerBehavior pb = playerSetting.playerObject.GetComponent<PlayerBehavior>();
+            if(pb.IsMarket)
             {
-                case OBJECT_STORE:
-                    OpenStore();
-                    break;
-                case OBJECT_MARKET:
-                    OpenMarket();
-                    break;
-                case OBJECT_PORTAL:
-                    ChangeStage();
-                    break;
-                case OBJECT_OBSTACLE:
-                    // 플레이어 위치 롤백
-                    playerSetting.playerObject.transform.position = prevPosition;
-                    playerSetting.playerObject.transform.eulerAngles = prevAngle;
-                    Camera.main.transform.position = prevCam;
-                    break;
+                OpenMarket();
+            }
+            if(pb.IsStore)
+            {
+                OpenStore();
+            }
+            if(pb.IsPortal)
+            {
+                ChangeStage();
             }
         }
     }
@@ -146,7 +147,7 @@ public class GameManager : MonoBehaviour
 
     void MovePlayer(GameObject target)
     {
-        
+        Vector3 deltaPosition = new Vector3(0, 0, 0);
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         float speed = playerSpeed * Time.deltaTime;
@@ -154,8 +155,13 @@ public class GameManager : MonoBehaviour
         if(horizontal != 0 || vertical != 0)
         {
             Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
-            target.transform.position += dir * speed;
-            Camera.main.transform.position += dir * speed;
+            deltaPosition = dir * speed;
+
+            if(!Physics.Raycast(target.transform.position, dir, 2f)){
+                target.transform.position += deltaPosition;
+                Camera.main.transform.position += deltaPosition;
+            }
+
             float prevAngle = target.transform.eulerAngles.y;
             float angle = Vector3.SignedAngle(Vector3.forward, dir, Vector3.up);
             float deltaAngle = Mathf.Min(posMod(angle - prevAngle, 360), rotateSpeed * Time.deltaTime);
@@ -171,7 +177,6 @@ public class GameManager : MonoBehaviour
 
             target.transform.eulerAngles = new Vector3(0, angle, 0);
         }
-        
     }
 
     private float posMod(float num, float mod)
@@ -192,7 +197,7 @@ public class GameManager : MonoBehaviour
 
     void OpenMarket()
     {
-        // 물고기 파는 시장 열기
+        uiSetting.marketObject.SetActive(true);
     }
 
     void OpenStore()
