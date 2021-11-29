@@ -106,17 +106,20 @@ public class GameManager : MonoBehaviour
         {
             MovePlayer(playerObject);
             PlayerBehavior pb = playerSetting.playerObject.GetComponent<PlayerBehavior>();
-            if(pb.IsMarket)
+            if(pb)
             {
-                OpenMarket();
-            }
-            if(pb.IsStore)
-            {
-                OpenStore();
-            }
-            if(pb.IsPortal)
-            {
-                ChangeStage();
+                if(pb.IsMarket)
+                {
+                    OpenMarket();
+                }
+                if(pb.IsStore)
+                {
+                    OpenStore();
+                }
+                if(pb.IsPortal)
+                {
+                    ChangeStage();
+                }
             }
         }
     }
