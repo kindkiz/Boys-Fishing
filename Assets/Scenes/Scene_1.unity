@@ -3505,7 +3505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1325473926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8532,11 +8532,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5288591469550540911, guid: 55567959e23c80343bd49cb3f8a1a66a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 187.84
       objectReference: {fileID: 0}
     - target: {fileID: 5288591469550540911, guid: 55567959e23c80343bd49cb3f8a1a66a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 94.13
       objectReference: {fileID: 0}
     - target: {fileID: 6043664491837801467, guid: 55567959e23c80343bd49cb3f8a1a66a, type: 3}
       propertyPath: m_Pivot.x
@@ -9287,11 +9287,11 @@ PrefabInstance:
       objectReference: {fileID: -8818060740778546709, guid: af05bb858a4165a47a4e6d8df3c60d84, type: 2}
     - target: {fileID: 3383820979603583259, guid: 3a8f122f568eabb46bae3d17d0878069, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 108.55
       objectReference: {fileID: 0}
     - target: {fileID: 3383820979603583259, guid: 3a8f122f568eabb46bae3d17d0878069, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 94.13
       objectReference: {fileID: 0}
     - target: {fileID: 3645662071213334143, guid: 3a8f122f568eabb46bae3d17d0878069, type: 3}
       propertyPath: m_Name
