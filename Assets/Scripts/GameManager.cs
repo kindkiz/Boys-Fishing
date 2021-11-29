@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
         if(playerSetting.playerObject != null){
             Vector3 prevPosition = playerSetting.playerObject.transform.position;
             Vector3 prevAngle = playerSetting.playerObject.transform.eulerAngles;
+            Vector3 prevCam = Camera.main.transform.position;
             MovePlayer(playerSetting.playerObject);
             int collision = CollisionTest(playerSetting.playerObject);
 
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour
                     // 플레이어 위치 롤백
                     playerSetting.playerObject.transform.position = prevPosition;
                     playerSetting.playerObject.transform.eulerAngles = prevAngle;
+                    Camera.main.transform.position = prevCam;
                     break;
             }
         }
@@ -153,6 +155,7 @@ public class GameManager : MonoBehaviour
         {
             Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
             target.transform.position += dir * speed;
+            Camera.main.transform.position += dir * speed;
             float prevAngle = target.transform.eulerAngles.y;
             float angle = Vector3.SignedAngle(Vector3.forward, dir, Vector3.up);
             float deltaAngle = Mathf.Min(posMod(angle - prevAngle, 360), rotateSpeed * Time.deltaTime);
