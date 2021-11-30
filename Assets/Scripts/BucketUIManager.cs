@@ -16,21 +16,6 @@ public class BucketUIManager : MonoBehaviour
 
     private GameObject[] fishCards;
 
-    Color clickedColor = Color.white;
-    Color defaultColor = new Color(214, 214, 214);
-
-/*    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }*/
-
     public void OnClickInventory() {
         gameObject.SetActive(true);
         Button fishTab = fishBtn.GetComponent<Button>();
@@ -41,12 +26,14 @@ public class BucketUIManager : MonoBehaviour
         fishScrollView.SetActive(true);
 
         // 현재 내 물고기 인벤토리 보여주기 (이미지 크기도 조절)
-        int fishCnt = 6;
+        int fishCnt;
         try
         {
             fishCnt = Player.Instance.FishTank.Count;
+            //Debug.Log("현재 인벤토리 내 물고기 수: "+fishCnt);
         }
-        catch(NullReferenceException e) {
+        catch(Exception e) {
+            fishCnt = 6;
             print(e);
         }
         
@@ -65,11 +52,12 @@ public class BucketUIManager : MonoBehaviour
                 string name = Player.Instance.FishTank[i].Name;
                 fishName.GetComponent<TextMeshProUGUI>().text = name;
                 fishImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("FishImg/"+ name) as Sprite;
-                fishImg.GetComponent<Image>().color = Color.red;
+
+                //TODO: 사이즈 가로=세로 로 할지 가로를 더 길게 할지 고민
                 float size = Player.Instance.FishTank[i].Size;
                 fishImg.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
             }
-            catch (NullReferenceException e)
+            catch (Exception e)
             {
                 print(e);
             }
@@ -88,10 +76,16 @@ public class BucketUIManager : MonoBehaviour
                 baitCount.GetComponent<TextMeshProUGUI>().text = Player.Instance.Bait[i].ToString();
             }
             catch {
-                baitCount.GetComponent<TextMeshProUGUI>().text = i.ToString();
+                baitCount.GetComponent<TextMeshProUGUI>().text = i.ToString(); //Test용 코드
             }
         }
-       
+    }
+
+    public void OnClickCertainBait() {
+        GameObject clickedBait = EventSystem.current.currentSelectedGameObject;
+        // TODO: 스프라이트 변경하기
+        //clickedBait.transform.GetChild(1).GetComponent<Image>().sprite;
+
     }
 
     public void OnClickExitBtn() {
@@ -100,10 +94,4 @@ public class BucketUIManager : MonoBehaviour
         baitPanel.SetActive(false);
         fishScrollView.SetActive(false);
     }
-
-/*    private void ChangeBtnNormalColor(Button button, Color color) {
-        ColorBlock cb = button.colors;
-        cb.normalColor = color;
-        button.colors = cb;
-    }*/
 }
