@@ -473,7 +473,8 @@ MonoBehaviour:
     nightDuration: 0
     startDaytime: 0
   uiSetting:
-    marketObject: {fileID: 0}
+    marketObject: {fileID: 229078972}
+    storeObject: {fileID: 321048027190561647}
   fishInfo: []
 --- !u!1001 &108815768
 PrefabInstance:
@@ -1326,6 +1327,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4308015553492998, guid: 956556a458e052645a695d553424942e, type: 3}
   m_PrefabInstance: {fileID: 196367569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &229078972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1276102924691444836, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+  m_PrefabInstance: {fileID: 1276102925144473936}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &241901990
 PrefabInstance:
@@ -2894,6 +2900,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 97e76aeb6d987b34b8c2e6fa6bf5edc8, type: 3}
       propertyPath: m_Name
       value: boyFishingStore
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 97e76aeb6d987b34b8c2e6fa6bf5edc8, type: 3}
+      propertyPath: m_TagString
+      value: Store
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e76aeb6d987b34b8c2e6fa6bf5edc8, type: 3}
@@ -5142,7 +5152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.106571294, y: 0.019629521, z: -0.0027324625, w: 0.9941076}
-  m_LocalPosition: {x: 99.22975, y: 18.352661, z: 17.787598}
+  m_LocalPosition: {x: 10.929752, y: -19.27734, z: 17.787598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6103,6 +6113,24 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6248289781622086117, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
   m_PrefabInstance: {fileID: 1149619937}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1193093332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 97e76aeb6d987b34b8c2e6fa6bf5edc8, type: 3}
+  m_PrefabInstance: {fileID: 501692901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1193093333
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193093332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9631405, y: 5.451704, z: 7.0969634}
+  m_Center: {x: -1.9815854, y: 0.48405552, z: 0.07316949}
 --- !u!1 &1209038006
 GameObject:
   m_ObjectHideFlags: 0
@@ -6464,11 +6492,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9459e9191c7c7b49b12570dad015170, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100
+      value: 11.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9459e9191c7c7b49b12570dad015170, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: -32.63
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a9459e9191c7c7b49b12570dad015170, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6548,6 +6576,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1373131271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373131267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a051b4f2ea6c0524cb5ce65a67d83259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1373131272
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373131267}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.554184, y: 2.2060776, z: 4.117138}
+  m_Center: {x: -0.082629204, y: 0.6030388, z: 0.7870693}
 --- !u!1001 &1374501357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6676,6 +6729,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f84b7044d6b38094a80f6a8cfbf9ca4d, type: 3}
       propertyPath: m_Name
       value: boyFishingMarket
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f84b7044d6b38094a80f6a8cfbf9ca4d, type: 3}
+      propertyPath: m_TagString
+      value: Market
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f84b7044d6b38094a80f6a8cfbf9ca4d, type: 3}
@@ -9474,6 +9531,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833790788}
   m_CullTransparentMesh: 1
+--- !u!1 &1889995318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f84b7044d6b38094a80f6a8cfbf9ca4d, type: 3}
+  m_PrefabInstance: {fileID: 1375461717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1889995319
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889995318}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8435326, y: 3.1717224, z: 7.9938316}
+  m_Center: {x: -1.9217663, y: -1.0858612, z: -0.107584}
 --- !u!1001 &1890850742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10299,7 +10374,7 @@ GameObject:
   - component: {fileID: 1979915991}
   m_Layer: 0
   m_Name: Portal
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13416,8 +13491,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5382295002975546050}
   m_HandleRect: {fileID: 5382295002975546061}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.57777774
+  m_Value: 1
+  m_Size: 0.5777778
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13713,7 +13788,7 @@ RectTransform:
   m_Father: {fileID: 5382295001947820088}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.42222226}
+  m_AnchorMin: {x: 0, y: 0.4222222}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}

@@ -24,6 +24,7 @@ public struct StageSetting{
 [System.Serializable]
 public struct UISetting{
     public GameObject marketObject;
+    public GameObject storeObject;
 }
 
 public class GameManager : MonoBehaviour
@@ -160,7 +161,7 @@ public class GameManager : MonoBehaviour
             Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
             deltaPosition = dir * speed;
 
-            if(!Physics.Raycast(target.transform.position, dir, 2f)){
+            if(!Physics.Raycast(target.transform.position, dir, 1f)){
                 target.transform.position += deltaPosition;
                 Camera.main.transform.position += deltaPosition;
             }
@@ -205,7 +206,7 @@ public class GameManager : MonoBehaviour
 
     void OpenStore()
     {
-        // 상점 열기
+        uiSetting.storeObject.SetActive(true);
     }
 
     void OpenInventory()
@@ -226,5 +227,6 @@ public class GameManager : MonoBehaviour
     void ChangeStage()
     {
         // 다음 맵으로 장면 전환
+        Debug.Log("다음맵으로 전환");
     }
 }
