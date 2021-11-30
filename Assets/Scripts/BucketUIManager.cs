@@ -62,8 +62,9 @@ public class BucketUIManager : MonoBehaviour
             {
                 Transform fishName = fishTransform.GetChild(0);
                 Transform fishImg = fishTransform.GetChild(1);
-                fishName.GetComponent<TextMeshProUGUI>().text = Player.Instance.FishTank[i].Name;
-                fishImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("FishImg") as Sprite;
+                string name = Player.Instance.FishTank[i].Name;
+                fishName.GetComponent<TextMeshProUGUI>().text = name;
+                fishImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("FishImg/"+ name) as Sprite;
                 fishImg.GetComponent<Image>().color = Color.red;
                 float size = Player.Instance.FishTank[i].Size;
                 fishImg.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
@@ -80,6 +81,17 @@ public class BucketUIManager : MonoBehaviour
         baitPanel.SetActive(true);
 
         // 현재 내 미끼 정보 보여주기. 갯수 바꾸기.
+        for (int i = 0; i < baitPanel.transform.childCount; i++) {
+            Transform baitCount = baitPanel.transform.GetChild(i).GetChild(2);
+            try
+            {
+                baitCount.GetComponent<TextMeshProUGUI>().text = Player.Instance.Bait[i].ToString();
+            }
+            catch {
+                baitCount.GetComponent<TextMeshProUGUI>().text = i.ToString();
+            }
+        }
+       
     }
 
     public void OnClickExitBtn() {
