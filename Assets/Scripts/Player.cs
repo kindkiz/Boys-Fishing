@@ -37,6 +37,11 @@ public class Player
         Buy(Etype.Ship, 1);
     }
 
+    public void UseCurrentBait()
+    {
+        Bait[CurrentBait] -= 1;
+    }
+
     public float GetCapacityRatio()
     {
         return (float)this.FishTank.Count / this.Equip[Etype.Ship].Stat;
