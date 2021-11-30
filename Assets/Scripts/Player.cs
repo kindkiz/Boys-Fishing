@@ -24,17 +24,22 @@ public class Player
     public List<Fish> FishTank { get; set; }
     public List<Fish> SelectedFish { get; set; }
     
+    public Store store { get; set; }
+    
     public Player()
     {
+        Equip = new Dictionary<Etype, Equipment>();
+
         this.Money = 0;
         this.Bait = new int[4];
         this.CurrentBait = 0;
         this.FishTank = new List<Fish>();
 
-        Buy(Etype.Rod, 1);
-        Buy(Etype.Reel, 1);
-        Buy(Etype.Line, 1);
-        Buy(Etype.Ship, 1);
+        store = new Store();
+        this.Equip[Etype.Rod] = store.Equipments[Etype.Rod][0];
+        this.Equip[Etype.Reel] = store.Equipments[Etype.Reel][0];
+        this.Equip[Etype.Line] = store.Equipments[Etype.Line][0];
+        this.Equip[Etype.Ship] = store.Equipments[Etype.Ship][0];
     }
 
     public void UseCurrentBait()
@@ -51,7 +56,8 @@ public class Player
     {
         Store store = new Store();
         Equipment toBuy = store.Equipments[type][level-1];
-        if(!toBuy.IsQualified())
+
+        if(!toBuy.IsQualified(Equip[type].Level, GetAverageLevel()))
         {
             Debug.Log("구매 자격을 만족하지 못함");
         }
@@ -93,7 +99,7 @@ public class Player
         }
     }
     
-    public int GetAverageLevel()
+    private int GetAverageLevel()
     {
         return (this.Equip[Etype.Rod].Level + this.Equip[Etype.Reel].Level + this.Equip[Etype.Line].Level) / 3;
     }

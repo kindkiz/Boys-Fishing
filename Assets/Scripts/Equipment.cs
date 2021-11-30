@@ -16,19 +16,34 @@ public class Equipment
     public Equipment() {}
     public Equipment(Etype type, Dictionary<string, object> data)
     {
-        this.Name = "?"; // or 낚싯대 I, 낚싯대 IV 이런식으로 자동 생성 or 낡은 낚싯대, 최고급 낚싯대 이름 붙이기
         this.Type = type;
         this.Level = (int)data["Level"];
         this.Stat = (int)data["Stat"];
         this.Price = (int)data["Price"];
+        this.Name = Naming();
+    }
+    // public Equipment(Equipment other)
+    // {
+    //     this.Name = other.Name;
+    //     this.Type = other.Type;
+    //     this.Level = other.Level;
+    //     this.Stat = other.Stat;
+    //     this.Price = other.Price;
+    // }
+
+    public string Naming()
+    {
+        string[] typeName = {"낚싯대", "릴", "낚싯줄", "배"};
+        string[] levelName = {"0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        return typeName[(int)Type] + " " + levelName[Level];
     }
 
-    public bool IsQualified()
+    public bool IsQualified(int nowLevel, int avgLevel)
     {
-        bool ret = Player.Instance.Equip[this.Type].Level + 1 == this.Level; // 직전 레벨의 장비를 구매했는지
+        bool ret = nowLevel + 1 == this.Level; // 직전 레벨의 장비를 구매했는지
         if(this.Type == Etype.Ship)
         {
-            ret &= (Player.Instance.GetAverageLevel() >= this.Level); // 배를 제외한 다른 장비들의 평균 레벨이 해당 레벨에 도달했는지
+            ret &= (avgLevel >= this.Level); // 배를 제외한 다른 장비들의 평균 레벨이 해당 레벨에 도달했는지
         }
         return ret;
     }
@@ -42,7 +57,7 @@ public class Ship : Equipment
 
     public Ship(Etype type, Dictionary<string, object> data) : base(Etype.Ship, data)
     {
-        this.MaxHp = (float)data["Hp"];
+        this.MaxHp = (int)data["Hp"];
         this.Hp = this.MaxHp;
         this.RepairCostPerHp = (int)data["RepairCost"];
     }
