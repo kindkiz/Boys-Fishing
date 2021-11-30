@@ -9,6 +9,7 @@ public class Store
     public Dictionary<Etype, List<Equipment>> Equipments { get; }
     public Store()
     {
+        Equipments = new Dictionary<Etype, List<Equipment>>();
         string[] typeName = {"Rod", "Reel", "Line", "Ship"};
         
         foreach(Etype type in Enum.GetValues(typeof(Etype)))
