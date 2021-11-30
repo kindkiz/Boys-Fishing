@@ -84,8 +84,9 @@ public class BucketUIManager : MonoBehaviour
     public void OnClickCertainBait() {
         GameObject clickedBait = EventSystem.current.currentSelectedGameObject;
         // TODO: 스프라이트 변경하기
-        //clickedBait.transform.GetChild(1).GetComponent<Image>().sprite;
-
+        Debug.Log(clickedBait.name);
+        Sprite selectedBait = clickedBait.transform.GetChild(1).GetComponent<Image>().sprite;
+        UIManager.Instance.EquipBait(selectedBait);
     }
 
     public void OnClickExitBtn() {
