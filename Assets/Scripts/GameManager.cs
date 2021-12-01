@@ -190,8 +190,7 @@ public class GameManager : MonoBehaviour
                 timeFlow -= stageSetting.nightDuration;
             }
         }
-        //((Ship)Player.Instance.Equip[Etype.Ship]).WearOut(stageSetting.HPperSecond * Time.deltaTime);
-
+        ((Ship)Player.Instance.Equip[Etype.Ship]).WearOut(stageSetting.HPPerSecond * Time.deltaTime);
     }
 
     void MovePlayer(GameObject target)
