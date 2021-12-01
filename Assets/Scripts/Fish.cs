@@ -6,7 +6,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct FishInfo{
     public string name;
-    public Texture2D image;
+    //public Texture2D image;
+    public Sprite image;
     public int uniqueness;
     public float minimumSize;
     public float maximumSize;
@@ -30,6 +31,7 @@ public class Fish
     public string Name { get; set; }
     public float Size { get; set; }
     public int Price { get; set; }
+    public Sprite Image { get; set; }
 
     // 얼마나 빨리 도망가는지 (시간 제한)
     public float Dexterity { get; set; }    
@@ -58,6 +60,18 @@ public class Fish
         this.Speed = speed;
     }
 
+    public Fish(string name, float size, int price, float dexterity, float strength, float speed, Sprite image)
+    {
+        this.Name = name;
+        this.Size = size;
+        this.Price = price;
+        this.Dexterity = dexterity;
+        this.Strength = strength;
+        this.Speed = speed;
+
+                this.Image = image;
+    }
+
     public Image GetImage()
     {
         // 이미지 정보 불러와서 반환
@@ -74,7 +88,7 @@ public class Fish
             float size = RandomSize(fish.minimumSize, fish.maximumSize, depth);
             int price = GetPrice(size, fish.minimumSize, fish.maximumSize, fish.minimumPrice, fish.maximumPrice);
 
-            return new Fish(fish.name, size, price, fish.dexterity, fish.strength, fish.speed);
+            return new Fish(fish.name, size, price, fish.dexterity, fish.strength, fish.speed, fish.image);
         }
 
         return output;

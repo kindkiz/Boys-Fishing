@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         daytime = stageSetting.startDaytime;
         Fish.FishList = fishInfo;
         //RandomGenerateTest();
+        PlayerFishTankTest();
     }
 
     // Update is called once per frame
@@ -77,6 +78,14 @@ public class GameManager : MonoBehaviour
         PlayerAction();
         CameraAction();
         TimeAction();
+    }
+
+    void PlayerFishTankTest()
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            Player.Instance.FishTank.Add(Fish.RandomGenerate(3));
+        }
     }
 
     void RandomGenerateTest()
