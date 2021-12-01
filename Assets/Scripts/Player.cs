@@ -29,13 +29,13 @@ public class Player
     public Player()
     {
         Equip = new Dictionary<Etype, Equipment>();
+        store = new Store();
 
         this.Money = 0;
         this.Bait = new int[4];
         this.CurrentBait = 0;
         this.FishTank = new List<Fish>();
 
-        store = new Store();
         this.Equip[Etype.Rod] = store.Equipments[Etype.Rod][0];
         this.Equip[Etype.Reel] = store.Equipments[Etype.Reel][0];
         this.Equip[Etype.Line] = store.Equipments[Etype.Line][0];
@@ -54,7 +54,6 @@ public class Player
 
     public void Buy(Etype type, int level)
     {
-        Store store = new Store();
         Equipment toBuy = store.Equipments[type][level-1];
 
         if(!toBuy.IsQualified(Equip[type].Level, GetAverageLevel()))

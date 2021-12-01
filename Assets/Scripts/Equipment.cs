@@ -22,14 +22,6 @@ public class Equipment
         this.Price = (int)data["Price"];
         this.Name = Naming();
     }
-    // public Equipment(Equipment other)
-    // {
-    //     this.Name = other.Name;
-    //     this.Type = other.Type;
-    //     this.Level = other.Level;
-    //     this.Stat = other.Stat;
-    //     this.Price = other.Price;
-    // }
 
     public string Naming()
     {

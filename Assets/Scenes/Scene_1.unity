@@ -1880,7 +1880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &313258252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5708,6 +5708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successArea: {fileID: 1689194216}
   fish: {fileID: 370331338}
+  bar: {fileID: 313258251}
 --- !u!1001 &1114882961
 PrefabInstance:
   m_ObjectHideFlags: 0

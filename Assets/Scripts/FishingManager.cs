@@ -25,10 +25,10 @@ public class FishingManager : MonoBehaviour
     public float CursorDownPower = 0.1f;
     public float CursorSpeedLimit = 2.5f;
     public float CursorSpeed = 0f;
-    public float RemainTime; // Used in UI ?
-    public float CursorPosition = 0f; // Used in UI
+    public float RemainTime;
+    public float CursorPosition = 0f;
     public float TimeToSuccess = 120f;
-    public float TimeInSuccessArea = 0f; // Used in UI ?
+    public float TimeInSuccessArea = 0f;
 
     void OnEnable()
     {
@@ -53,10 +53,20 @@ public class FishingManager : MonoBehaviour
         if(CheckArea())
         {
             TimeInSuccessArea += 1;
+            if(TimeInSuccessArea >= TimeToSuccess)
+            {
+                print("Success: You get " + fish.Name);
+                gameObject.SetActive(false);
+            }
         }
         else
         {
             RemainTime -= 1;
+            if(RemainTime <= 0)
+            {
+                print("Fail: You miss " + fish.Name);
+                gameObject.SetActive(false);
+            }
         }
     }
 
@@ -103,6 +113,8 @@ public class FishingManager : MonoBehaviour
     {
         // 임시
         TimeLimit = Player.Instance.Equip[Etype.Line].Stat - fish.Dexterity;
+
+        TimeLimit = 1000f;
     }
 
     private void CalcSuccessAreaSize()
@@ -110,7 +122,7 @@ public class FishingManager : MonoBehaviour
         int rodStat = Player.Instance.Equip[Etype.Rod].Stat;
         SuccessAreaSize = (rodStat - fish.Speed) / rodStat; // 임시
 
-        SuccessAreaSize = 0.2f; //test
+        SuccessAreaSize = 100f; //test
     }
 
     private void CalcCursorUpPower()
