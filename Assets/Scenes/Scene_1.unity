@@ -5013,7 +5013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &907674336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5026,15 +5026,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c040e88936800cc478348797b9b1cc88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishingUIManager: {fileID: 1096808717}
   TimeLimit: 0
   SuccessAreaSize: 0
-  CursorUpPower: 1.8
-  CursorDownPower: 0.07
-  CursorSpeedLimit: 2.5
+  CursorUpPower: 15
+  CursorDownPower: 600
+  CursorSpeedLimit: 300
   CursorSpeed: 0
   RemainTime: 0
   CursorPosition: 0
-  TimeToSuccess: 120
+  TimeToSuccess: 3
   TimeInSuccessArea: 0
 --- !u!4 &907674337
 Transform:
@@ -5739,7 +5740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1096808718
 Transform:
   m_ObjectHideFlags: 0
@@ -5766,6 +5767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b69f07c98fddb418e3c370c32f2199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishingManager: {fileID: 907674336}
   successArea: {fileID: 1689194216}
   fish: {fileID: 370331338}
   bar: {fileID: 313258251}

@@ -24,18 +24,13 @@ public class FishingManager : MonoBehaviour
 
     void OnEnable()
     {
-        fishingUIManager.SetActive(true);
-
         Player.Instance.UseCurrentBait();
 
         fish = Fish.RandomGenerate(1);
-        //fish = new Fish("test fish", 5f, 100, 1, 1, 1);
 
-        CalcTimeLimit();
-        CalcSuccessAreaSize();
-        CalcCursorUpPower();
+        Init();
 
-        RemainTime = TimeLimit;
+        fishingUIManager.SetActive(true);
     }
 
     void OnDisable()
@@ -70,6 +65,20 @@ public class FishingManager : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    private void Init()
+    {
+        CalcTimeLimit();
+        CalcSuccessAreaSize();
+        CalcCursorUpPower();
+        RemainTime = TimeLimit;
+        TimeInSuccessArea = 0f;
+        CursorSpeed = 0f;
+        CursorPosition = 0f;
+
+        //CursorDownPower = 600f;
+        //CursorSpeedLimit = 300f;
     }
 
     private bool CheckArea()
