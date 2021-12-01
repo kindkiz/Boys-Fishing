@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     private Daytime daytime;
     private float timeFlow;
 
+    private bool isOpenUI = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,17 +111,33 @@ public class GameManager : MonoBehaviour
             PlayerBehavior pb = playerSetting.playerObject.GetComponent<PlayerBehavior>();
             if(pb)
             {
-                if(pb.IsMarket)
+                if(!isOpenUI)
                 {
-                    OpenMarket();
+                    isOpenUI = true;
+                    if(pb.IsMarket)
+                    {
+                        OpenMarket();
+                    }
+                    else if(pb.IsStore)
+                    {
+                        
+                        OpenStore();
+                    }
+                    else if(pb.IsPortal)
+                    {
+                        ChangeStage();
+                    }
+                    else
+                    {
+                        isOpenUI = false;
+                    }
                 }
-                if(pb.IsStore)
+                else
                 {
-                    OpenStore();
-                }
-                if(pb.IsPortal)
-                {
-                    ChangeStage();
+                    if(!pb.IsMarket && !pb.IsStore && !pb.IsPortal)
+                    {
+                        isOpenUI = false;
+                    }
                 }
             }
         }
