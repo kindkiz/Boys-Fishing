@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class FishingManager : MonoBehaviour
 {
-    public static FishingManager Instance;
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        // DontDestroyOnLoad(this.gameObject);
-    }
+    public GameObject fishingUIManager;
     public Fish fish;
 
     public const float MIN_POS = 0f;
@@ -20,20 +12,24 @@ public class FishingManager : MonoBehaviour
     public const float BLANK = 50f;
 
     public float TimeLimit;
-    public float SuccessAreaSize = 0.3f;
+    public float SuccessAreaSize;
     public float CursorUpPower;
-    public float CursorDownPower = 0.1f;
-    public float CursorSpeedLimit = 2.5f;
-    public float CursorSpeed = 0f;
+    public float CursorDownPower;
+    public float CursorSpeedLimit;
+    public float CursorSpeed;
     public float RemainTime;
-    public float CursorPosition = 0f;
-    public float TimeToSuccess = 120f;
-    public float TimeInSuccessArea = 0f;
+    public float CursorPosition;
+    public float TimeToSuccess = 3f;
+    public float TimeInSuccessArea;
 
     void OnEnable()
     {
-        //fish = Fish.RandomGenerate(0);
-        fish = new Fish("test fish", 5f, 100, 1, 1, 1);
+        fishingUIManager.SetActive(true);
+
+        Player.Instance.UseCurrentBait();
+
+        fish = Fish.RandomGenerate(1);
+        //fish = new Fish("test fish", 5f, 100, 1, 1, 1);
 
         CalcTimeLimit();
         CalcSuccessAreaSize();
@@ -42,17 +38,22 @@ public class FishingManager : MonoBehaviour
         RemainTime = TimeLimit;
     }
 
+    void OnDisable()
+    {
+        fishingUIManager.SetActive(false);
+    }
+
     void Update()
     {
         AddPosition(CursorSpeed);
-        AddSpeed(-CursorDownPower);
+        SpeedDown(CursorDownPower);
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            AddSpeed(CursorUpPower);
+            SpeedUp(CursorUpPower);
         }
         if(CheckArea())
         {
-            TimeInSuccessArea += 1;
+            TimeInSuccessArea += Time.deltaTime;
             if(TimeInSuccessArea >= TimeToSuccess)
             {
                 print("Success: You get " + fish.Name);
@@ -61,7 +62,8 @@ public class FishingManager : MonoBehaviour
         }
         else
         {
-            RemainTime -= 1;
+            RemainTime -= Time.deltaTime;
+            TimeInSuccessArea = 0;
             if(RemainTime <= 0)
             {
                 print("Fail: You miss " + fish.Name);
@@ -77,13 +79,18 @@ public class FishingManager : MonoBehaviour
         return CursorPosition <= top && CursorPosition >= bottom;
     }
 
-    private void AddSpeed(float speed)
+    private void SpeedUp(float speed)
     {
         CursorSpeed += speed;
         if(CursorSpeed > CursorSpeedLimit)
         {
             CursorSpeed = CursorSpeedLimit;
         }
+    }
+
+    private void SpeedDown(float speed)
+    {
+        CursorSpeed -= speed * Time.deltaTime;
         if(CursorSpeed < -CursorSpeedLimit)
         {
             CursorSpeed = -CursorSpeedLimit;
@@ -92,7 +99,7 @@ public class FishingManager : MonoBehaviour
 
     private void AddPosition(float dist)
     {
-        CursorPosition += dist;
+        CursorPosition += dist * Time.deltaTime;
         if(CursorPosition > MAX_POS)
         {
             CursorPosition = MAX_POS;
@@ -104,17 +111,12 @@ public class FishingManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
-    {
-        Player.Instance.UseCurrentBait();
-    }
-
     private void CalcTimeLimit()
     {
         // 임시
         TimeLimit = Player.Instance.Equip[Etype.Line].Stat - fish.Dexterity;
 
-        TimeLimit = 1000f;
+        TimeLimit = 20f;
     }
 
     private void CalcSuccessAreaSize()
@@ -130,6 +132,6 @@ public class FishingManager : MonoBehaviour
         // 임시
         CursorUpPower = Player.Instance.Equip[Etype.Reel].Stat - fish.Strength;
 
-        CursorUpPower = 1.9f; // test
+        CursorUpPower = 100f; // test
     }
 }
