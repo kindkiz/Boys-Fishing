@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     private const float minFOV = 40.0f;
     // 카메라 최대 줌아웃
     private const float maxFOV = 100.0f;
+    // 배 충돌 Raycast 범위
+    private const float raycastRange = 2.0f;
 
     // 시간 관련
     private Daytime daytime;
@@ -214,7 +216,7 @@ public class GameManager : MonoBehaviour
             Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
             deltaPosition = dir * speed;
 
-            if(!Physics.Raycast(target.transform.position, dir, 1f)){
+            if(!Physics.Raycast(target.transform.position, dir, raycastRange)){
                 target.transform.position += deltaPosition;
                 Camera.main.transform.position += deltaPosition;
             }

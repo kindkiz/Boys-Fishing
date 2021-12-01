@@ -55,7 +55,6 @@ public class MarketUIManager : MonoBehaviour
         }
         List<Fish> fishTank = Player.Instance.FishTank;
         isSelect = new bool[fishTank.Count];
-        RefreshTotalPrice();
         
         int idx = 0;
         foreach(Fish fish in fishTank)
@@ -77,35 +76,23 @@ public class MarketUIManager : MonoBehaviour
             }
             btn.transform.Find("FishTMP").GetComponent<TextMeshProUGUI>().text = fish.Name;
 
-
-            Debug.Log(idx);
             int i = idx;
-            btn.GetComponent<Button>().onClick.AddListener(delegate{OnItemClick(btn, i);});
+            btn.GetComponent<Button>().onClick.AddListener(delegate{OnItemClick(i);});
 
             isSelect[idx] = false;
             idx++;
         }
+
+        RefreshUI();
     }
 
-    public void OnItemClick(GameObject button, int idx)
+    public void OnItemClick(int idx)
     {
-        Debug.Log(isSelect);
-        Debug.Log(idx);
         isSelect[idx] = !isSelect[idx];
-
-        if(isSelect[idx])
-        {
-            button.GetComponent<Image>().color = Color.yellow;
-        }
-        else
-        {
-            button.GetComponent<Image>().color = new Color(0.7843f, 0.7843f, 0.7843f, 1);
-        }
-
-        RefreshTotalPrice();
+        RefreshUI();
     }
 
-    public void RefreshTotalPrice()
+    public void RefreshUI()
     {
         List<Fish> fishTank = Player.Instance.FishTank;
         totalPrice = 0;
@@ -114,6 +101,11 @@ public class MarketUIManager : MonoBehaviour
             if(isSelect[i])
             {
                 totalPrice += fishTank[i].Price;
+                content.transform.GetChild(i).GetComponent<Image>().color = Color.yellow;
+            }
+            else
+            {
+                content.transform.GetChild(i).GetComponent<Image>().color = new Color(0.7843f, 0.7843f, 0.7843f, 1);
             }
         }
 
@@ -125,11 +117,45 @@ public class MarketUIManager : MonoBehaviour
 
     public void OnTotalSelectClick()
     {
+        bool isAllSelect = true;
+        for(int i = 0; i < isSelect.Length; i++)
+        {
+            if(!isSelect[i])
+            {
+                isAllSelect = false;
+                break;
+            }
+        }
+        
+        for(int i = 0; i < isSelect.Length; i++)
+        {
+           isSelect[i] = !isAllSelect;
+        }
 
+        SetFishList();
     }
 
     public void OnSellClick()
     {
-        
+        Player.Instance.SelectedFish = new List<Fish>();
+        List<Fish> newTank = new List<Fish>();
+        for(int i = 0; i < isSelect.Length; i++)
+        {
+            if(isSelect[i])
+            {
+                //Player.Instance.Select(Player.Instance.FishTank[i]);
+            }
+            if(!isSelect[i])
+            {
+                newTank.Add(Player.Instance.FishTank[i]);
+            }
+        }
+
+        //Player.Instance.Sell();
+
+        Player.Instance.FishTank = newTank;
+        Player.Instance.Money += totalPrice;
+
+        SetFishList();
     }
 }
