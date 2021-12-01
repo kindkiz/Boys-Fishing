@@ -475,7 +475,37 @@ MonoBehaviour:
   uiSetting:
     marketObject: {fileID: 229078972}
     storeObject: {fileID: 321048027190561647}
-  fishInfo: []
+  fishInfo:
+  - name: "\uB178\uB791\uBB3C\uACE0\uAE30"
+    image: {fileID: 21300000, guid: 3722789b05e5e754cbe7fbe4321f0d6b, type: 3}
+    uniqueness: 1
+    minimumSize: 10
+    maximumSize: 30
+    minimumPrice: 10
+    maximumPrice: 30
+    dexterity: 1
+    strength: 1
+    speed: 1
+  - name: "\uD558\uC591\uBB3C\uACE0\uAE30"
+    image: {fileID: 21300000, guid: 9939efe41719de94494e58970624e3ad, type: 3}
+    uniqueness: 2
+    minimumSize: 10
+    maximumSize: 50
+    minimumPrice: 15
+    maximumPrice: 55
+    dexterity: 2
+    strength: 2
+    speed: 2
+  - name: "\uC0C8\uD558\uC591\uBB3C\uACE0\uAE30"
+    image: {fileID: 21300000, guid: 306eaa819be2f1843babccf54e4eb662, type: 3}
+    uniqueness: 3
+    minimumSize: 10
+    maximumSize: 70
+    minimumPrice: 20
+    maximumPrice: 90
+    dexterity: 3
+    strength: 3
+    speed: 3
 --- !u!1001 &108815768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1345,6 +1375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa2d0c7a7df56543815e2ebdfcbcfca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  content: {fileID: 1160852963}
+  fishButton: {fileID: 7843154796792619573, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
 --- !u!1001 &241901990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6124,6 +6156,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6248289781622086117, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
   m_PrefabInstance: {fileID: 1149619937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1160852963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1276102923459075816, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+  m_PrefabInstance: {fileID: 1276102925144473936}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193093332 stripped
 GameObject:

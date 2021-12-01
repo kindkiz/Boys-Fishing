@@ -55,11 +55,21 @@ public class MarketUIManager : MonoBehaviour
         int idx = 0;
         foreach(Fish fish in fishTank)
         {
+            if(fish == null)
+            {
+                Debug.Log("Market : There is a 'Null' in Fish Tank");
+                continue;
+            }
+            
             GameObject btn = Instantiate(fishButton);
 
             btn.transform.SetParent(content.transform);
             btn.transform.localScale = new Vector3(1, 1, 1);
-            btn.transform.Find("FishImg").GetComponent<Image>().sprite = fish.Image;
+
+            if(fish.Image != null)
+            {
+                btn.transform.Find("FishImg").GetComponent<Image>().sprite = fish.Image;
+            }
 
             Debug.Log(idx);
             int i = idx;

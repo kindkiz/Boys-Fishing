@@ -68,8 +68,7 @@ public class Fish
         this.Dexterity = dexterity;
         this.Strength = strength;
         this.Speed = speed;
-
-                this.Image = image;
+        this.Image = image;
     }
 
     public Image GetImage()
