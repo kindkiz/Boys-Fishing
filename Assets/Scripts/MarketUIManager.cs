@@ -122,4 +122,14 @@ public class MarketUIManager : MonoBehaviour
             totalPriceText.GetComponent<TextMeshProUGUI>().text = totalPrice.ToString();
         }
     }
+
+    public void OnTotalSelectClick()
+    {
+
+    }
+
+    public void OnSellClick()
+    {
+        
+    }
 }

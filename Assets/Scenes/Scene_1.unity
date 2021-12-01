@@ -11839,6 +11839,34 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0.31111103
       objectReference: {fileID: 0}
+    - target: {fileID: 1276102923476410944, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102923476410944, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102923476410944, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 229078975}
+    - target: {fileID: 1276102923476410944, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102923476410944, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSellClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102923476410944, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102923476410944, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1276102924691444836, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
       propertyPath: m_Name
       value: Market
@@ -11930,6 +11958,34 @@ PrefabInstance:
     - target: {fileID: 1276102924691444837, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102924849520209, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102924849520209, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102924849520209, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 229078975}
+    - target: {fileID: 1276102924849520209, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102924849520209, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTotalSelectClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102924849520209, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MarketUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1276102924849520209, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1276102925071042485, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
       propertyPath: m_AnchorMax.x
