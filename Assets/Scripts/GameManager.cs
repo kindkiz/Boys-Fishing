@@ -25,6 +25,7 @@ public struct StageSetting{
 public struct UISetting{
     public GameObject marketObject;
     public GameObject storeObject;
+    public GameObject fishingManager;
 }
 
 public class GameManager : MonoBehaviour
@@ -58,11 +59,28 @@ public class GameManager : MonoBehaviour
     // 배 충돌 Raycast 범위
     private const float raycastRange = 2.0f;
 
+    // 물고기가 오는데 걸리는 최소 시간
+    private const float biteMin = 2.0f;
+    // 물고기가 오는데 걸리는 평균 시간 (최소시간 이후로)
+    private const float biteAverage = 10.0f;
+    // 물고기가 물었을 지 확인할 빈도
+    private const float biteFrequency = 0.5f;
+    // 물고기가 물었을 때 다시 스페이스바를 눌러야 하는 시간제한
+    private const float biteMax = 1.0f;
+    // 물고기를 놓쳤을 때 다시 물고기를 잡을 수 있게 되는 시간
+    private const float biteDelay = 2.0f;
+
     // 시간 관련
     private Daytime daytime;
     private float timeFlow;
 
+    // 낚시 관련
+    private bool isFishing = false;
+    private int fishPhase = 0;
+    private float fishTimeFlow;
+
     private bool isOpenUI = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +98,7 @@ public class GameManager : MonoBehaviour
         PlayerAction();
         CameraAction();
         TimeAction();
+        FishingAction();
     }
 
     void PlayerFishTankTest()
@@ -123,6 +142,11 @@ public class GameManager : MonoBehaviour
 
     void PlayerAction()
     {
+        if(isFishing || isOpenUI)
+        {
+            return;
+        }
+
         GameObject playerObject = playerSetting.playerObject;
         if(playerObject != null)
         {
@@ -186,22 +210,126 @@ public class GameManager : MonoBehaviour
         timeFlow += Time.deltaTime;
         if(daytime == Daytime.Day)
         {
-            if(timeFlow >= stageSetting.dayDuration)
-            {
-                daytime = Daytime.Night;
-                timeFlow -= stageSetting.dayDuration;
+            if(Daytime.Night > 0){
+                if(timeFlow >= stageSetting.dayDuration)
+                {
+                    daytime = Daytime.Night;
+                    timeFlow -= stageSetting.dayDuration;
+                }
             }
         }
         // if(daytime == Daytime.Night)
         else
         {
-            if(timeFlow >= stageSetting.nightDuration)
-            {
-                daytime = Daytime.Day;
-                timeFlow -= stageSetting.nightDuration;
+            if(Daytime.Day > 0){
+                if(timeFlow >= stageSetting.nightDuration)
+                {
+                    daytime = Daytime.Day;
+                    timeFlow -= stageSetting.nightDuration;
+                }
             }
         }
+
         ((Ship)Player.Instance.Equip[Etype.Ship]).WearOut(stageSetting.HPPerSecond * Time.deltaTime);
+    }
+
+    void FishingAction()
+    {
+        if(!isFishing)
+        {
+            if(!isOpenUI){
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    Debug.Log("GameManager : 낚시 시작!");
+                    isFishing = true;
+                    fishPhase = 0;
+                    fishTimeFlow = 0.0f;
+                }
+            }
+        }
+        // 0 : 최초 사이클 돌기 전
+        // 1 : 최초 사이클 돈 후
+        else if (fishPhase <= 1)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("GameManager : ?? 아무것도 없다");
+                fishTimeFlow = 0;
+                fishPhase = 4;
+
+            }
+            else
+            {
+                fishTimeFlow += Time.deltaTime;
+
+                float term;
+                if(fishPhase == 0)
+                {
+                    term = biteMin;
+                }
+                else
+                {
+                    term = biteFrequency;
+                }
+
+                if(fishTimeFlow >= term)
+                {
+                    float r = Random.Range(0.0f, 1.0f);
+                    if(r < biteFrequency / biteAverage)
+                    {
+                        fishPhase = 2;
+                        fishTimeFlow = 0.0f;
+                        Debug.Log("GameManager : 물었다!");
+                    }
+                    else
+                    {
+                        Debug.Log("GameManager : 기다리는 중...");
+                        fishPhase = 1;
+                        fishTimeFlow -= term;
+                    }
+                }
+            }
+        }
+        // 2 : 물고기가 미끼 뭄
+        else if (fishPhase == 2)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                fishPhase = 3;
+                if(uiSetting.fishingManager)
+                {
+                    uiSetting.fishingManager.SetActive(true);
+                }
+            }
+
+            fishTimeFlow += Time.deltaTime;
+            if(fishTimeFlow > biteMax)
+            {
+                fishTimeFlow = 0.0f;
+                fishPhase = 4;
+                Debug.Log("GameManager : 도망갔다...");
+            }
+        }
+        // 3 : 물고기 잡는 중
+        else if (fishPhase == 3)
+        {
+            if(!uiSetting.fishingManager.active)
+            {
+                fishTimeFlow = 0.0f;
+                fishPhase = 4;
+            }
+        }
+        // 4 : 낚시 후 딜레이
+        else if (fishPhase == 4)
+        {
+            fishTimeFlow += Time.deltaTime;
+            if(fishTimeFlow > biteDelay)
+            {
+                isFishing = false;
+                Debug.Log("GameManager : 다시 가자");
+            }
+        }
+
     }
 
     void MovePlayer(GameObject target)
