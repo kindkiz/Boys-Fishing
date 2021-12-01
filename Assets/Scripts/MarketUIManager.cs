@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MarketUIManager : MonoBehaviour
 {
     public GameObject content;
     public GameObject fishButton;
+    public GameObject totalPriceText;
 
     private bool[] isSelect;
+    private int totalPrice;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +33,7 @@ public class MarketUIManager : MonoBehaviour
     public void OnEnable()
     {
         SetFishList();
+
     }
 
     public void SetFishList()
@@ -49,9 +53,10 @@ public class MarketUIManager : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
-
         List<Fish> fishTank = Player.Instance.FishTank;
         isSelect = new bool[fishTank.Count];
+        RefreshTotalPrice();
+        
         int idx = 0;
         foreach(Fish fish in fishTank)
         {
@@ -70,6 +75,8 @@ public class MarketUIManager : MonoBehaviour
             {
                 btn.transform.Find("FishImg").GetComponent<Image>().sprite = fish.Image;
             }
+            btn.transform.Find("FishTMP").GetComponent<TextMeshProUGUI>().text = fish.Name;
+
 
             Debug.Log(idx);
             int i = idx;
@@ -93,6 +100,26 @@ public class MarketUIManager : MonoBehaviour
         else
         {
             button.GetComponent<Image>().color = new Color(0.7843f, 0.7843f, 0.7843f, 1);
+        }
+
+        RefreshTotalPrice();
+    }
+
+    public void RefreshTotalPrice()
+    {
+        List<Fish> fishTank = Player.Instance.FishTank;
+        totalPrice = 0;
+        for(int i = 0; i < fishTank.Count; i++)
+        {
+            if(isSelect[i])
+            {
+                totalPrice += fishTank[i].Price;
+            }
+        }
+
+        if(totalPriceText)
+        {
+            totalPriceText.GetComponent<TextMeshProUGUI>().text = totalPrice.ToString();
         }
     }
 }

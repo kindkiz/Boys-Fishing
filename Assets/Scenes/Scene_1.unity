@@ -1377,6 +1377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1160852963}
   fishButton: {fileID: 7843154796792619573, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
+  totalPriceText: {fileID: 859351185}
 --- !u!1001 &241901990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4482,6 +4483,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838137737}
   m_CullTransparentMesh: 1
+--- !u!1 &859351185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1276102925258273728, guid: 09526d2eda4533a47847c9baacb88afe, type: 3}
+  m_PrefabInstance: {fileID: 1276102925144473936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &874413140
 GameObject:
   m_ObjectHideFlags: 0
