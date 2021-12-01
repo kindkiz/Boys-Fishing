@@ -34,22 +34,29 @@ public class GameManager : MonoBehaviour
     public UISetting uiSetting;
     public List<FishInfo> fishInfo;
 
+    //상수들
+    private const int OBJECT_NULL = 0;
+    private const int OBJECT_STORE = 1;
+    private const int OBJECT_MARKET = 2;
+    private const int OBJECT_PORTAL = 3;
+    private const int OBJECT_OBSTACLE = 4;
     public const string TAG_TERRAIN = "Terrain";
     public const string TAG_MARKET = "Market";
     public const string TAG_PORTAL = "Portal";
     public const string TAG_STORE = "Store";
 
     // 배의 속도
-    private const float playerSpeed = 10.0f;
+    private const float playerSpeed = 30.0f;
     // 배위 회전 속도
     private const float rotateSpeed = 180.0f;
+    // 카메라 줌 인/아웃 속도
+    private const float cameraSpeed = 10.0f;
+    // 카메라 최대 줌인
+    private const float minFOV = 40.0f;
+    // 카메라 최대 줌아웃
+    private const float maxFOV = 100.0f;
 
-    private const int OBJECT_NULL = 0;
-    private const int OBJECT_STORE = 1;
-    private const int OBJECT_MARKET = 2;
-    private const int OBJECT_PORTAL = 3;
-    private const int OBJECT_OBSTACLE = 4;
-
+    // 시간 관련
     private Daytime daytime;
     private float timeFlow;
 
@@ -68,6 +75,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         PlayerAction();
+        CameraAction();
         TimeAction();
     }
 
@@ -140,6 +148,25 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                Debug.Log("Player Behavior 를 찾을 수 없습니다");
+            }
+        }
+    }
+
+    void CameraAction()
+    {
+        float scrollSpeed = Input.GetAxis("Mouse ScrollWheel") * cameraSpeed * (-1);
+
+        Camera.main.fieldOfView += scrollSpeed;
+        if(Camera.main.fieldOfView > maxFOV)
+        {
+            Camera.main.fieldOfView = maxFOV;
+        }
+        else if(Camera.main.fieldOfView < minFOV)
+        {
+            Camera.main.fieldOfView = minFOV;
         }
     }
 
