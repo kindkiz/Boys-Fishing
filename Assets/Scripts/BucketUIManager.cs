@@ -16,6 +16,8 @@ public class BucketUIManager : MonoBehaviour
 
     private GameObject[] fishCards;
 
+    enum Bait { Basic=0, Red, Blue, Strong };
+
     public void OnClickInventory() {
         gameObject.SetActive(true);
         Button fishTab = fishBtn.GetComponent<Button>();
@@ -41,8 +43,9 @@ public class BucketUIManager : MonoBehaviour
         for (int i = 0; i < fishCnt; i++)
         {
             fishCards[i] = Instantiate(fishPrefab);
+            fishCards[i].GetComponent<Button>().transition = Selectable.Transition.None;
             Transform fishTransform = fishCards[i].transform;
-            fishTransform.parent = fishScrollView.transform.GetChild(0).GetChild(0); // scrollview 자식인 viewport의 자식인 content를 부모로 설정.
+            fishTransform.SetParent(fishScrollView.transform.GetChild(0).GetChild(0)); // scrollview 자식인 viewport의 자식인 content를 부모로 설정.
             fishTransform.localScale = Vector3.one;
 
             try
@@ -51,9 +54,10 @@ public class BucketUIManager : MonoBehaviour
                 Transform fishImg = fishTransform.GetChild(1);
                 string name = Player.Instance.FishTank[i].Name;
                 fishName.GetComponent<TextMeshProUGUI>().text = name;
-                fishImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("FishImg/"+ name) as Sprite;
+                /*fishImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("FishImg/"+ name) as Sprite;*/
+                fishImg.GetComponent<Image>().sprite = Player.Instance.FishTank[i].Image;
 
-                //TODO: 사이즈 가로=세로 로 할지 가로를 더 길게 할지 고민
+                //TODO: 최대크기 최소크기를 실제 이미지 크기랑 어떻게 매칭시킬지? 물어보기
                 float size = Player.Instance.FishTank[i].Size;
                 fishImg.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
             }
@@ -83,15 +87,17 @@ public class BucketUIManager : MonoBehaviour
 
     public void OnClickCertainBait() {
         GameObject clickedBait = EventSystem.current.currentSelectedGameObject;
-        // TODO: 스프라이트 변경하기
-        Debug.Log(clickedBait.name);
+        
+        //TODO: player currentbait이 0-3인지 물어보기. 여기서 바꿔도 되는지 물어보기!
+        Player.Instance.CurrentBait = (int)Enum.Parse(typeof(Bait), clickedBait.name);
+        /*Debug.Log(Player.Instance.CurrentBait);
+        Debug.Log(clickedBait.name);*/
         Sprite selectedBait = clickedBait.transform.GetChild(1).GetComponent<Image>().sprite;
         UIManager.Instance.EquipBait(selectedBait);
     }
 
     public void OnClickExitBtn() {
-        GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
-        clickedObject.transform.parent.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         baitPanel.SetActive(false);
         fishScrollView.SetActive(false);
     }

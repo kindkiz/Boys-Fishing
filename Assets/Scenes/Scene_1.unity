@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3251,7 +3251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7843154796792619573, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
       propertyPath: m_Name
-      value: Bait 3
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 8375476950362380447, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
       propertyPath: m_Name
@@ -6113,7 +6113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7843154796792619573, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
       propertyPath: m_Name
-      value: Bait 1
+      value: Basic
       objectReference: {fileID: 0}
     - target: {fileID: 8375476950362380447, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
       propertyPath: m_Name
@@ -8979,7 +8979,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7843154796792619573, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
       propertyPath: m_Name
-      value: Bait 4
+      value: Strong
       objectReference: {fileID: 0}
     - target: {fileID: 8375476950362380447, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
       propertyPath: m_Name
@@ -9367,7 +9367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7843154796792619573, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
       propertyPath: m_Name
-      value: Bait 2
+      value: Red
       objectReference: {fileID: 0}
     - target: {fileID: 8375476950362380447, guid: 1064fcc349fccfd488bfcc57dd486771, type: 3}
       propertyPath: m_Name

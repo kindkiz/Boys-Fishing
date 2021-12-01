@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     public void EquipBait(Sprite selectedBait) {
         
         bait.GetComponent<Image>().sprite = selectedBait;
-        // TODO: 플레이어 current bait 바꾸기
+        
         // 남은 미끼 갯수 보여주기
         bait.transform.GetComponentInChildren<TextMeshProUGUI>().text = Player.Instance.Bait[Player.Instance.CurrentBait].ToString();
     }
