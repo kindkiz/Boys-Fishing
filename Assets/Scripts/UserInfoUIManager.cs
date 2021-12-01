@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class UserInfoUIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] GameObject boy;
+    [SerializeField] GameObject boat;
+    [SerializeField] GameObject rod;
+    [SerializeField] GameObject line;
+    [SerializeField] GameObject reel;
+
+    public void OnClickUserInfo() {
+        gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void OnClickExitBtn() {
+        gameObject.SetActive(false);
+    }
+
+    private void ChangeUserInfo() { 
+        // TODO: boy -> level 바꾸기
+        // TODO: boat, rod, line, reel -> img, level, name 바꾸기
     }
 }
