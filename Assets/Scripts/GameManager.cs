@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 
     void PlayerAction()
     {
-        if(isFishing || isOpenUI)
+        if(isFishing || CheckUIOpen())
         {
             return;
         }
@@ -380,6 +380,11 @@ public class GameManager : MonoBehaviour
     {
         // 충돌 체크해서 뭐랑 충돌했는지 반환
         return 1;
+    }
+
+    bool CheckUIOpen()
+    {
+        return uiSetting.storeObject.active | uiSetting.marketObject.active;
     }
 
     void OpenMarket()

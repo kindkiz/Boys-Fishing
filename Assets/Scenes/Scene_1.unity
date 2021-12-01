@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -475,6 +475,7 @@ MonoBehaviour:
   uiSetting:
     marketObject: {fileID: 229078972}
     storeObject: {fileID: 321048027190561647}
+    fishingManager: {fileID: 907674335}
   fishInfo:
   - name: "\uB178\uB791\uBB3C\uACE0\uAE30"
     image: {fileID: 21300000, guid: 3722789b05e5e754cbe7fbe4321f0d6b, type: 3}

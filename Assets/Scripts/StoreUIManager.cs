@@ -18,7 +18,6 @@ public class StoreUIManager : MonoBehaviour
 
     public void OnClickExit()
     {
-        Debug.Log("hi");
         gameObject.SetActive(false);
     }
 }
