@@ -13,7 +13,7 @@ public class FishingUIManager : MonoBehaviour
     void OnEnable()
     {
         bar.SetActive(true);
-        successArea.fillAmount = fishingManager.SuccessAreaSize / 500f;
+        successArea.fillAmount = fishingManager.SuccessAreaSize / (FishingManager.MAX_POS - 2 * FishingManager.BLANK);
     }
 
     void Update()
