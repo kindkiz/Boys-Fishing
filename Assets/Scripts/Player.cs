@@ -71,32 +71,6 @@ public class Player
             Debug.Log("구매에 성공함");
         }
     }
-
-    public void Select(Fish fish)
-    {
-        if(this.SelectedFish.Contains(fish))
-        {
-            this.SelectedFish.Remove(fish);
-        }
-        else{
-            this.SelectedFish.Add(fish);
-        }
-    }
-
-    public void SelectAll()
-    {
-        this.SelectedFish = this.FishTank;
-    }
-
-    public void Sell()
-    {
-        foreach(Fish fish in this.SelectedFish)
-        {
-            this.Money += fish.Price;
-            this.SelectedFish.Remove(fish);
-            this.FishTank.Remove(fish);
-        }
-    }
     
     private int GetAverageLevel()
     {
