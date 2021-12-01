@@ -8,6 +8,8 @@ public class MarketUIManager : MonoBehaviour
     public GameObject content;
     public GameObject fishButton;
 
+    private bool[] isSelect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,8 @@ public class MarketUIManager : MonoBehaviour
         }
 
         List<Fish> fishTank = Player.Instance.FishTank;
+        isSelect = new bool[fishTank.Count];
+        int idx = 0;
         foreach(Fish fish in fishTank)
         {
             GameObject btn = Instantiate(fishButton);
@@ -57,7 +61,28 @@ public class MarketUIManager : MonoBehaviour
             btn.transform.localScale = new Vector3(1, 1, 1);
             btn.transform.Find("FishImg").GetComponent<Image>().sprite = fish.Image;
 
-            Debug.Log(btn);
+            Debug.Log(idx);
+            int i = idx;
+            btn.GetComponent<Button>().onClick.AddListener(delegate{OnItemClick(btn, i);});
+
+            isSelect[idx] = false;
+            idx++;
+        }
+    }
+
+    public void OnItemClick(GameObject button, int idx)
+    {
+        Debug.Log(isSelect);
+        Debug.Log(idx);
+        isSelect[idx] = !isSelect[idx];
+
+        if(isSelect[idx])
+        {
+            button.GetComponent<Image>().color = Color.yellow;
+        }
+        else
+        {
+            button.GetComponent<Image>().color = new Color(0.7843f, 0.7843f, 0.7843f, 1);
         }
     }
 }
