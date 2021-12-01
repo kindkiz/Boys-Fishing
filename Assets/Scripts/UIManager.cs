@@ -31,11 +31,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        bait.transform.GetComponentInChildren<TextMeshProUGUI>().text = Player.Instance.Bait[Player.Instance.CurrentBait].ToString();
+        coin.transform.GetComponentInChildren<TextMeshProUGUI>().text = Player.Instance.Money.ToString();
+    }
+
     public void EquipBait(Sprite selectedBait) {
         
         bait.GetComponent<Image>().sprite = selectedBait;
-        
-        // ³²Àº ¹Ì³¢ °¹¼ö º¸¿©ÁÖ±â
         bait.transform.GetComponentInChildren<TextMeshProUGUI>().text = Player.Instance.Bait[Player.Instance.CurrentBait].ToString();
     }
 }
