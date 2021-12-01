@@ -24,6 +24,7 @@ public struct StageSetting{
 [System.Serializable]
 public struct UISetting{
     public GameObject marketObject;
+    public GameObject storeObject;
 }
 
 public class GameManager : MonoBehaviour
@@ -33,24 +34,35 @@ public class GameManager : MonoBehaviour
     public UISetting uiSetting;
     public List<FishInfo> fishInfo;
 
+    //상수들
+    private const int OBJECT_NULL = 0;
+    private const int OBJECT_STORE = 1;
+    private const int OBJECT_MARKET = 2;
+    private const int OBJECT_PORTAL = 3;
+    private const int OBJECT_OBSTACLE = 4;
     public const string TAG_TERRAIN = "Terrain";
     public const string TAG_MARKET = "Market";
     public const string TAG_PORTAL = "Portal";
     public const string TAG_STORE = "Store";
 
     // 배의 속도
-    private const float playerSpeed = 10.0f;
+    private const float playerSpeed = 30.0f;
     // 배위 회전 속도
     private const float rotateSpeed = 180.0f;
+    // 카메라 줌 인/아웃 속도
+    private const float cameraSpeed = 10.0f;
+    // 카메라 최대 줌인
+    private const float minFOV = 40.0f;
+    // 카메라 최대 줌아웃
+    private const float maxFOV = 100.0f;
+    // 배 충돌 Raycast 범위
+    private const float raycastRange = 2.0f;
 
-    private const int OBJECT_NULL = 0;
-    private const int OBJECT_STORE = 1;
-    private const int OBJECT_MARKET = 2;
-    private const int OBJECT_PORTAL = 3;
-    private const int OBJECT_OBSTACLE = 4;
-
+    // 시간 관련
     private Daytime daytime;
     private float timeFlow;
+
+    private bool isOpenUI = false;
 
     // Start is called before the first frame update
     void Start()
@@ -59,13 +71,23 @@ public class GameManager : MonoBehaviour
         daytime = stageSetting.startDaytime;
         Fish.FishList = fishInfo;
         //RandomGenerateTest();
+        PlayerFishTankTest();
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerAction();
+        CameraAction();
         TimeAction();
+    }
+
+    void PlayerFishTankTest()
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            Player.Instance.FishTank.Add(Fish.RandomGenerate(3));
+        }
     }
 
     void RandomGenerateTest()
@@ -108,19 +130,54 @@ public class GameManager : MonoBehaviour
             PlayerBehavior pb = playerSetting.playerObject.GetComponent<PlayerBehavior>();
             if(pb)
             {
-                if(pb.IsMarket)
+                if(!isOpenUI)
                 {
-                    OpenMarket();
+                    isOpenUI = true;
+                    if(pb.IsMarket)
+                    {
+                        OpenMarket();
+                    }
+                    else if(pb.IsStore)
+                    {
+                        
+                        OpenStore();
+                    }
+                    else if(pb.IsPortal)
+                    {
+                        ChangeStage();
+                    }
+                    else
+                    {
+                        isOpenUI = false;
+                    }
                 }
-                if(pb.IsStore)
+                else
                 {
-                    OpenStore();
-                }
-                if(pb.IsPortal)
-                {
-                    ChangeStage();
+                    if(!pb.IsMarket && !pb.IsStore && !pb.IsPortal)
+                    {
+                        isOpenUI = false;
+                    }
                 }
             }
+            else
+            {
+                Debug.Log("Player Behavior 를 찾을 수 없습니다");
+            }
+        }
+    }
+
+    void CameraAction()
+    {
+        float scrollSpeed = Input.GetAxis("Mouse ScrollWheel") * cameraSpeed * (-1);
+
+        Camera.main.fieldOfView += scrollSpeed;
+        if(Camera.main.fieldOfView > maxFOV)
+        {
+            Camera.main.fieldOfView = maxFOV;
+        }
+        else if(Camera.main.fieldOfView < minFOV)
+        {
+            Camera.main.fieldOfView = minFOV;
         }
     }
 
@@ -144,8 +201,7 @@ public class GameManager : MonoBehaviour
                 timeFlow -= stageSetting.nightDuration;
             }
         }
-        //((Ship)Player.Instance.Equip[Etype.Ship]).WearOut(stageSetting.HPperSecond * Time.deltaTime);
-
+        ((Ship)Player.Instance.Equip[Etype.Ship]).WearOut(stageSetting.HPPerSecond * Time.deltaTime);
     }
 
     void MovePlayer(GameObject target)
@@ -160,7 +216,7 @@ public class GameManager : MonoBehaviour
             Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
             deltaPosition = dir * speed;
 
-            if(!Physics.Raycast(target.transform.position, dir, 2f)){
+            if(!Physics.Raycast(target.transform.position, dir, raycastRange)){
                 target.transform.position += deltaPosition;
                 Camera.main.transform.position += deltaPosition;
             }
@@ -205,7 +261,7 @@ public class GameManager : MonoBehaviour
 
     void OpenStore()
     {
-        // 상점 열기
+        uiSetting.storeObject.SetActive(true);
     }
 
     void OpenInventory()
@@ -226,5 +282,6 @@ public class GameManager : MonoBehaviour
     void ChangeStage()
     {
         // 다음 맵으로 장면 전환
+        Debug.Log("다음맵으로 전환");
     }
 }

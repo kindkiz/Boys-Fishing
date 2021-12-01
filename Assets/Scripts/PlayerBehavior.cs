@@ -41,11 +41,9 @@ public class PlayerBehavior : MonoBehaviour
                 IsStore = true;
                 break;
             default:
-                Debug.Log("알 수 없는 태그와 충돌 : " + collider.gameObject.tag);
                 break;
 
         }
-        Debug.Log("Enter : " + collider.gameObject.tag);
     }
 
     void OnTriggerExit(Collider collider)
@@ -65,10 +63,8 @@ public class PlayerBehavior : MonoBehaviour
                 IsStore = false;
                 break;
             default:
-                Debug.Log("알 수 없는 태그와 충돌 : " + "collider.gameObject.tag");
                 break;
 
         }
-                Debug.Log("Exit : " + collider.gameObject.tag);
     }
 }
