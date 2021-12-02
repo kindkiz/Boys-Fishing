@@ -112,6 +112,7 @@ public class FishingManager : MonoBehaviour
         if(CursorPosition > MAX_POS)
         {
             CursorPosition = MAX_POS;
+            CursorSpeed = 0f;
         }
         if(CursorPosition < MIN_POS)
         {
@@ -123,23 +124,23 @@ public class FishingManager : MonoBehaviour
     private void CalcTimeLimit()
     {
         // 임시
-        TimeLimit = Player.Instance.Equip[Etype.Line].Stat - fish.Dexterity;
+        TimeLimit = Player.Instance.Equip[Etype.Line].Level - fish.Dexterity;
 
         TimeLimit = 20f;
     }
 
     private void CalcSuccessAreaSize()
     {
-        int rodStat = Player.Instance.Equip[Etype.Rod].Stat;
-        SuccessAreaSize = (rodStat - fish.Speed) / rodStat; // 임시
+        //int levelDiff = Player.Instance.Equip[Etype.Rod].Level - fish.Speed;
+        //SuccessAreaSize = (rodStat - fish.Speed) / rodStat; // 임시
 
-        SuccessAreaSize = 100f; //test
+        SuccessAreaSize = 50f; //test
     }
 
     private void CalcCursorUpPower()
     {
         // 임시
-        CursorUpPower = Player.Instance.Equip[Etype.Reel].Stat - fish.Strength;
+        CursorUpPower = Player.Instance.Equip[Etype.Reel].Level - fish.Strength;
 
         CursorUpPower = 100f; // test
     }
