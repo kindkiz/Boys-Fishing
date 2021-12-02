@@ -30,16 +30,18 @@ public class UserInfoUIManager : MonoBehaviour
     }
 
     private void ChangeUserInfo() {
+
+        string lv = "Lv.";
         // rod, reel, line, ship -> img, level, name 바꾸기
         for (int i = 0; i < infos.Length - 1; i++) {
             Sprite img = Player.Instance.Equip[(Etype)i].EqSprite;
-            string level = Player.Instance.Equip[(Etype)i].Level.ToString();
+            string level = lv + Player.Instance.Equip[(Etype)i].Level.ToString();
             string name = Player.Instance.Equip[(Etype)i].Name;
             ChangeInfo(infos[i], img, level, name);
         }
 
         // boy -> level 바꾸기
-        infos[infos.Length - 1].GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = Player.Instance.GetAverageLevel().ToString();
+        infos[infos.Length - 1].GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = lv + Player.Instance.GetAverageLevel().ToString();
               
     }
 

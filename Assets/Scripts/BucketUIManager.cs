@@ -57,8 +57,10 @@ public class BucketUIManager : MonoBehaviour
                 /*fishImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("FishImg/"+ name) as Sprite;*/
                 fishImg.GetComponent<Image>().sprite = Player.Instance.FishTank[i].Image;
 
-                //TODO: 최대크기 최소크기를 실제 이미지 크기랑 어떻게 매칭시킬지? 물어보기
-                float size = Player.Instance.FishTank[i].Size;
+                //최대크기 최소크기를 실제 이미지 크기와 매칭
+                float minsize = 80f;
+                float size = minsize + Player.Instance.FishTank[i].Size/1.5f;
+
                 fishImg.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
             }
             catch (Exception e)
@@ -88,7 +90,7 @@ public class BucketUIManager : MonoBehaviour
     public void OnClickCertainBait() {
         GameObject clickedBait = EventSystem.current.currentSelectedGameObject;
         
-        //TODO: player currentbait이 0-3인지 물어보기. 여기서 바꿔도 되는지 물어보기!
+        // player currentbait이 0-3
         Player.Instance.CurrentBait = (int)Enum.Parse(typeof(Bait), clickedBait.name);
         /*Debug.Log(Player.Instance.CurrentBait);
         Debug.Log(clickedBait.name);*/
