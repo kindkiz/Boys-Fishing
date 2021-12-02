@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
         if(!isGameOver)
         {
             PlayerAction();
-            CameraAction();
+            //CameraAction();
             TimeAction();
             FishingAction();
             DieTest();

@@ -41,9 +41,14 @@ public class Player
         }
     }
 
+    public bool IsFull()
+    {
+        return FishTank.Count == ((Ship)Equip[Etype.Ship]).Capacity;
+    }
+
     public void GetFish(Fish fish)
     {
-        if(FishTank.Count != ((Ship)Equip[Etype.Ship]).Capacity)
+        if(!IsFull())
         {
             FishTank.Add(fish);
         }

@@ -39,6 +39,14 @@ public class UIManager : MonoBehaviour
 
         // 현재 물고기 갯수 / 배용량으로 인벤토리 게이지 설정
         fillGage.GetComponent<Image>().fillAmount = Player.Instance.GetCapacityRatio();
+        if(Player.Instance.IsFull())
+        {
+            fillGage.GetComponent<Image>().color = new Color(1f, 0.5344f, 0.1839f, 1);
+        }
+        else
+        {
+            fillGage.GetComponent<Image>().color = new Color(0.3118f, 0.7680f, 0.8584f, 1);
+        }
     }
 
     public void EquipBait(Sprite selectedBait) {
