@@ -15,7 +15,7 @@ public enum Daytime{
 
 [System.Serializable]
 public struct StageSetting{
-    public int HPPerSecond;
+    public float HPPerSecond;
     public float dayDuration;
     public float nightDuration;
     public Daytime startDaytime;
@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
 
     private bool isOpenUI = false;
     private bool isGameOver = false;
+    private Animator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +98,11 @@ public class GameManager : MonoBehaviour
         isOpenUI = false;
         isGameOver = false;
 
+        if(playerSetting.playerObject.transform.GetChild(0).GetComponent<Animator>())
+        {
+            playerAnimator = playerSetting.playerObject.transform.GetChild(0).GetComponent<Animator>();
+        }
+
         PlayerFishTankTest();
         PlayerBaitTest();
     }
@@ -110,6 +116,7 @@ public class GameManager : MonoBehaviour
             CameraAction();
             TimeAction();
             FishingAction();
+            DieTest();
         }
     }
 
@@ -127,6 +134,14 @@ public class GameManager : MonoBehaviour
         Player.Instance.Bait[1] = 3;
         Player.Instance.Bait[2] = 2;
         Player.Instance.Bait[3] = 1;
+    }
+
+    void DieTest()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameOver();
+        }
     }
 
     void RandomGenerateTest()
@@ -166,6 +181,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        playerAnimator.SetBool("isMoving", false);
 
         GameObject playerObject = playerSetting.playerObject;
         if(playerObject != null)
@@ -253,8 +269,7 @@ public class GameManager : MonoBehaviour
         ((Ship)Player.Instance.Equip[Etype.Ship]).WearOut(stageSetting.HPPerSecond * Time.deltaTime);
         if(((Ship)Player.Instance.Equip[Etype.Ship]).IsDead)
         {
-            Debug.Log("내구도 0.. 게임오버");
-            isGameOver = true;
+            GameOver();
         }
     }
 
@@ -380,6 +395,7 @@ public class GameManager : MonoBehaviour
             if(!Physics.Raycast(target.transform.position, dir, raycastRange)){
                 target.transform.position += deltaPosition;
                 Camera.main.transform.position += deltaPosition;
+                playerAnimator.SetBool("isMoving", true);
             }
 
             float prevAngle = target.transform.eulerAngles.y;
@@ -413,6 +429,16 @@ public class GameManager : MonoBehaviour
     {
         // 충돌 체크해서 뭐랑 충돌했는지 반환
         return 1;
+    }
+
+    void GameOver()
+    {
+        isGameOver = true;
+        if(playerAnimator)
+        {
+            Debug.Log("내구도 0.. 게임오버");
+            playerAnimator.SetBool("isDie", true);
+        }
     }
 
     bool CheckUIOpen()
