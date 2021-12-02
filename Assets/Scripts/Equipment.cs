@@ -10,7 +10,6 @@ public class Equipment
     public string Name { get; }
     public Etype Type { get; }
     public int Level { get; }
-    public int Stat { get; }
     public int Price { get; }
     public Sprite EqSprite { get; }
 
@@ -19,7 +18,6 @@ public class Equipment
     {
         Type = type;
         Level = (int)data["Level"];
-        Stat = (int)data["Stat"];
         Price = (int)data["Price"];
         Name = Naming();
         EqSprite = GetSprite();
@@ -54,6 +52,7 @@ public class Equipment
 
 public class Ship : Equipment
 {
+    public int Capacity { get; }
     public float MaxHp { get; }
     public float Hp { get; set; }
     public int RepairCostPerHp { get; }
@@ -61,6 +60,7 @@ public class Ship : Equipment
 
     public Ship(Etype type, Dictionary<string, object> data) : base(Etype.Ship, data)
     {
+        Capacity = (int)data["Capacity"];
         MaxHp = (int)data["Hp"];
         Hp = MaxHp;
         RepairCostPerHp = (int)data["RepairCost"];

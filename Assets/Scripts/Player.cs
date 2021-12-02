@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,10 +37,10 @@ public class Player
         CurrentBait = 0;
         FishTank = new List<Fish>();
 
-        Equip[Etype.Rod] = store.Equipments[Etype.Rod][0];
-        Equip[Etype.Reel] = store.Equipments[Etype.Reel][0];
-        Equip[Etype.Line] = store.Equipments[Etype.Line][0];
-        Equip[Etype.Ship] = store.Equipments[Etype.Ship][0];
+        foreach(Etype type in Enum.GetValues(typeof(Etype)))
+        {
+            Equip[type] = store.Equipments[type][0]; // 시작 장비
+        }
     }
 
     public bool HasCurrentBait()
@@ -54,7 +55,7 @@ public class Player
 
     public float GetCapacityRatio()
     {
-        return (float)FishTank.Count / Equip[Etype.Ship].Stat;
+        return (float)FishTank.Count / ((Ship)Equip[Etype.Ship]).Capacity;
     }
 
     public void Buy(Etype type, int level)
