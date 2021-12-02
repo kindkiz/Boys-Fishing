@@ -123,10 +123,10 @@ public class GameManager : MonoBehaviour
 
     void PlayerBaitTest()
     {
-        Player.Instance.Bait[0] = 10;
-        Player.Instance.Bait[0] = 9;
-        Player.Instance.Bait[0] = 8;
-        Player.Instance.Bait[0] = 7;
+        Player.Instance.Bait[0] = 4;
+        Player.Instance.Bait[1] = 3;
+        Player.Instance.Bait[2] = 2;
+        Player.Instance.Bait[3] = 1;
     }
 
     void RandomGenerateTest()
