@@ -104,7 +104,6 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerFishTankTest();
-        PlayerBaitTest();
     }
 
     // Update is called once per frame
@@ -126,14 +125,6 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.FishTank.Add(Fish.RandomGenerate(3));
         }
-    }
-
-    void PlayerBaitTest()
-    {
-        Player.Instance.Bait[0] = 4;
-        Player.Instance.Bait[1] = 3;
-        Player.Instance.Bait[2] = 2;
-        Player.Instance.Bait[3] = 1;
     }
 
     void DieTest()

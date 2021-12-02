@@ -6,6 +6,17 @@ using UnityEngine.UI;
 
 public class Store
 {
+    private static Store instance;
+    public static Store Instance
+    {
+        get
+        {
+            if(instance == null){
+                instance = new Store();
+            }
+            return instance;
+        }
+    }
     public Dictionary<Etype, List<Equipment>> Equipments { get; }
     public Store()
     {
@@ -29,4 +40,10 @@ public class Store
             }
         }
     }
+
+    public Equipment GetEquipment(Etype type, int level)
+    {
+        return Equipments[type][level-1];
+    }
+
 }
