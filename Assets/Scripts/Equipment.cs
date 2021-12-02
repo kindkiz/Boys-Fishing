@@ -12,15 +12,17 @@ public class Equipment
     public int Level { get; }
     public int Stat { get; }
     public int Price { get; }
+    public Sprite EqSprite { get; }
 
     public Equipment() {}
     public Equipment(Etype type, Dictionary<string, object> data)
     {
-        this.Type = type;
-        this.Level = (int)data["Level"];
-        this.Stat = (int)data["Stat"];
-        this.Price = (int)data["Price"];
-        this.Name = Naming();
+        Type = type;
+        Level = (int)data["Level"];
+        Stat = (int)data["Stat"];
+        Price = (int)data["Price"];
+        Name = Naming();
+        EqSprite = GetSprite();
     }
 
     public string Naming()
@@ -32,12 +34,21 @@ public class Equipment
 
     public bool IsQualified(int nowLevel, int avgLevel)
     {
-        bool ret = nowLevel + 1 == this.Level; // 직전 레벨의 장비를 구매했는지
-        if(this.Type == Etype.Ship)
+        bool ret = nowLevel + 1 == Level; // 직전 레벨의 장비를 구매했는지
+        if(Type == Etype.Ship)
         {
-            ret &= (avgLevel >= this.Level); // 배를 제외한 다른 장비들의 평균 레벨이 해당 레벨에 도달했는지
+            ret &= (avgLevel >= Level); // 배를 제외한 다른 장비들의 평균 레벨이 해당 레벨에 도달했는지
         }
         return ret;
+    }
+
+    private Sprite GetSprite()
+    {
+        if(Type == Etype.Rod) return null; // 아직 낚싯대 이미지 없음
+
+        string[] typeName = {"Rod", "Reel", "Line", "Ship"};
+        string filePath = typeName[(int)Type] + "Img/" + typeName[(int)Type] + Level.ToString();
+        return Resources.Load<Sprite>(filePath);
     }
 }
 
