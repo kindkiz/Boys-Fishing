@@ -42,8 +42,6 @@ public class Equipment
 
     private Sprite GetSprite()
     {
-        if(Type == Etype.Rod) return null; // 아직 낚싯대 이미지 없음
-
         string[] typeName = {"Rod", "Reel", "Line", "Ship"};
         string filePath = typeName[(int)Type] + "Img/" + typeName[(int)Type] + Level.ToString();
         return Resources.Load<Sprite>(filePath);

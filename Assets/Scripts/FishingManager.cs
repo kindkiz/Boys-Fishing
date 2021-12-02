@@ -10,6 +10,15 @@ public class FishingManager : MonoBehaviour
     public const float MIN_POS = 0f;
     public const float MAX_POS = 500f;
     public const float BLANK = 50f;
+    public const float MIN_TIME_LIMIT = 5f;
+    public const float MAX_TIME_LIMIT = 15f;
+    public const float MIN_SUCCESS_AREA_SIZE = 20f;
+    public const float MAX_SUCCESS_AREA_SIZE = 200f;
+    public const float TIME_TO_SUCCESS = 3f;
+    public readonly float[] MIN_UP_POWER = {60f, 100f, 150f};
+    public readonly float[] MAX_UP_POWER = {250f, 300f, 350f};
+    public readonly float[] SPEED_LIMIT = {300f, 400f, 500f};
+    public readonly float[] DOWN_POWER = {600f, 1000f, 1500f};
 
     public float TimeLimit;
     public float SuccessAreaSize;
@@ -19,14 +28,16 @@ public class FishingManager : MonoBehaviour
     public float CursorSpeed;
     public float RemainTime;
     public float CursorPosition;
-    public float TimeToSuccess = 3f;
+    public float TimeToSuccess;
     public float TimeInSuccessArea;
+    private int nowDepth;
 
     void OnEnable()
     {
         Player.Instance.UseCurrentBait();
+        nowDepth = 1; //Player.Instance.Depth;
 
-        fish = Fish.RandomGenerate(1);
+        fish = Fish.RandomGenerate(nowDepth);
 
         Init();
 
@@ -67,18 +78,27 @@ public class FishingManager : MonoBehaviour
         }
     }
 
+    private float Calculate(float min, float max, int diff)
+    {
+        if(diff < -3) diff = -3;
+        if(diff > 3) diff = 3;
+
+        return (max - min) / 6f * diff + (max + min) / 2f;
+    }
+
     private void Init()
     {
         CalcTimeLimit();
         CalcSuccessAreaSize();
         CalcCursorUpPower();
         RemainTime = TimeLimit;
+        
+        CursorSpeedLimit = SPEED_LIMIT[nowDepth];
+        CursorDownPower = DOWN_POWER[nowDepth];
+        
         TimeInSuccessArea = 0f;
         CursorSpeed = 0f;
         CursorPosition = 0f;
-
-        //CursorDownPower = 600f;
-        //CursorSpeedLimit = 300f;
     }
 
     private bool CheckArea()
@@ -123,25 +143,19 @@ public class FishingManager : MonoBehaviour
 
     private void CalcTimeLimit()
     {
-        // 임시
-        TimeLimit = Player.Instance.Equip[Etype.Line].Level - fish.Dexterity;
-
-        TimeLimit = 20f;
+        int diff = Player.Instance.Equip[Etype.Line].Level - (int)fish.Dexterity;
+        TimeLimit = Calculate(MIN_TIME_LIMIT, MAX_TIME_LIMIT, diff);
     }
 
     private void CalcSuccessAreaSize()
     {
-        //int levelDiff = Player.Instance.Equip[Etype.Rod].Level - fish.Speed;
-        //SuccessAreaSize = (rodStat - fish.Speed) / rodStat; // 임시
-
-        SuccessAreaSize = 50f; //test
+        int diff = Player.Instance.Equip[Etype.Rod].Level - (int)fish.Speed;
+        TimeLimit = Calculate(MIN_SUCCESS_AREA_SIZE, MAX_SUCCESS_AREA_SIZE, diff);
     }
 
     private void CalcCursorUpPower()
     {
-        // 임시
-        CursorUpPower = Player.Instance.Equip[Etype.Reel].Level - fish.Strength;
-
-        CursorUpPower = 100f; // test
+        int diff = Player.Instance.Equip[Etype.Reel].Level - (int)fish.Strength;
+        TimeLimit = Calculate(MIN_UP_POWER[nowDepth], MAX_UP_POWER[nowDepth], diff);
     }
 }

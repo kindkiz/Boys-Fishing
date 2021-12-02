@@ -18,6 +18,7 @@ public class Player
         }
     }
 
+    public int Depth { get; set; }
     public int Money { get; set; }
     public int[] Bait { get; set; }
     public int CurrentBait { get; set; }
