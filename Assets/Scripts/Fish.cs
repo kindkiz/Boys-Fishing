@@ -13,9 +13,9 @@ public struct FishInfo{
     public float maximumSize;
     public int minimumPrice;
     public int maximumPrice;
-    public float dexterity;
-    public float strength;
-    public float speed;
+    public int dexterity;
+    public int strength;
+    public int speed;
 }
 
 public class Fish
@@ -50,7 +50,7 @@ public class Fish
         Speed = 0;
     }
 
-    public Fish(string name, float size, int price, float dexterity, float strength, float speed)
+    public Fish(string name, float size, int price, int dexterity, int strength, int speed)
     {
         this.Name = name;
         this.Size = size;
@@ -60,7 +60,7 @@ public class Fish
         this.Speed = speed;
     }
 
-    public Fish(string name, float size, int price, float dexterity, float strength, float speed, Sprite image)
+    public Fish(string name, float size, int price, int dexterity, int strength, int speed, Sprite image)
     {
         this.Name = name;
         this.Size = size;
