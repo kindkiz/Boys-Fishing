@@ -284,6 +284,7 @@ public class GameManager : MonoBehaviour
                     {
                         Debug.Log("GameManager : 낚시 시작!");
                         isFishing = true;
+                        playerAnimator.SetBool("isFishing", true);
                         fishPhase = 0;
                         fishTimeFlow = 0.0f;
                         Player.Instance.UseCurrentBait();
@@ -375,6 +376,7 @@ public class GameManager : MonoBehaviour
             {
                 isFishing = false;
                 Debug.Log("GameManager : 다시 가자");
+                playerAnimator.SetBool("isFishing", false);
             }
         }
 
