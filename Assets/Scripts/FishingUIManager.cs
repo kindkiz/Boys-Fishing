@@ -24,6 +24,6 @@ public class FishingUIManager : MonoBehaviour
 
     void OnDisable()
     {
-        bar.SetActive(false);
+        if(bar) bar.SetActive(false);
     }
 }

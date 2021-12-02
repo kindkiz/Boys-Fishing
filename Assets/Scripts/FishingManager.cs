@@ -45,7 +45,7 @@ public class FishingManager : MonoBehaviour
 
     void OnDisable()
     {
-        fishingUIManager.SetActive(false);
+        if(fishingUIManager) fishingUIManager.SetActive(false);
     }
 
     void Update()
@@ -150,12 +150,12 @@ public class FishingManager : MonoBehaviour
     private void CalcSuccessAreaSize()
     {
         int diff = Player.Instance.Equip[Etype.Rod].Level - (int)fish.Speed;
-        TimeLimit = Calculate(MIN_SUCCESS_AREA_SIZE, MAX_SUCCESS_AREA_SIZE, diff);
+        SuccessAreaSize = Calculate(MIN_SUCCESS_AREA_SIZE, MAX_SUCCESS_AREA_SIZE, diff);
     }
 
     private void CalcCursorUpPower()
     {
         int diff = Player.Instance.Equip[Etype.Reel].Level - (int)fish.Strength;
-        TimeLimit = Calculate(MIN_UP_POWER[nowDepth], MAX_UP_POWER[nowDepth], diff);
+        CursorUpPower = Calculate(MIN_UP_POWER[nowDepth], MAX_UP_POWER[nowDepth], diff);
     }
 }
