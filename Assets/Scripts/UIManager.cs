@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject bait;
     [SerializeField] GameObject coin;
+    [SerializeField] GameObject fillGage;
 
     void Awake()
     {
@@ -35,6 +36,9 @@ public class UIManager : MonoBehaviour
     {
         bait.transform.GetComponentInChildren<TextMeshProUGUI>().text = Player.Instance.Bait[Player.Instance.CurrentBait].ToString();
         coin.transform.GetComponentInChildren<TextMeshProUGUI>().text = Player.Instance.Money.ToString();
+
+        // 현재 물고기 갯수 / 배용량으로 인벤토리 게이지 설정
+        fillGage.GetComponent<Image>().fillAmount = Player.Instance.FishTank.Count/Player.Instance.Equip[Etype.Ship].Stat;
     }
 
     public void EquipBait(Sprite selectedBait) {
