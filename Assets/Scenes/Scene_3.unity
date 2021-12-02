@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 215582923}
   - component: {fileID: 215582922}
   - component: {fileID: 215582921}
+  - component: {fileID: 215582924}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -292,13 +293,22 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215582920}
-  m_LocalRotation: {x: -0.22173177, y: 0.21125767, z: -0.04551902, w: -0.95085925}
-  m_LocalPosition: {x: 97.58154, y: 42.164307, z: 72.73584}
+  m_LocalRotation: {x: 0.32565802, y: -0.022703348, z: 0.0078075496, w: 0.94518274}
+  m_LocalPosition: {x: 157.12827, y: 142.50696, z: -62.15059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &215582924
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215582920}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 1cf6f4c6e6e0518419839d3f5448dd99, type: 2}
 --- !u!1 &218571089
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +466,7 @@ Transform:
   - {fileID: 218571090}
   - {fileID: 1885154941}
   - {fileID: 1294702396}
+  - {fileID: 1176014953}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -705,7 +716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1176014950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -779,8 +790,8 @@ Transform:
   m_LocalPosition: {x: 150, y: 2.5, z: 150}
   m_LocalScale: {x: 300, y: 5, z: 300}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 262413204}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1188094157
 GameObject:
