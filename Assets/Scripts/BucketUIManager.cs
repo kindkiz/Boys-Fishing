@@ -11,8 +11,8 @@ public class BucketUIManager : MonoBehaviour
     [SerializeField] GameObject fishScrollView;
     [SerializeField] GameObject baitPanel;
     [SerializeField] GameObject fishBtn;
-    [SerializeField] GameObject baitBtn;
     [SerializeField] GameObject fishPrefab;
+    [SerializeField] GameObject desc;
 
     private GameObject[] fishCards;
 
@@ -57,7 +57,6 @@ public class BucketUIManager : MonoBehaviour
                 Transform fishImg = fishTransform.GetChild(1);
                 string name = Player.Instance.FishTank[i].Name;
                 fishName.GetComponent<TextMeshProUGUI>().text = name;
-                /*fishImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("FishImg/"+ name) as Sprite;*/
                 fishImg.GetComponent<Image>().sprite = Player.Instance.FishTank[i].Image;
 
                 //최대크기 최소크기를 실제 이미지 크기와 매칭
@@ -78,7 +77,7 @@ public class BucketUIManager : MonoBehaviour
         baitPanel.SetActive(true);
 
         // 현재 내 미끼 정보 보여주기. 갯수 바꾸기.
-        for (int i = 0; i < baitPanel.transform.childCount; i++) {
+        for (int i = 0; i < baitPanel.transform.childCount-1; i++) {
             Transform baitCount = baitPanel.transform.GetChild(i).GetChild(2);
             try
             {
@@ -91,12 +90,12 @@ public class BucketUIManager : MonoBehaviour
     }
 
     public void OnClickCertainBait() {
+        desc.SetActive(true);
         GameObject clickedBait = EventSystem.current.currentSelectedGameObject;
         
         // player currentbait이 0-3
         Player.Instance.CurrentBait = (int)Enum.Parse(typeof(Bait), clickedBait.name);
-        /*Debug.Log(Player.Instance.CurrentBait);
-        Debug.Log(clickedBait.name);*/
+        desc.GetComponent<TextMeshProUGUI>().text = descs[Player.Instance.CurrentBait];
         Sprite selectedBait = clickedBait.transform.GetChild(1).GetComponent<Image>().sprite;
         UIManager.Instance.EquipBait(selectedBait);
     }
@@ -105,5 +104,6 @@ public class BucketUIManager : MonoBehaviour
         gameObject.SetActive(false);
         baitPanel.SetActive(false);
         fishScrollView.SetActive(false);
+        desc.SetActive(false);
     }
 }
