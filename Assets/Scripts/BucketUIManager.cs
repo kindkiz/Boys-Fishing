@@ -17,7 +17,10 @@ public class BucketUIManager : MonoBehaviour
     private GameObject[] fishCards;
 
     enum Bait { Basic=0, Red, Blue, Strong };
-
+    string[] descs = { "가장 기본적인 성능을 가진 기본 미끼", 
+                        "더욱 빨리 물고기가 잡히는 빨간 미끼", 
+                        "더욱 큰 물고기가 잡히는 파란 미끼", 
+                        "더욱 빨리, 더 큰 물고기를 잡을 수 있는 강력 미끼" };
     public void OnClickInventory() {
         gameObject.SetActive(true);
         Button fishTab = fishBtn.GetComponent<Button>();
