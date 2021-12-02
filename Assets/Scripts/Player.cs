@@ -44,6 +44,18 @@ public class Player
         }
     }
 
+    public void GetFish(Fish fish)
+    {
+        if(FishTank.Count != ((Ship)Equip[Etype.Ship]).Capacity)
+        {
+            FishTank.Add(fish);
+        }
+        else
+        {
+            Debug.Log("Player: 용량 초과");
+        }
+    }
+
     public bool HasCurrentBait()
     {
         return Bait[CurrentBait] >= 1;

@@ -61,7 +61,8 @@ public class FishingManager : MonoBehaviour
             TimeInSuccessArea += Time.deltaTime;
             if(TimeInSuccessArea >= TimeToSuccess)
             {
-                print("Success: You get " + fish.Name);
+                print("FishingManager: " + fish.Name + "를 잡았다");
+                Player.Instance.GetFish(fish);
                 gameObject.SetActive(false);
             }
         }
@@ -71,7 +72,7 @@ public class FishingManager : MonoBehaviour
             TimeInSuccessArea = 0;
             if(RemainTime <= 0)
             {
-                print("Fail: You miss " + fish.Name);
+                print("FishingManager: " + fish.Name + "를 놓쳤다");
                 gameObject.SetActive(false);
             }
         }
