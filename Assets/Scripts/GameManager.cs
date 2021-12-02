@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [System.Serializable]
 public struct PlayerSetting{
     public GameObject playerObject;
+    public GameObject catchObject;
+    public GameObject missObject;
 }
 
 public enum Daytime{
@@ -333,6 +335,10 @@ public class GameManager : MonoBehaviour
         // 2 : 물고기가 미끼 뭄
         else if (fishPhase == 2)
         {
+            if(playerSetting.catchObject){
+                playerSetting.catchObject.SetActive(true);
+            }
+
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 fishPhase = 3;
@@ -353,6 +359,10 @@ public class GameManager : MonoBehaviour
         // 3 : 물고기 잡는 중
         else if (fishPhase == 3)
         {
+            if(playerSetting.catchObject){
+                playerSetting.catchObject.SetActive(false);
+            }
+
             if(!uiSetting.fishingManager.active)
             {
                 fishTimeFlow = 0.0f;
@@ -362,9 +372,21 @@ public class GameManager : MonoBehaviour
         // 4 : 낚시 후 딜레이
         else if (fishPhase == 4)
         {
+            if(playerSetting.catchObject){
+                playerSetting.catchObject.SetActive(false);
+            }
+
+            if(playerSetting.missObject){
+                playerSetting.missObject.SetActive(true);
+            }
+            
             fishTimeFlow += Time.deltaTime;
             if(fishTimeFlow > biteDelay)
             {
+                if(playerSetting.missObject){
+                    playerSetting.missObject.SetActive(false);
+                }
+
                 isFishing = false;
                 playerAnimator.SetBool("isFishing", false);
                 Debug.Log("GameManager : 다시 가자");
@@ -427,6 +449,7 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         isGameOver = true;
+        uiSetting.fishingManager.SetActive(false);
         if(playerAnimator)
         {
             Debug.Log("내구도 0.. 게임오버");
