@@ -33,7 +33,6 @@ public class MarketUIManager : MonoBehaviour
     public void OnEnable()
     {
         SetFishList();
-
     }
 
     public void SetFishList()

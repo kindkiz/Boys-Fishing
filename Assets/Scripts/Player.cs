@@ -26,21 +26,18 @@ public class Player
     public List<Fish> FishTank { get; set; }
     public List<Fish> SelectedFish { get; set; }
     
-    public Store store { get; set; }
-    
     public Player()
     {
         Equip = new Dictionary<Etype, Equipment>();
-        store = new Store();
 
-        Money = 0;
-        Bait = new int[4];
+        Money = 10000;
+        Bait = new int[] {10, 0, 0, 1};
         CurrentBait = 0;
         FishTank = new List<Fish>();
 
         foreach(Etype type in Enum.GetValues(typeof(Etype)))
         {
-            Equip[type] = store.Equipments[type][0]; // 시작 장비
+            Equip[type] = Store.Instance.GetEquipment(type, 1); // 시작 장비
         }
     }
 
@@ -71,23 +68,24 @@ public class Player
         return (float)FishTank.Count / ((Ship)Equip[Etype.Ship]).Capacity;
     }
 
-    public void Buy(Etype type, int level)
+    public bool Buy(Equipment toBuy)
     {
-        Equipment toBuy = store.Equipments[type][level-1];
-
-        if(!toBuy.IsQualified(Equip[type].Level, GetAverageLevel()))
+        if(!toBuy.IsQualified(Equip[toBuy.Type].Level, GetAverageLevel()))
         {
             Debug.Log("구매 자격을 만족하지 못함");
+            return false;
         }
         else if(Money < toBuy.Price)
         {
             Debug.Log("돈이 충분하지 못함");
+            return false;
         }
         else
         {
             Money -= toBuy.Price;
-            Equip[type] = toBuy;
+            Equip[toBuy.Type] = toBuy;
             Debug.Log("구매에 성공함");
+            return true;
         }
     }
     

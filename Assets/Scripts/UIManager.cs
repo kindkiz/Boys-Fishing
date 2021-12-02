@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
         coin.transform.GetComponentInChildren<TextMeshProUGUI>().text = Player.Instance.Money.ToString();
 
         // 현재 물고기 갯수 / 배용량으로 인벤토리 게이지 설정
-        fillGage.GetComponent<Image>().fillAmount = Player.Instance.FishTank.Count/((Ship)Player.Instance.Equip[Etype.Ship]).Capacity;
+        fillGage.GetComponent<Image>().fillAmount = Player.Instance.GetCapacityRatio();
     }
 
     public void EquipBait(Sprite selectedBait) {
