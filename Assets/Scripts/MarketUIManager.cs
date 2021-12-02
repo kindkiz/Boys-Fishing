@@ -55,7 +55,7 @@ public class MarketUIManager : MonoBehaviour
         }
         List<Fish> fishTank = Player.Instance.FishTank;
         isSelect = new bool[fishTank.Count];
-        
+        Debug.Log(isSelect.Length);
         int idx = 0;
         foreach(Fish fish in fishTank)
         {
@@ -132,7 +132,7 @@ public class MarketUIManager : MonoBehaviour
            isSelect[i] = !isAllSelect;
         }
 
-        SetFishList();
+        RefreshUI();
     }
 
     public void OnSellClick()

@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     private float fishTimeFlow;
 
     private bool isOpenUI = false;
-
+    private bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -89,16 +89,28 @@ public class GameManager : MonoBehaviour
         daytime = stageSetting.startDaytime;
         Fish.FishList = fishInfo;
         //RandomGenerateTest();
+
+        isFishing = false;
+        fishPhase = 0;
+        fishTimeFlow = 0;
+
+        isOpenUI = false;
+        isGameOver = false;
+
         PlayerFishTankTest();
+        PlayerBaitTest();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerAction();
-        CameraAction();
-        TimeAction();
-        FishingAction();
+        if(!isGameOver)
+        {
+            PlayerAction();
+            CameraAction();
+            TimeAction();
+            FishingAction();
+        }
     }
 
     void PlayerFishTankTest()
@@ -107,6 +119,14 @@ public class GameManager : MonoBehaviour
         {
             Player.Instance.FishTank.Add(Fish.RandomGenerate(3));
         }
+    }
+
+    void PlayerBaitTest()
+    {
+        Player.Instance.Bait[0] = 10;
+        Player.Instance.Bait[0] = 9;
+        Player.Instance.Bait[0] = 8;
+        Player.Instance.Bait[0] = 7;
     }
 
     void RandomGenerateTest()
@@ -231,6 +251,11 @@ public class GameManager : MonoBehaviour
         }
 
         ((Ship)Player.Instance.Equip[Etype.Ship]).WearOut(stageSetting.HPPerSecond * Time.deltaTime);
+        if(((Ship)Player.Instance.Equip[Etype.Ship]).IsDead)
+        {
+            Debug.Log("내구도 0.. 게임오버");
+            isGameOver = true;
+        }
     }
 
     void FishingAction()
@@ -240,10 +265,18 @@ public class GameManager : MonoBehaviour
             if(!isOpenUI){
                 if(Input.GetKeyDown(KeyCode.Space))
                 {
-                    Debug.Log("GameManager : 낚시 시작!");
-                    isFishing = true;
-                    fishPhase = 0;
-                    fishTimeFlow = 0.0f;
+                    if(Player.Instance.HasCurrentBait())
+                    {
+                        Debug.Log("GameManager : 낚시 시작!");
+                        isFishing = true;
+                        fishPhase = 0;
+                        fishTimeFlow = 0.0f;
+                        Player.Instance.UseCurrentBait();
+                    }
+                    else
+                    {
+                        Debug.Log("GameManaer : 미끼가 없음...");
+                    }
                 }
             }
         }
@@ -384,7 +417,18 @@ public class GameManager : MonoBehaviour
 
     bool CheckUIOpen()
     {
-        return uiSetting.storeObject.active | uiSetting.marketObject.active;
+        if(uiSetting.storeObject)
+        {
+            if(uiSetting.storeObject.active)
+                return true;
+        }
+        if(uiSetting.marketObject.active)
+        {
+            if(uiSetting.marketObject.active)
+                return true;
+        }
+
+        return false;
     }
 
     void OpenMarket()
