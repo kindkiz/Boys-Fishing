@@ -375,8 +375,8 @@ public class GameManager : MonoBehaviour
             if(fishTimeFlow > biteDelay)
             {
                 isFishing = false;
-                Debug.Log("GameManager : 다시 가자");
                 playerAnimator.SetBool("isFishing", false);
+                Debug.Log("GameManager : 다시 가자");
             }
         }
 

@@ -484,9 +484,9 @@ MonoBehaviour:
     maximumSize: 30
     minimumPrice: 10
     maximumPrice: 30
-    dexterity: 0
-    strength: 0
-    speed: 0
+    dexterity: 1
+    strength: 1
+    speed: 1
   - name: "\uD558\uC591\uBB3C\uACE0\uAE30"
     image: {fileID: 21300000, guid: 9939efe41719de94494e58970624e3ad, type: 3}
     uniqueness: 2
@@ -494,9 +494,9 @@ MonoBehaviour:
     maximumSize: 50
     minimumPrice: 15
     maximumPrice: 55
-    dexterity: 0
-    strength: 0
-    speed: 0
+    dexterity: 2
+    strength: 2
+    speed: 2
   - name: "\uC0C8\uD558\uC591\uBB3C\uACE0\uAE30"
     image: {fileID: 21300000, guid: 306eaa819be2f1843babccf54e4eb662, type: 3}
     uniqueness: 3
@@ -504,9 +504,9 @@ MonoBehaviour:
     maximumSize: 70
     minimumPrice: 20
     maximumPrice: 90
-    dexterity: 0
-    strength: 0
-    speed: 0
+    dexterity: 3
+    strength: 3
+    speed: 3
 --- !u!1001 &108815768
 PrefabInstance:
   m_ObjectHideFlags: 0
