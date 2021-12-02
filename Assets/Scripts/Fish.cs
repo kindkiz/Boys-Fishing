@@ -23,7 +23,8 @@ public class Fish
     // 물고기의 각 희귀 등급마다 얼마나 더 안나오게 할지
     private const float multiple = 0.5f; 
     // 각 지역별 최대 깊이 (최소는 1로 가정)
-    private const int maxDepth = 3;
+    private const int maxDepth = 2;
+    private const int minDepth = 0;
     // 물고기 크기 소수점 (digit) 자리까지 표시
     private const int digit = 1;
 
@@ -120,7 +121,7 @@ public class Fish
 
     private static float RandomSize(float minSize, float maxSize, int depth)
     {
-        return Mathf.Round(Random.Range(minSize, maxSize * ((float)(depth + 1) / (maxDepth + 1))) * Mathf.Pow(10, digit)) / Mathf.Pow(10, digit);
+        return Mathf.Round(Random.Range(minSize, maxSize * ((float)(depth - minDepth + 2) / (maxDepth - minDepth + 2))) * Mathf.Pow(10, digit)) / Mathf.Pow(10, digit);
     }
 
     private static int GetPrice(float size, float minSize, float maxSize, int minPrice, int maxPrice)
