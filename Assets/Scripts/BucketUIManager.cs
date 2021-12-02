@@ -27,6 +27,7 @@ public class BucketUIManager : MonoBehaviour
     }
 
     public void OnClickFishTab() {
+        DestroyChildren(fishScrollView.transform.GetChild(0).GetChild(0));
         baitPanel.SetActive(false);
         fishScrollView.SetActive(true);
 
@@ -105,5 +106,13 @@ public class BucketUIManager : MonoBehaviour
         baitPanel.SetActive(false);
         fishScrollView.SetActive(false);
         desc.SetActive(false);
+    }
+
+    private void DestroyChildren(Transform obj)
+    {
+        for (int i = 0; i < obj.childCount; i++)
+        {
+            Destroy(obj.GetChild(i).gameObject);
+        }
     }
 }

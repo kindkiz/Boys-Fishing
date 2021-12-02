@@ -4,20 +4,8 @@ using UnityEngine;
 
 public class SettingUIManager : MonoBehaviour
 {
-    /*    // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }*/
-
     public void ChangeAudioSetting(bool onAudio) {
-        gameObject.GetComponentInParent<AudioSource>().enabled = onAudio;
+        gameObject.GetComponentInParent<AudioSource>().mute = !onAudio;
     }
 
     public void OnClickSettingBtn() {
