@@ -31,15 +31,20 @@ public class Player
         Equip = new Dictionary<Etype, Equipment>();
         store = new Store();
 
-        this.Money = 0;
-        this.Bait = new int[4];
-        this.CurrentBait = 0;
-        this.FishTank = new List<Fish>();
+        Money = 0;
+        Bait = new int[4];
+        CurrentBait = 0;
+        FishTank = new List<Fish>();
 
-        this.Equip[Etype.Rod] = store.Equipments[Etype.Rod][0];
-        this.Equip[Etype.Reel] = store.Equipments[Etype.Reel][0];
-        this.Equip[Etype.Line] = store.Equipments[Etype.Line][0];
-        this.Equip[Etype.Ship] = store.Equipments[Etype.Ship][0];
+        Equip[Etype.Rod] = store.Equipments[Etype.Rod][0];
+        Equip[Etype.Reel] = store.Equipments[Etype.Reel][0];
+        Equip[Etype.Line] = store.Equipments[Etype.Line][0];
+        Equip[Etype.Ship] = store.Equipments[Etype.Ship][0];
+    }
+
+    public bool HasCurrentBait()
+    {
+        return Bait[CurrentBait] >= 1;
     }
 
     public void UseCurrentBait()
@@ -49,7 +54,7 @@ public class Player
 
     public float GetCapacityRatio()
     {
-        return (float)this.FishTank.Count / this.Equip[Etype.Ship].Stat;
+        return (float)FishTank.Count / Equip[Etype.Ship].Stat;
     }
 
     public void Buy(Etype type, int level)
@@ -60,20 +65,20 @@ public class Player
         {
             Debug.Log("구매 자격을 만족하지 못함");
         }
-        else if(this.Money < toBuy.Price)
+        else if(Money < toBuy.Price)
         {
             Debug.Log("돈이 충분하지 못함");
         }
         else
         {
-            this.Money -= toBuy.Price;
-            this.Equip[type] = toBuy;
+            Money -= toBuy.Price;
+            Equip[type] = toBuy;
             Debug.Log("구매에 성공함");
         }
     }
     
-    private int GetAverageLevel()
+    public int GetAverageLevel()
     {
-        return (this.Equip[Etype.Rod].Level + this.Equip[Etype.Reel].Level + this.Equip[Etype.Line].Level) / 3;
+        return (Equip[Etype.Rod].Level + Equip[Etype.Reel].Level + Equip[Etype.Line].Level) / 3;
     }
 }
