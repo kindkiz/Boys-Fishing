@@ -7,8 +7,7 @@ public class FishingManager : MonoBehaviour
     public GameObject fishingUIManager;
     public Fish fish;
 
-    public const float MIN_POS = 0f;
-    public const float MAX_POS = 500f;
+    public const float BAR_SIZE = 500f;
     public const float BLANK = 50f;
     public const float MIN_TIME_LIMIT = 5f;
     public const float MAX_TIME_LIMIT = 15f;
@@ -95,7 +94,8 @@ public class FishingManager : MonoBehaviour
         
         CursorSpeedLimit = SPEED_LIMIT[nowDepth];
         CursorDownPower = DOWN_POWER[nowDepth];
-        
+        TimeToSuccess = TIME_TO_SUCCESS;
+
         TimeInSuccessArea = 0f;
         CursorSpeed = 0f;
         CursorPosition = 0f;
@@ -103,7 +103,7 @@ public class FishingManager : MonoBehaviour
 
     private bool CheckArea()
     {
-        float top = MAX_POS - BLANK;
+        float top = BAR_SIZE - BLANK;
         float bottom = top - SuccessAreaSize;
         return CursorPosition <= top && CursorPosition >= bottom;
     }
@@ -129,14 +129,14 @@ public class FishingManager : MonoBehaviour
     private void AddPosition(float dist)
     {
         CursorPosition += dist * Time.deltaTime;
-        if(CursorPosition > MAX_POS)
+        if(CursorPosition > BAR_SIZE)
         {
-            CursorPosition = MAX_POS;
+            CursorPosition = BAR_SIZE;
             CursorSpeed = 0f;
         }
-        if(CursorPosition < MIN_POS)
+        if(CursorPosition < 0f)
         {
-            CursorPosition = MIN_POS;
+            CursorPosition = 0f;
             CursorSpeed = 0f;
         }
     }
