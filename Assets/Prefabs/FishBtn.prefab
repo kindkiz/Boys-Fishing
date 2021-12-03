@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 4099169651514869815}
   - component: {fileID: 998491442920193090}
   - component: {fileID: 8587361785378903145}
+  - component: {fileID: 5049975281521073022}
   m_Layer: 5
   m_Name: FishBtn
   m_TagString: Untagged
@@ -256,6 +257,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5049975281521073022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7843154796792619573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff1150565467d143b3ade2de0502d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoUI: {fileID: 316868801868377196, guid: c67a68f1028fa354a9e8bfe4b1f845a5, type: 3}
 --- !u!1 &8375476950362380447
 GameObject:
   m_ObjectHideFlags: 0
