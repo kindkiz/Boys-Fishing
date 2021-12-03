@@ -612,6 +612,7 @@ MonoBehaviour:
     marketObject: {fileID: 229078972}
     storeObject: {fileID: 321048027190561647}
     fishingManager: {fileID: 907674335}
+    bucket: {fileID: 904107197}
   fishInfo:
   - name: "\uD53C\uB77C\uBBF8"
     image: {fileID: 21300000, guid: 32a8ad2ebdf1e1240a7ba083f5ef604c, type: 3}

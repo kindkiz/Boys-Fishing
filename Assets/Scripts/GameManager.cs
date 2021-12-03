@@ -28,6 +28,7 @@ public struct UISetting{
     public GameObject marketObject;
     public GameObject storeObject;
     public GameObject fishingManager;
+    public GameObject bucket;
 }
 
 public class GameManager : MonoBehaviour
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour
             TimeAction();
             FishingAction();
             DieTest();
+            ShowMeTheMoney();
         }
     }
 
@@ -138,6 +140,16 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+    }
+
+    void ShowMeTheMoney()
+    {
+        if(Input.GetKeyDown(KeyCode.M) && Input.GetKey(KeyCode.O) && Input.GetKey(KeyCode.N) && Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.Y))
+        {
+            Debug.Log("치트 사용 (돈 + 1000)");
+            Player.Instance.Money = Player.Instance.Money + 1000;
+        }
+
     }
 
     void RandomGenerateTest()
@@ -219,16 +231,19 @@ public class GameManager : MonoBehaviour
 
     void CameraAction()
     {
-        float scrollSpeed = Input.GetAxis("Mouse ScrollWheel") * cameraSpeed * (-1);
+        if(!CheckUIOpen())
+        {
+            float scrollSpeed = Input.GetAxis("Mouse ScrollWheel") * cameraSpeed * (-1);
 
-        Camera.main.fieldOfView += scrollSpeed;
-        if(Camera.main.fieldOfView > maxFOV)
-        {
-            Camera.main.fieldOfView = maxFOV;
-        }
-        else if(Camera.main.fieldOfView < minFOV)
-        {
-            Camera.main.fieldOfView = minFOV;
+            Camera.main.fieldOfView += scrollSpeed;
+            if(Camera.main.fieldOfView > maxFOV)
+            {
+                Camera.main.fieldOfView = maxFOV;
+            }
+            else if(Camera.main.fieldOfView < minFOV)
+            {
+                Camera.main.fieldOfView = minFOV;
+            }
         }
     }
 
@@ -494,9 +509,13 @@ public class GameManager : MonoBehaviour
             if(uiSetting.storeObject.active)
                 return true;
         }
-        if(uiSetting.marketObject.active)
+        if(uiSetting.marketObject)
         {
             if(uiSetting.marketObject.active)
+                return true;
+        }
+        if(uiSetting.bucket){
+            if(uiSetting.bucket.active)
                 return true;
         }
 
