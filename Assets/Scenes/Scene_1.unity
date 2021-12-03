@@ -13446,6 +13446,7 @@ GameObject:
   - component: {fileID: 1979915993}
   - component: {fileID: 1979915992}
   - component: {fileID: 1979915991}
+  - component: {fileID: 1979915994}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Portal
@@ -13530,6 +13531,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979915989}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1979915994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979915989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67009d4d4a22aaa4cbe93240507cbaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: Scene_2
+  shipLevel: 4
 --- !u!1001 &1984414415
 PrefabInstance:
   m_ObjectHideFlags: 0

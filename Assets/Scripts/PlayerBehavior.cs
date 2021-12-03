@@ -7,14 +7,12 @@ public class PlayerBehavior : MonoBehaviour
     public bool IsMarket { get; set; }
     public bool IsObstacle { get; set; }
     public bool IsStore { get; set; }
-    public bool IsPortal { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
         IsMarket = false;
         IsObstacle = false;
-        IsPortal = false;
         IsStore = false;
     }
 
@@ -30,9 +28,6 @@ public class PlayerBehavior : MonoBehaviour
         {
             case GameManager.TAG_MARKET:
                 IsMarket = true;
-                break;
-            case GameManager.TAG_PORTAL:
-                IsPortal = true;
                 break;
             case GameManager.TAG_TERRAIN:
                 IsObstacle = true;
@@ -52,9 +47,6 @@ public class PlayerBehavior : MonoBehaviour
         {
             case GameManager.TAG_MARKET:
                 IsMarket = false;
-                break;
-            case GameManager.TAG_PORTAL:
-                IsPortal = false;
                 break;
             case GameManager.TAG_TERRAIN:
                 IsObstacle = false;

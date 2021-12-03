@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public const string TAG_MARKET = "Market";
     public const string TAG_PORTAL = "Portal";
     public const string TAG_STORE = "Store";
+    public const string TAG_PLAYER = "Player";
 
     // 배의 속도
     private const float playerSpeed = 30.0f;
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour
         if(!isGameOver)
         {
             PlayerAction();
-            //CameraAction();
+            CameraAction();
             TimeAction();
             FishingAction();
             DieTest();
@@ -192,12 +193,7 @@ public class GameManager : MonoBehaviour
                     }
                     else if(pb.IsStore)
                     {
-                        
                         OpenStore();
-                    }
-                    else if(pb.IsPortal)
-                    {
-                        ChangeStage();
                     }
                     else
                     {
@@ -206,7 +202,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    if(!pb.IsMarket && !pb.IsStore && !pb.IsPortal)
+                    if(!pb.IsMarket && !pb.IsStore)
                     {
                         isOpenUI = false;
                     }
@@ -481,26 +477,5 @@ public class GameManager : MonoBehaviour
     void OpenStore()
     {
         uiSetting.storeObject.SetActive(true);
-    }
-
-    void OpenInventory()
-    {
-        // 인벤토리 열기
-    }
-
-    void OpenMenu()
-    {
-        // 메뉴 열기
-    }
-
-    void StartFishing()
-    {
-        // 낚시 시작
-    }
-
-    void ChangeStage()
-    {
-        // 다음 맵으로 장면 전환
-        Debug.Log("다음맵으로 전환");
     }
 }
