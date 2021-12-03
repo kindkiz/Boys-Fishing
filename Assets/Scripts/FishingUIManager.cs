@@ -9,10 +9,12 @@ public class FishingUIManager : MonoBehaviour
     public Image successArea;
     public GameObject fish;
     public GameObject bar;
+    public Image gaugeFish;
 
     void OnEnable()
     {
         bar.SetActive(true);
+        gaugeFish.sprite = fishingManager.fish.Image;
         successArea.fillAmount = fishingManager.SuccessAreaSize / (FishingManager.BAR_SIZE - 2 * FishingManager.BLANK);
     }
 
