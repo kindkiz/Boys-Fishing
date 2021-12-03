@@ -24,6 +24,8 @@ public class BucketUIManager : MonoBehaviour
     public void OnClickInventory() {
         gameObject.SetActive(true);
         Button fishTab = fishBtn.GetComponent<Button>();
+        fishTab.Select();
+        OnClickFishTab();
     }
 
     public void OnClickFishTab() {
