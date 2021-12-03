@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     public const string TAG_PORTAL = "Portal";
     public const string TAG_STORE = "Store";
     public const string TAG_PLAYER = "Player";
+    public const string TAG_DEPTH = "Depth";
 
     // 배의 속도
     private const float playerSpeed = 30.0f;
@@ -403,7 +404,20 @@ public class GameManager : MonoBehaviour
             Vector3 dir = new Vector3(horizontal, 0, vertical).normalized;
             deltaPosition = dir * speed;
 
-            if(!Physics.Raycast(target.transform.position, dir, raycastRange)){
+            RaycastHit hit;
+            bool isCollide = Physics.Raycast(target.transform.position, dir, out hit, raycastRange);
+            if(isCollide)
+            {
+                switch(hit.transform.tag)
+                {
+                    case TAG_DEPTH:
+                        isCollide = false;
+                        break;
+                }
+            }
+            
+            if(!isCollide)
+            {
                 target.transform.position += deltaPosition;
                 Camera.main.transform.position += deltaPosition;
                 playerAnimator.SetBool("isMoving", true);
@@ -425,6 +439,8 @@ public class GameManager : MonoBehaviour
             target.transform.eulerAngles = new Vector3(0, angle, 0);
         }
     }
+
+
 
     private float posMod(float num, float mod)
     {
