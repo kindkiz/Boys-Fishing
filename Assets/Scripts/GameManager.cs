@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
     private bool isOpenUI = false;
     private bool isGameOver = false;
     private Animator playerAnimator;
+    private int prevFishNum;
 
     // Start is called before the first frame update
     void Start()
@@ -270,7 +271,11 @@ public class GameManager : MonoBehaviour
             if(!isOpenUI){
                 if(Input.GetKeyDown(KeyCode.Space))
                 {
-                    if(Player.Instance.HasCurrentBait())
+                    if(Player.Instance.GetCapacityRatio() >= 1.0f)
+                    {
+                        Debug.Log("GameManager : 배 용량이 가득참!");
+                    }
+                    else if(Player.Instance.HasCurrentBait())
                     {
                         Debug.Log("GameManager : 낚시 시작!");
                         isFishing = true;
@@ -278,6 +283,7 @@ public class GameManager : MonoBehaviour
                         fishPhase = 0;
                         fishTimeFlow = 0.0f;
                         Player.Instance.UseCurrentBait();
+                        prevFishNum = Player.Instance.FishTank.Count;
                     }
                     else
                     {
@@ -290,12 +296,15 @@ public class GameManager : MonoBehaviour
         // 1 : 최초 사이클 돈 후
         else if (fishPhase <= 1)
         {
+            // 너무 빨리 낚아올림
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("GameManager : ?? 아무것도 없다");
                 fishTimeFlow = 0;
                 fishPhase = 4;
-
+                if(playerSetting.missObject){
+                    playerSetting.missObject.SetActive(true);
+                }
+                Debug.Log("GameManager : ?? 아무것도 없다");
             }
             else
             {
@@ -310,7 +319,7 @@ public class GameManager : MonoBehaviour
                 {
                     term = biteFrequency;
                 }
-
+                // 물고기 잡혔나?
                 if(fishTimeFlow >= term)
                 {
                     float r = Random.Range(0.0f, 1.0f);
@@ -336,6 +345,7 @@ public class GameManager : MonoBehaviour
                 playerSetting.catchObject.SetActive(true);
             }
 
+            // 잘 낚음
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 fishPhase = 3;
@@ -346,10 +356,16 @@ public class GameManager : MonoBehaviour
             }
 
             fishTimeFlow += Time.deltaTime;
+            // 시간 지나서 놓침
             if(fishTimeFlow > biteMax)
             {
                 fishTimeFlow = 0.0f;
                 fishPhase = 4;
+
+                if(playerSetting.missObject){
+                    playerSetting.missObject.SetActive(true);
+                }
+
                 Debug.Log("GameManager : 도망갔다...");
             }
         }
@@ -362,6 +378,12 @@ public class GameManager : MonoBehaviour
 
             if(!uiSetting.fishingManager.active)
             {
+                if(Player.Instance.FishTank.Count <= prevFishNum)
+                {
+                    if(playerSetting.missObject){
+                        playerSetting.missObject.SetActive(true);
+                    }
+                }
                 fishTimeFlow = 0.0f;
                 fishPhase = 4;
             }
@@ -371,10 +393,6 @@ public class GameManager : MonoBehaviour
         {
             if(playerSetting.catchObject){
                 playerSetting.catchObject.SetActive(false);
-            }
-
-            if(playerSetting.missObject){
-                playerSetting.missObject.SetActive(true);
             }
             
             fishTimeFlow += Time.deltaTime;
