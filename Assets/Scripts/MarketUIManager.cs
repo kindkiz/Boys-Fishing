@@ -78,6 +78,11 @@ public class MarketUIManager : MonoBehaviour
             int i = idx;
             btn.GetComponent<Button>().onClick.AddListener(delegate{OnItemClick(i);});
 
+            if(btn.GetComponent<FishButton>())
+            {
+                btn.GetComponent<FishButton>().Index = idx;
+            }
+
             isSelect[idx] = false;
             idx++;
         }

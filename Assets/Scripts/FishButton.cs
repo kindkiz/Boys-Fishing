@@ -12,7 +12,7 @@ public class FishButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public const float timeToShow = 0.5f;
     private float timeFlow;
     private bool isOver;
-    private int index;
+    public int Index { private get; set; } = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -23,27 +23,24 @@ public class FishButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     // Update is called once per frame
     void Update()
     {
-        if(index > -1){
-            if(isOver)
+        if(Index > -1 && isOver)
+        {
+            timeFlow += Time.deltaTime;
+            if(timeFlow >= timeToShow)
             {
-                index = transform.GetSiblingIndex();
-                timeFlow += Time.deltaTime;
-                if(timeFlow >= timeToShow)
+                if(!myObject)
                 {
-                    if(!myObject)
-                    {
-                        myObject = Instantiate(infoUI, gameObject.transform);
-                        myObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText(Player.Instance.FishTank[index].Name);
-                        myObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().SetText(Player.Instance.FishTank[index].Size.ToString() + " cm");
-                        myObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().SetText(Player.Instance.FishTank[index].Price.ToString());
+                    myObject = Instantiate(infoUI, gameObject.transform);
+                    myObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().SetText(Player.Instance.FishTank[Index].Name);
+                    myObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().SetText(Player.Instance.FishTank[Index].Size.ToString() + " cm");
+                    myObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>().SetText(Player.Instance.FishTank[Index].Price.ToString());
 
-                        float w1 = ((RectTransform)transform).rect.width;
-                        float h1 = ((RectTransform)transform).rect.height;
-                        float w2 = ((RectTransform)myObject.transform).rect.width;
-                        float h2 = ((RectTransform)myObject.transform).rect.height;
+                    float w1 = ((RectTransform)transform).rect.width;
+                    float h1 = ((RectTransform)transform).rect.height;
+                    float w2 = ((RectTransform)myObject.transform).rect.width;
+                    float h2 = ((RectTransform)myObject.transform).rect.height;
 
-                        myObject.transform.localScale = new Vector2(w1 / w2, h1 / h2);
-                    }
+                    myObject.transform.localScale = new Vector2(w1 / w2, h1 / h2);
                 }
             }
         }

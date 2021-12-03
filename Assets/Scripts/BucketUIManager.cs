@@ -52,6 +52,11 @@ public class BucketUIManager : MonoBehaviour
             fishTransform.SetParent(fishScrollView.transform.GetChild(0).GetChild(0)); // scrollview 자식인 viewport의 자식인 content를 부모로 설정.
             fishTransform.localScale = Vector3.one;
 
+            if(fishCards[i].GetComponent<FishButton>())
+            {
+                fishCards[i].GetComponent<FishButton>().Index = i;
+            }
+
             try
             {
                 Transform fishName = fishTransform.GetChild(0);
