@@ -65,11 +65,6 @@ public class Ship : Equipment
         IsDead = false;
     }
 
-    public void Repair()
-    {
-        Hp = MaxHp;
-    }
-
     public void WearOut(float hp)
     {
         Hp -= hp;

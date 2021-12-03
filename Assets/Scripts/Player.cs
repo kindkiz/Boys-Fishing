@@ -30,8 +30,8 @@ public class Player
     {
         Equip = new Dictionary<Etype, Equipment>();
 
-        Money = 10000;
-        Bait = new int[] {10, 0, 0, 1};
+        Money = 1000;
+        Bait = new int[] {10, 0, 0, 0};
         CurrentBait = 0;
         FishTank = new List<Fish>();
 
@@ -108,6 +108,22 @@ public class Player
             {
                 Bait[i] += baitCounts[i];
             }
+            Debug.Log("구매에 성공함");
+            return true;
+        }
+    }
+
+    public bool RepairShip(int price)
+    {
+        if(Money < price)
+        {
+            Debug.Log("돈이 충분하지 못함");
+            return false;
+        }
+        else
+        {
+            Money -= price;
+            ((Ship)Equip[Etype.Ship]).Hp = ((Ship)Equip[Etype.Ship]).MaxHp;
             Debug.Log("구매에 성공함");
             return true;
         }

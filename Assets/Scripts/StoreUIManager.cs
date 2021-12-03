@@ -10,17 +10,22 @@ public class StoreUIManager : MonoBehaviour
     public readonly int[] baitPrice = {5, 20, 20, 100};
 
     public GameObject equipTab;
+    public GameObject repairTab;
     public GameObject baitTab;
     public GameObject equipPanel;
+    public GameObject repairPanel;
     public GameObject baitPanel;
 
     public TextMeshProUGUI totalPrice;
 
     public GameObject[] equipBtn;
     public GameObject[] baitBtn;
+    public GameObject shipBtn;
+    
+    public TextMeshProUGUI buyBtnText;
 
     private Equipment[] equipment;
-    private bool isEquipTab;
+    private int tabIndex;
     private int selectedIndex;
     private int priceSum;
     private int[] baitCounts;
@@ -36,29 +41,58 @@ public class StoreUIManager : MonoBehaviour
         OnClickEquipTab();
     }
 
+    void Update()
+    {
+        if(tabIndex == 1)
+        {
+            RefreshRepairUI();
+        }
+    }
+
     public void OnClickEquipTab()
     {
-        isEquipTab = true;
+        buyBtnText.text = "구매";
+        tabIndex = 0;
         selectedIndex = -1;
         priceSum = 0;
         equipTab.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
+        repairTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
         baitTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
-        baitPanel.SetActive(false);
         equipPanel.SetActive(true);
+        repairPanel.SetActive(false);
+        baitPanel.SetActive(false);
         DisplayEquip();
+        RefreshEquipUI();
+    }
+
+    public void OnClickRepairTab()
+    {
+        buyBtnText.text = "수리";
+        tabIndex = 1;
+        priceSum = 0;
+        equipTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
+        repairTab.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
+        baitTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
+        equipPanel.SetActive(false);
+        repairPanel.SetActive(true);
+        baitPanel.SetActive(false);
+        RefreshRepairUI();
     }
 
     public void OnClickBaitTab()
     {
+        buyBtnText.text = "구매";
         baitCounts = new int[4];
         for(int i = 0; i < 4; ++i)
         {
             baitBtn[i].GetComponent<BaitGoods>().InitCount();
         }
-        isEquipTab = false;
-        baitTab.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
+        tabIndex = 2;
         equipTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
+        repairTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
+        baitTab.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
         equipPanel.SetActive(false);
+        repairPanel.SetActive(false);
         baitPanel.SetActive(true);
         RefreshBaitUI();
     }
@@ -73,7 +107,6 @@ public class StoreUIManager : MonoBehaviour
             equipBtn[(int)type].transform.Find("Img").GetComponent<Image>().sprite = equipment[(int)type].EqSprite;
             equipBtn[(int)type].transform.Find("Price").GetComponent<TextMeshProUGUI>().text = equipment[(int)type].Price.ToString();
         }
-        RefreshEquipUI();
     }
 
     public void OnClickEquip(int index)
@@ -96,12 +129,20 @@ public class StoreUIManager : MonoBehaviour
         if(priceSum != 0)
         {
             bool success;
-            if(isEquipTab)
+            if(tabIndex == 0)
             {
                 success = Player.Instance.Buy(equipment[selectedIndex]);
                 if(success)
                 {
                     OnClickEquipTab();
+                }
+            }
+            else if(tabIndex == 1)
+            {
+                success = Player.Instance.RepairShip(priceSum);
+                if(success)
+                {
+                    OnClickRepairTab();
                 }
             }
             else
@@ -129,7 +170,18 @@ public class StoreUIManager : MonoBehaviour
             }
         }
 
-        totalPrice.text = priceSum.ToString();
+        showPrice();
+    }
+
+    public void RefreshRepairUI()
+    {
+        Ship ship = (Ship)Player.Instance.Equip[Etype.Ship];
+        shipBtn.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = ship.Name;
+        shipBtn.transform.Find("Img").GetComponent<Image>().sprite = ship.EqSprite;
+        shipBtn.transform.Find("Hp").GetComponent<TextMeshProUGUI>().text = Math.Ceiling(ship.Hp)+ " / " + (int)ship.MaxHp;
+
+        priceSum = (int)((ship.MaxHp - ship.Hp) * ship.RepairCostPerHp);
+        showPrice();
     }
 
     public void RefreshBaitUI()
@@ -140,7 +192,19 @@ public class StoreUIManager : MonoBehaviour
             baitCounts[i] = baitBtn[i].GetComponent<BaitGoods>().BaitCount;
             priceSum += baitPrice[i] * baitCounts[i];
         }
+        showPrice();
+    }
 
+    private void showPrice()
+    {
+        if(priceSum > Player.Instance.Money)
+        {
+            totalPrice.color = Color.red;
+        }
+        else
+        {
+            totalPrice.color = Color.black;
+        }
         totalPrice.text = priceSum.ToString();
     }
 }
