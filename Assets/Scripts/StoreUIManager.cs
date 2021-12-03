@@ -7,10 +7,21 @@ using TMPro;
 
 public class StoreUIManager : MonoBehaviour
 {
+    public readonly int[] baitPrice = {5, 20, 20, 100};
+
+    public GameObject equipTab;
+    public GameObject baitTab;
+    public GameObject equipPanel;
+    public GameObject baitPanel;
+
+    public TextMeshProUGUI totalPrice;
+
     public GameObject[] equipBtn;
+    public GameObject[] baitBtn;
 
     private Equipment[] equipment;
     private int selectedIndex;
+    private int priceSum;
 
 
     public void OnClickExit()
@@ -20,11 +31,32 @@ public class StoreUIManager : MonoBehaviour
 
     public void OnEnable()
     {
-        selectedIndex = -1;
-        DisplayGoods();
+        equipTab.GetComponent<Button>().Select();
+        OnClickEquipTab();
     }
 
-    public void DisplayGoods()
+    public void OnClickEquipTab()
+    {
+        selectedIndex = -1;
+        priceSum = 0;
+        equipTab.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
+        baitTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
+        baitPanel.SetActive(false);
+        equipPanel.SetActive(true);
+        DisplayEquip();
+    }
+
+    public void OnClickBaitTab()
+    {
+        selectedIndex = -1;
+        baitTab.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
+        equipTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
+        equipPanel.SetActive(false);
+        baitPanel.SetActive(true);
+        RefreshBaitUI();
+    }
+
+    public void DisplayEquip()
     {
         equipment = new Equipment[4];
         foreach(Etype type in Enum.GetValues(typeof(Etype)))
@@ -34,20 +66,22 @@ public class StoreUIManager : MonoBehaviour
             equipBtn[(int)type].transform.Find("Img").GetComponent<Image>().sprite = equipment[(int)type].EqSprite;
             equipBtn[(int)type].transform.Find("Price").GetComponent<TextMeshProUGUI>().text = equipment[(int)type].Price.ToString();
         }
-        RefreshUI();
+        RefreshEquipUI();
     }
 
-    public void OnClickGoods(int index)
+    public void OnClickEquip(int index)
     {
         if(index != selectedIndex)
         {
             selectedIndex = index;
+            priceSum = equipment[selectedIndex].Price;
         }
         else
         {
             selectedIndex = -1;
+            priceSum = 0;
         }
-        RefreshUI();
+        RefreshEquipUI();
     }
 
     public void OnClickBuy()
@@ -57,12 +91,12 @@ public class StoreUIManager : MonoBehaviour
             bool success = Player.Instance.Buy(equipment[selectedIndex]);
             if(success)
             {
-                OnEnable();
+                OnClickEquipTab();
             }
         }
     }
 
-    public void RefreshUI()
+    public void RefreshEquipUI()
     {
         foreach(Etype type in Enum.GetValues(typeof(Etype)))
         {
@@ -75,5 +109,19 @@ public class StoreUIManager : MonoBehaviour
                 equipBtn[(int)type].GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
             }
         }
+
+        totalPrice.text = priceSum.ToString();
+    }
+
+    public void RefreshBaitUI()
+    {
+        priceSum = 0;
+        for(int i = 0; i < 1; ++i)
+        {
+            int num = baitBtn[i].GetComponent<BaitGoods>().BaitCount;
+            priceSum += baitPrice[i] * num;
+        }
+
+        totalPrice.text = priceSum.ToString();
     }
 }
