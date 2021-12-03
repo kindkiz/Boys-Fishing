@@ -42,4 +42,10 @@ public class BaitGoods : MonoBehaviour
             refreshUI();
         }
     }
+
+    public void InitCount()
+    {
+        BaitCount = 0;
+        refreshUI();
+    }
 }

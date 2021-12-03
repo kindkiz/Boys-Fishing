@@ -93,6 +93,25 @@ public class Player
             return true;
         }
     }
+
+    public bool Buy(int[] baitCounts, int price)
+    {
+        if(Money < price)
+        {
+            Debug.Log("돈이 충분하지 못함");
+            return false;
+        }
+        else
+        {
+            Money -= price;
+            for(int i = 0; i < 4; ++i)
+            {
+                Bait[i] += baitCounts[i];
+            }
+            Debug.Log("구매에 성공함");
+            return true;
+        }
+    }
     
     public int GetAverageLevel()
     {

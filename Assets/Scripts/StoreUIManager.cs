@@ -20,9 +20,10 @@ public class StoreUIManager : MonoBehaviour
     public GameObject[] baitBtn;
 
     private Equipment[] equipment;
+    private bool isEquipTab;
     private int selectedIndex;
     private int priceSum;
-
+    private int[] baitCounts;
 
     public void OnClickExit()
     {
@@ -37,6 +38,7 @@ public class StoreUIManager : MonoBehaviour
 
     public void OnClickEquipTab()
     {
+        isEquipTab = true;
         selectedIndex = -1;
         priceSum = 0;
         equipTab.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
@@ -48,7 +50,12 @@ public class StoreUIManager : MonoBehaviour
 
     public void OnClickBaitTab()
     {
-        selectedIndex = -1;
+        baitCounts = new int[4];
+        for(int i = 0; i < 4; ++i)
+        {
+            baitBtn[i].GetComponent<BaitGoods>().InitCount();
+        }
+        isEquipTab = false;
         baitTab.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1);
         equipTab.GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
         equipPanel.SetActive(false);
@@ -86,12 +93,24 @@ public class StoreUIManager : MonoBehaviour
 
     public void OnClickBuy()
     {
-        if(selectedIndex != -1)
+        if(priceSum != 0)
         {
-            bool success = Player.Instance.Buy(equipment[selectedIndex]);
-            if(success)
+            bool success;
+            if(isEquipTab)
             {
-                OnClickEquipTab();
+                success = Player.Instance.Buy(equipment[selectedIndex]);
+                if(success)
+                {
+                    OnClickEquipTab();
+                }
+            }
+            else
+            {
+                success = Player.Instance.Buy(baitCounts, priceSum);
+                if(success)
+                {
+                    OnClickBaitTab();
+                }
             }
         }
     }
@@ -116,10 +135,10 @@ public class StoreUIManager : MonoBehaviour
     public void RefreshBaitUI()
     {
         priceSum = 0;
-        for(int i = 0; i < 1; ++i)
+        for(int i = 0; i < 4; ++i)
         {
-            int num = baitBtn[i].GetComponent<BaitGoods>().BaitCount;
-            priceSum += baitPrice[i] * num;
+            baitCounts[i] = baitBtn[i].GetComponent<BaitGoods>().BaitCount;
+            priceSum += baitPrice[i] * baitCounts[i];
         }
 
         totalPrice.text = priceSum.ToString();
