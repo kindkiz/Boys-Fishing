@@ -30,7 +30,7 @@ public class Player
     {
         Equip = new Dictionary<Etype, Equipment>();
 
-        Money = 1000;
+        Money = 0;
         Bait = new int[] {10, 0, 0, 0};
         CurrentBait = 0;
         FishTank = new List<Fish>();
