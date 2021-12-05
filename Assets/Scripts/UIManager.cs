@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject bait;
     [SerializeField] GameObject coin;
     [SerializeField] GameObject fillGage;
+    [SerializeField] Image hp;
 
     void Awake()
     {
@@ -46,6 +47,20 @@ public class UIManager : MonoBehaviour
         else
         {
             fillGage.GetComponent<Image>().color = new Color(0.3118f, 0.7680f, 0.8584f, 1);
+        }
+
+        float hpRatio = Player.Instance.GetHpRatio();
+        hp.fillAmount = hpRatio;
+        if(hpRatio < 0.1)
+        {
+            hp.color = Color.red;
+        }
+        else if(hpRatio < 0.5)
+        {
+            hp.color = Color.yellow;
+        }
+        else{
+            hp.color = Color.green;
         }
     }
 

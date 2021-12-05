@@ -68,6 +68,10 @@ public class Player
         Bait[CurrentBait] -= 1;
     }
 
+    public float GetHpRatio()
+    {
+        return ((Ship)Equip[Etype.Ship]).Hp / ((Ship)Equip[Etype.Ship]).MaxHp;
+    }
     public float GetCapacityRatio()
     {
         return (float)FishTank.Count / ((Ship)Equip[Etype.Ship]).Capacity;

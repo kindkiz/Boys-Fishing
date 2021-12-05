@@ -7,7 +7,7 @@ using TMPro;
 
 public class StoreUIManager : MonoBehaviour
 {
-    public readonly int[] baitPrice = {5, 20, 20, 100};
+    public readonly int[] baitPrice = {5, 10, 20, 50};
 
     public GameObject equipTab;
     public GameObject repairTab;

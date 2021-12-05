@@ -6,29 +6,12 @@ using TMPro;
 
 public class FishingUIManager : MonoBehaviour
 {
-    // private static FishingUIManager instance;
-    // public static FishingUIManager Instance { get { return instance; } }
-
-
     public FishingManager fishingManager;
     public Image successArea;
     public GameObject fish;
     public GameObject bar;
     public Image gaugeFish;
     public Transform alert;
-
-    // void Awake()
-    // {
-    //     if (null == instance)
-    //     {
-    //         instance = this;
-    //         DontDestroyOnLoad(this.gameObject);
-    //     }
-    //     else
-    //     {
-    //         Destroy(this.gameObject);
-    //     }
-    // }
 
     void OnEnable()
     {

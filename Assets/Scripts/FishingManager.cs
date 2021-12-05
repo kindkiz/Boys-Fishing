@@ -94,8 +94,8 @@ public class FishingManager : MonoBehaviour
         CalcCursorUpPower();
         RemainTime = TimeLimit;
         
-        CursorSpeedLimit = SPEED_LIMIT[nowDepth];
-        CursorDownPower = DOWN_POWER[nowDepth];
+        CursorSpeedLimit = SPEED_LIMIT[0];
+        CursorDownPower = DOWN_POWER[0];
         TimeToSuccess = TIME_TO_SUCCESS;
 
         TimeInSuccessArea = 0f;
@@ -158,7 +158,7 @@ public class FishingManager : MonoBehaviour
     private void CalcCursorUpPower()
     {
         int diff = Player.Instance.Equip[Etype.Reel].Level - (int)fish.Strength;
-        CursorUpPower = Calculate(MIN_UP_POWER[nowDepth], MAX_UP_POWER[nowDepth], diff);
+        CursorUpPower = Calculate(MIN_UP_POWER[0], MAX_UP_POWER[0], diff);
     }
 
     void ShowSuccess() {
