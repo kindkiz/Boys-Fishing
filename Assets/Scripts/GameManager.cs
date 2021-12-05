@@ -422,7 +422,7 @@ public class GameManager : MonoBehaviour
             if(playerSetting.catchObject){
                 playerSetting.catchObject.SetActive(false);
             }
-            
+            playerAnimator.SetBool("isFishing", false);
             fishTimeFlow += Time.deltaTime;
             if(fishTimeFlow > biteDelay)
             {
@@ -431,7 +431,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 isFishing = false;
-                playerAnimator.SetBool("isFishing", false);
+                
                 Debug.Log("GameManager : 다시 가자");
             }
         }
