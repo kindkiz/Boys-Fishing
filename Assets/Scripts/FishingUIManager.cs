@@ -6,8 +6,8 @@ using TMPro;
 
 public class FishingUIManager : MonoBehaviour
 {
-    private static FishingUIManager instance;
-    public static FishingUIManager Instance { get { return instance; } }
+    // private static FishingUIManager instance;
+    // public static FishingUIManager Instance { get { return instance; } }
 
 
     public FishingManager fishingManager;
@@ -17,18 +17,18 @@ public class FishingUIManager : MonoBehaviour
     public Image gaugeFish;
     public Transform alert;
 
-    void Awake()
-    {
-        if (null == instance)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    // void Awake()
+    // {
+    //     if (null == instance)
+    //     {
+    //         instance = this;
+    //         DontDestroyOnLoad(this.gameObject);
+    //     }
+    //     else
+    //     {
+    //         Destroy(this.gameObject);
+    //     }
+    // }
 
     void OnEnable()
     {
@@ -43,18 +43,23 @@ public class FishingUIManager : MonoBehaviour
         fish.transform.GetComponent<RectTransform>().anchoredPosition = cursorPosition;
     }
 
-    void OnDisable()
+    public IEnumerator AlertSuccess()
     {
-        if(bar) bar.SetActive(false);
-    }
-
-    public IEnumerator AlertSuccess() {
-        Debug.Log("æÀ∏≤√¢");
+        bar.SetActive(false);
         yield return new WaitForSeconds(1f);
         alert.GetChild(0).GetChild(0).GetComponent<Image>().sprite = fishingManager.fish.Image;
-        alert.GetChild(1).GetComponent<TextMeshProUGUI>().text = "æﬂ»£! æﬂª˝¿«\n"+fishingManager.fish.Name+"¿ª(∏¶) ¿‚æ“¥Ÿ!";
+        alert.GetChild(1).GetComponent<TextMeshProUGUI>().text = "ÏïºÌò∏! ÏïºÏÉùÏùò\n["+fishingManager.fish.Name+"]ÏùÑ(Î•º) Ïû°ÏïòÎã§!";
         alert.gameObject.SetActive(true);
         yield return new WaitForSeconds(2f);
         alert.gameObject.SetActive(false);
+        fishingManager.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
+    public void Fail()
+    {
+        bar.SetActive(false);
+        fishingManager.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

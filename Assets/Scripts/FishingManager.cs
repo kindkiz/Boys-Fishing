@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FishingManager : MonoBehaviour
 {
-    public GameObject fishingUIManager;
+    public FishingUIManager fishingUIManager;
     public ParticleSystem fireworkParticle;
     public Fish fish;
 
@@ -31,50 +31,50 @@ public class FishingManager : MonoBehaviour
     public float TimeToSuccess;
     public float TimeInSuccessArea;
     private int nowDepth;
+    private bool isFinish;
 
     void OnEnable()
     {
+        isFinish = false;
         nowDepth = 0; //Player.Instance.Depth;
 
         fish = Fish.RandomGenerate(nowDepth + 1);
 
         Init();
 
-        fishingUIManager.SetActive(true);
-    }
-
-    void OnDisable()
-    {
-        if(fishingUIManager) fishingUIManager.SetActive(false);
+        fishingUIManager.gameObject.SetActive(true);
     }
 
     void Update()
     {
-        AddPosition(CursorSpeed);
-        SpeedDown(CursorDownPower);
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            SpeedUp(CursorUpPower);
-        }
-        if(CheckArea())
-        {
-            TimeInSuccessArea += Time.deltaTime;
-            if(TimeInSuccessArea >= TimeToSuccess)
+        if(!isFinish){
+            AddPosition(CursorSpeed);
+            SpeedDown(CursorDownPower);
+            if(Input.GetKeyDown(KeyCode.Space))
             {
-                print("FishingManager: " + fish.Name + "를 잡았다");
-                //ShowSuccess();
-                Player.Instance.GetFish(fish);
-                gameObject.SetActive(false);
+                SpeedUp(CursorUpPower);
             }
-        }
-        else
-        {
-            RemainTime -= Time.deltaTime;
-            TimeInSuccessArea = 0;
-            if(RemainTime <= 0)
+            if(CheckArea())
             {
-                print("FishingManager: " + fish.Name + "를 놓쳤다");
-                gameObject.SetActive(false);
+                TimeInSuccessArea += Time.deltaTime;
+                if(TimeInSuccessArea >= TimeToSuccess)
+                {
+                    print("FishingManager: " + fish.Name + "를 잡았다");
+                    isFinish = true;
+                    ShowSuccess();
+                    Player.Instance.GetFish(fish);
+                }
+            }
+            else
+            {
+                RemainTime -= Time.deltaTime;
+                TimeInSuccessArea = 0;
+                if(RemainTime <= 0)
+                {
+                    print("FishingManager: " + fish.Name + "를 놓쳤다");
+                    isFinish = true;
+                    fishingUIManager.Fail();
+                }
             }
         }
     }
@@ -163,7 +163,6 @@ public class FishingManager : MonoBehaviour
 
     void ShowSuccess() {
         fireworkParticle.Play();
-        FishingUIManager fishingUIManagerScript = gameObject.GetComponentInChildren<FishingUIManager>();
-        FishingUIManager.Instance.StartCoroutine(FishingUIManager.Instance.AlertSuccess());
+        fishingUIManager.StartCoroutine(fishingUIManager.AlertSuccess());
     }
 }
