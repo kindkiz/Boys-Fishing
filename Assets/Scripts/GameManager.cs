@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     // 물고기가 물었을 때 다시 스페이스바를 눌러야 하는 시간제한
     private const float biteMax = 1.0f;
     // 물고기를 놓쳤을 때 다시 물고기를 잡을 수 있게 되는 시간
-    private const float biteDelay = 0.5f;
+    private const float biteDelay = 2.0f;
 
     // 시간 관련
     private Daytime daytime;
@@ -370,7 +370,8 @@ public class GameManager : MonoBehaviour
         // 2 : 물고기가 미끼 뭄
         else if (fishPhase == 2)
         {
-            if(playerSetting.catchObject){
+            if(playerSetting.catchObject)
+            {
                 playerSetting.catchObject.SetActive(true);
             }
 
@@ -391,7 +392,8 @@ public class GameManager : MonoBehaviour
                 fishTimeFlow = 0.0f;
                 fishPhase = 4;
 
-                if(playerSetting.missObject){
+                if(playerSetting.missObject)
+                {
                     playerSetting.missObject.SetActive(true);
                 }
 
@@ -401,33 +403,44 @@ public class GameManager : MonoBehaviour
         // 3 : 물고기 잡는 중
         else if (fishPhase == 3)
         {
-            if(playerSetting.catchObject){
+            if(playerSetting.catchObject)
+            {
                 playerSetting.catchObject.SetActive(false);
             }
 
             if(!uiSetting.fishingManager.active)
             {
+                fishTimeFlow = 0.0f;
+                // 낚시 실패
                 if(Player.Instance.FishTank.Count <= prevFishNum)
                 {
-                    if(playerSetting.missObject){
+                    if(playerSetting.missObject)
+                    {
                         playerSetting.missObject.SetActive(true);
                     }
+                    fishPhase = 4;
                 }
-                fishTimeFlow = 0.0f;
-                fishPhase = 4;
+                // 낚시 성공
+                else
+                {
+                    isFishing = false;
+                }
+
             }
         }
         // 4 : 낚시 후 딜레이
         else if (fishPhase == 4)
         {
-            if(playerSetting.catchObject){
+            if(playerSetting.catchObject)
+            {
                 playerSetting.catchObject.SetActive(false);
             }
             // playerAnimator.SetBool("isFishing", false);
             fishTimeFlow += Time.deltaTime;
             if(fishTimeFlow > biteDelay)
             {
-                if(playerSetting.missObject){
+                if(playerSetting.missObject)
+                {
                     playerSetting.missObject.SetActive(false);
                 }
 
