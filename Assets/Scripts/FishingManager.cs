@@ -103,7 +103,7 @@ public class FishingManager : MonoBehaviour
         CursorPosition = 0f;
     }
 
-    private bool CheckArea()
+    public bool CheckArea()
     {
         float top = BAR_SIZE - BLANK;
         float bottom = top - SuccessAreaSize;
