@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     private const int OBJECT_OBSTACLE = 4;
 
     // 배의 속도
-    private const float playerSpeed = 30.0f;
+    private const float playerSpeed = 15.0f;
     // 배위 회전 속도
     private const float rotateSpeed = 180.0f;
     // 카메라 줌 인/아웃 속도
