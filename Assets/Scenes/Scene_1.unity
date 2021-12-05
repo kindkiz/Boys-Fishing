@@ -6186,6 +6186,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4230478013700388029, guid: 951d29a3000563b49a42eaae019701c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230478013700388029, guid: 951d29a3000563b49a42eaae019701c6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230478013700388029, guid: 951d29a3000563b49a42eaae019701c6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2.79
       objectReference: {fileID: 0}
@@ -7877,6 +7885,14 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7372074481089339235, guid: 3df54754d89f3fe4480defc3f225ed05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372074481089339235, guid: 3df54754d89f3fe4480defc3f225ed05, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372074481089339235, guid: 3df54754d89f3fe4480defc3f225ed05, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2.96
       objectReference: {fileID: 0}
@@ -9044,6 +9060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingManager: {fileID: 907674336}
+  playerAnimator: {fileID: 1371006362}
   successArea: {fileID: 1689194216}
   fish: {fileID: 370331338}
   bar: {fileID: 968779967}
