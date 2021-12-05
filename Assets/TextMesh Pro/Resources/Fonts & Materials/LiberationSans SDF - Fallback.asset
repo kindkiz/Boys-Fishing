@@ -190,7 +190,6 @@ MonoBehaviour:
     m_StrikethroughOffset: 18
     m_StrikethroughThickness: 6.298828
     m_TabWidth: 24
-<<<<<<< HEAD
   m_GlyphTable:
   - m_Index: 3
     m_Metrics:
@@ -463,16 +462,11 @@ MonoBehaviour:
     m_Unicode: 8230
     m_GlyphIndex: 2030
     m_Scale: 1
-=======
-  m_GlyphTable: []
-  m_CharacterTable: []
->>>>>>> a309aca486f416dbe5fe5ab38f3dc40156e68e01
   m_AtlasTextures:
   - {fileID: 28268798066460806}
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 1
-<<<<<<< HEAD
   m_UsedGlyphRects:
   - m_X: 0
     m_Y: 0
@@ -558,13 +552,6 @@ MonoBehaviour:
   - m_X: 153
     m_Y: 0
     m_Width: 358
-=======
-  m_UsedGlyphRects: []
-  m_FreeGlyphRects:
-  - m_X: 0
-    m_Y: 0
-    m_Width: 511
->>>>>>> a309aca486f416dbe5fe5ab38f3dc40156e68e01
     m_Height: 511
   - m_X: 61
     m_Y: 53
