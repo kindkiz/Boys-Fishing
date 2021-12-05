@@ -38,7 +38,7 @@ public class FishingManager : MonoBehaviour
         isFinish = false;
         nowDepth = 0; //Player.Instance.Depth;
 
-        fish = Fish.RandomGenerate(nowDepth + 1);
+        fish = Fish.RandomGenerate(nowDepth + 1, Player.Instance.CurrentBait);
 
         Init();
 
