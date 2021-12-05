@@ -39,17 +39,22 @@ public class GameManager : MonoBehaviour
     public List<FishInfo> fishInfo;
 
     //상수들
-    private const int OBJECT_NULL = 0;
-    private const int OBJECT_STORE = 1;
-    private const int OBJECT_MARKET = 2;
-    private const int OBJECT_PORTAL = 3;
-    private const int OBJECT_OBSTACLE = 4;
     public const string TAG_TERRAIN = "Terrain";
     public const string TAG_MARKET = "Market";
     public const string TAG_PORTAL = "Portal";
     public const string TAG_STORE = "Store";
     public const string TAG_PLAYER = "Player";
     public const string TAG_DEPTH = "Depth";
+    public const int BAIT_NORMAL = 0;
+    public const int BAIT_RED = 1;
+    public const int BAIT_BLUE = 2;
+    public const int BAIT_STRONG = 3;
+
+    private const int OBJECT_NULL = 0;
+    private const int OBJECT_STORE = 1;
+    private const int OBJECT_MARKET = 2;
+    private const int OBJECT_PORTAL = 3;
+    private const int OBJECT_OBSTACLE = 4;
 
     // 배의 속도
     private const float playerSpeed = 30.0f;
@@ -95,7 +100,6 @@ public class GameManager : MonoBehaviour
         timeFlow = 0;
         daytime = stageSetting.startDaytime;
         Fish.FishList = fishInfo;
-        //RandomGenerateTest();
 
         isFishing = false;
         fishPhase = 0;
@@ -109,7 +113,8 @@ public class GameManager : MonoBehaviour
             playerAnimator = playerSetting.playerObject.transform.GetChild(0).GetComponent<Animator>();
         }
 
-        PlayerFishTankTest();
+        //RandomGenerateTest();
+        //PlayerFishTankTest();
     }
 
     // Update is called once per frame
@@ -130,7 +135,7 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0; i < 10; i++)
         {
-            Player.Instance.FishTank.Add(Fish.RandomGenerate(3));
+            Player.Instance.FishTank.Add(Fish.RandomGenerate(3, 0));
         }
     }
 
@@ -167,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < 10000; i++)
         {
-            Fish fish = Fish.RandomGenerate(3);
+            Fish fish = Fish.RandomGenerate(3, 2);
 
             num[fish.Name]++;
             size[fish.Name] += fish.Size;
@@ -334,10 +339,18 @@ public class GameManager : MonoBehaviour
                 {
                     term = biteFrequency;
                 }
+
+                // 빨간 미끼, 강력 미끼 보정치
+                if(Player.Instance.CurrentBait == BAIT_RED || Player.Instance.CurrentBait == BAIT_STRONG)
+                {
+                    term = term * 0.7f;
+                }
+
                 // 물고기 잡혔나?
                 if(fishTimeFlow >= term)
                 {
                     float r = Random.Range(0.0f, 1.0f);
+
                     if(r < biteFrequency / biteAverage)
                     {
                         fishPhase = 2;

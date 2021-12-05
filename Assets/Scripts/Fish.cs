@@ -78,10 +78,15 @@ public class Fish
         return null;
     }
 
-    public static Fish RandomGenerate(int depth)
+    public static Fish RandomGenerate(int depth, int bait)
     {
         Fish output = null;
-        int fishIndex = RandomIndex();
+        float correction = 1.0f;
+        if(bait == GameManager.BAIT_BLUE || bait == GameManager.BAIT_STRONG)
+        {
+            correction = 1.3f;
+        }
+        int fishIndex = RandomIndex(correction);
         if(fishIndex > -1)
         {
             FishInfo fish = FishList[fishIndex];
@@ -94,7 +99,7 @@ public class Fish
         return output;
     }
 
-    private static int RandomIndex()
+    private static int RandomIndex(float correction)
     {
         int output = -1;
         float sum = 0;
@@ -102,7 +107,7 @@ public class Fish
 
         foreach(FishInfo fish in FishList)
         {
-            float w = Mathf.Pow(multiple, fish.uniqueness);
+            float w = Mathf.Pow(multiple * correction, fish.uniqueness);
             weight.Add(w);
             sum += w;
         }
