@@ -639,11 +639,11 @@ MonoBehaviour:
     uniqueness: 3
     minimumSize: 30
     maximumSize: 50
-    minimumPrice: 30
-    maximumPrice: 60
-    dexterity: 2
-    strength: 1
-    speed: 1
+    minimumPrice: 100
+    maximumPrice: 200
+    dexterity: 3
+    strength: 2
+    speed: 2
   - name: "\uBA54\uAE30"
     image: {fileID: 21300000, guid: e652a62c7292dbd418b421cc9189dff1, type: 3}
     uniqueness: 2
@@ -18271,7 +18271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.334961, y: -0.79003906}
+  m_AnchoredPosition: {x: -6.3349, y: -0.79003906}
   m_SizeDelta: {x: -312.67004, y: -198.41998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &321048027190561647

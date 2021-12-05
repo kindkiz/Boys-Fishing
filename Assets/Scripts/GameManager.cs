@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
             CameraAction();
             TimeAction();
             FishingAction();
-            DieTest();
+            // DieTest();
             ShowMeTheMoney();
         }
     }
@@ -322,7 +322,6 @@ public class GameManager : MonoBehaviour
             // 너무 빨리 낚아올림
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                playerAnimator.SetBool("isFishing", false);
                 fishTimeFlow = 0;
                 fishPhase = 4;
                 if(playerSetting.missObject){
@@ -411,7 +410,7 @@ public class GameManager : MonoBehaviour
                 playerSetting.catchObject.SetActive(false);
             }
 
-            if(!uiSetting.fishingManager.active)
+            if(!uiSetting.fishingManager.activeSelf)
             {
                 fishTimeFlow = 0.0f;
                 // 낚시 실패
@@ -438,7 +437,7 @@ public class GameManager : MonoBehaviour
             {
                 playerSetting.catchObject.SetActive(false);
             }
-            // playerAnimator.SetBool("isFishing", false);
+            playerAnimator.SetBool("isFishing", false);
             fishTimeFlow += Time.deltaTime;
             if(fishTimeFlow > biteDelay)
             {
