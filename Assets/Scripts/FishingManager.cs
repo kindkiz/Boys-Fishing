@@ -5,6 +5,7 @@ using UnityEngine;
 public class FishingManager : MonoBehaviour
 {
     public GameObject fishingUIManager;
+    public ParticleSystem fireworkParticle;
     public Fish fish;
 
     public const float BAR_SIZE = 500f;
@@ -61,6 +62,7 @@ public class FishingManager : MonoBehaviour
             if(TimeInSuccessArea >= TimeToSuccess)
             {
                 print("FishingManager: " + fish.Name + "를 잡았다");
+                //ShowSuccess();
                 Player.Instance.GetFish(fish);
                 gameObject.SetActive(false);
             }
@@ -157,5 +159,11 @@ public class FishingManager : MonoBehaviour
     {
         int diff = Player.Instance.Equip[Etype.Reel].Level - (int)fish.Strength;
         CursorUpPower = Calculate(MIN_UP_POWER[nowDepth], MAX_UP_POWER[nowDepth], diff);
+    }
+
+    void ShowSuccess() {
+        fireworkParticle.Play();
+        FishingUIManager fishingUIManagerScript = gameObject.GetComponentInChildren<FishingUIManager>();
+        FishingUIManager.Instance.StartCoroutine(FishingUIManager.Instance.AlertSuccess());
     }
 }
