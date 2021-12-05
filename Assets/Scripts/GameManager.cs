@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     // 물고기가 물었을 때 다시 스페이스바를 눌러야 하는 시간제한
     private const float biteMax = 1.0f;
     // 물고기를 놓쳤을 때 다시 물고기를 잡을 수 있게 되는 시간
-    private const float biteDelay = 2.0f;
+    private const float biteDelay = 0.5f;
 
     // 시간 관련
     private Daytime daytime;
@@ -319,6 +319,7 @@ public class GameManager : MonoBehaviour
             // 너무 빨리 낚아올림
             if(Input.GetKeyDown(KeyCode.Space))
             {
+                playerAnimator.SetBool("isFishing", false);
                 fishTimeFlow = 0;
                 fishPhase = 4;
                 if(playerSetting.missObject){
@@ -422,7 +423,7 @@ public class GameManager : MonoBehaviour
             if(playerSetting.catchObject){
                 playerSetting.catchObject.SetActive(false);
             }
-            playerAnimator.SetBool("isFishing", false);
+            // playerAnimator.SetBool("isFishing", false);
             fishTimeFlow += Time.deltaTime;
             if(fishTimeFlow > biteDelay)
             {

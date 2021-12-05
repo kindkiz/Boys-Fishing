@@ -7,6 +7,7 @@ using TMPro;
 public class FishingUIManager : MonoBehaviour
 {
     public FishingManager fishingManager;
+    public Animator playerAnimator;
     public Image successArea;
     public GameObject fish;
     public GameObject bar;
@@ -41,6 +42,7 @@ public class FishingUIManager : MonoBehaviour
 
     public IEnumerator AlertSuccess()
     {
+        playerAnimator.SetBool("isFishing", false);
         bar.SetActive(false);
         yield return new WaitForSeconds(1f);
         alert.GetChild(0).GetChild(0).GetComponent<Image>().sprite = fishingManager.fish.Image;
@@ -54,6 +56,7 @@ public class FishingUIManager : MonoBehaviour
 
     public void Fail()
     {
+        playerAnimator.SetBool("isFishing", false);
         bar.SetActive(false);
         fishingManager.gameObject.SetActive(false);
         gameObject.SetActive(false);
