@@ -10,13 +10,13 @@ public class FishingManager : MonoBehaviour
 
     public const float BAR_SIZE = 500f;
     public const float BLANK = 50f;
-    public const float MIN_TIME_LIMIT = 5f;
-    public const float MAX_TIME_LIMIT = 15f;
+    public const float MIN_TIME_LIMIT = 3f;
+    public const float MAX_TIME_LIMIT = 10f;
     public const float MIN_SUCCESS_AREA_SIZE = 20f;
-    public const float MAX_SUCCESS_AREA_SIZE = 200f;
+    public const float MAX_SUCCESS_AREA_SIZE = 150f;
     public const float TIME_TO_SUCCESS = 3f;
     public readonly float[] MIN_UP_POWER = {60f, 100f, 150f};
-    public readonly float[] MAX_UP_POWER = {250f, 300f, 350f};
+    public readonly float[] MAX_UP_POWER = {200f, 250f, 300f};
     public readonly float[] SPEED_LIMIT = {300f, 400f, 500f};
     public readonly float[] DOWN_POWER = {600f, 1000f, 1500f};
 

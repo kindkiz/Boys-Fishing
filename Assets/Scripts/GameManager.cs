@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
             CameraAction();
             TimeAction();
             FishingAction();
-            DieTest();
+            // DieTest();
             ShowMeTheMoney();
         }
     }
@@ -239,7 +239,6 @@ public class GameManager : MonoBehaviour
         if(!CheckUIOpen())
         {
             float scrollSpeed = Input.GetAxis("Mouse ScrollWheel") * cameraSpeed * (-1);
-
             Camera.main.fieldOfView += scrollSpeed;
             if(Camera.main.fieldOfView > maxFOV)
             {
@@ -248,6 +247,10 @@ public class GameManager : MonoBehaviour
             else if(Camera.main.fieldOfView < minFOV)
             {
                 Camera.main.fieldOfView = minFOV;
+            }
+            else
+            {
+                Camera.main.transform.Rotate(0.5f * (-scrollSpeed), 0f, 0f);
             }
         }
     }
@@ -369,7 +372,8 @@ public class GameManager : MonoBehaviour
         // 2 : 물고기가 미끼 뭄
         else if (fishPhase == 2)
         {
-            if(playerSetting.catchObject){
+            if(playerSetting.catchObject)
+            {
                 playerSetting.catchObject.SetActive(true);
             }
 
@@ -390,7 +394,8 @@ public class GameManager : MonoBehaviour
                 fishTimeFlow = 0.0f;
                 fishPhase = 4;
 
-                if(playerSetting.missObject){
+                if(playerSetting.missObject)
+                {
                     playerSetting.missObject.SetActive(true);
                 }
 
@@ -400,33 +405,44 @@ public class GameManager : MonoBehaviour
         // 3 : 물고기 잡는 중
         else if (fishPhase == 3)
         {
-            if(playerSetting.catchObject){
+            if(playerSetting.catchObject)
+            {
                 playerSetting.catchObject.SetActive(false);
             }
 
-            if(!uiSetting.fishingManager.active)
+            if(!uiSetting.fishingManager.activeSelf)
             {
+                fishTimeFlow = 0.0f;
+                // 낚시 실패
                 if(Player.Instance.FishTank.Count <= prevFishNum)
                 {
-                    if(playerSetting.missObject){
+                    if(playerSetting.missObject)
+                    {
                         playerSetting.missObject.SetActive(true);
                     }
+                    fishPhase = 4;
                 }
-                fishTimeFlow = 0.0f;
-                fishPhase = 4;
+                // 낚시 성공
+                else
+                {
+                    isFishing = false;
+                }
+
             }
         }
         // 4 : 낚시 후 딜레이
         else if (fishPhase == 4)
         {
-            if(playerSetting.catchObject){
+            if(playerSetting.catchObject)
+            {
                 playerSetting.catchObject.SetActive(false);
             }
             playerAnimator.SetBool("isFishing", false);
             fishTimeFlow += Time.deltaTime;
             if(fishTimeFlow > biteDelay)
             {
-                if(playerSetting.missObject){
+                if(playerSetting.missObject)
+                {
                     playerSetting.missObject.SetActive(false);
                 }
 
