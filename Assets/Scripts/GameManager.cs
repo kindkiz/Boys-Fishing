@@ -239,7 +239,6 @@ public class GameManager : MonoBehaviour
         if(!CheckUIOpen())
         {
             float scrollSpeed = Input.GetAxis("Mouse ScrollWheel") * cameraSpeed * (-1);
-
             Camera.main.fieldOfView += scrollSpeed;
             if(Camera.main.fieldOfView > maxFOV)
             {
@@ -248,6 +247,10 @@ public class GameManager : MonoBehaviour
             else if(Camera.main.fieldOfView < minFOV)
             {
                 Camera.main.fieldOfView = minFOV;
+            }
+            else
+            {
+                Camera.main.transform.Rotate(0.5f * (-scrollSpeed), 0f, 0f);
             }
         }
     }
