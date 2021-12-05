@@ -28,13 +28,13 @@ public class FishingUIManager : MonoBehaviour
         timeBar.fillAmount = fishingManager.RemainTime / FishingManager.MAX_TIME_LIMIT;
         if(fishingManager.CheckArea())
         {
-            Color color = successArea.color;
-            color.a = 0.5f + fishingManager.TimeInSuccessArea / fishingManager.TimeToSuccess / 2;
+            Color color = Color.green;
+            color.a = 0.5f + 0.5f * fishingManager.TimeInSuccessArea / fishingManager.TimeToSuccess;
             successArea.color = color;
         }
         else
         {
-            Color color = successArea.color;
+            Color color = Color.cyan;
             color.a = 0.5f;
             successArea.color = color;
         }
