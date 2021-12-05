@@ -9044,6 +9044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishingManager: {fileID: 907674336}
+  playerAnimator: {fileID: 1371006362}
   successArea: {fileID: 1689194216}
   fish: {fileID: 370331338}
   bar: {fileID: 968779967}
