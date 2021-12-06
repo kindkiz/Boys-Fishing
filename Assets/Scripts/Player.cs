@@ -127,7 +127,7 @@ public class Player
         else
         {
             Money -= price;
-            ((Ship)Equip[Etype.Ship]).Hp = ((Ship)Equip[Etype.Ship]).MaxHp;
+            ((Ship)Equip[Etype.Ship]).Repair();
             Debug.Log("구매에 성공함");
             return true;
         }

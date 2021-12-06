@@ -29,6 +29,7 @@ public class StoreUIManager : MonoBehaviour
     private int selectedIndex;
     private int priceSum;
     private int[] baitCounts;
+    private bool shipLock;
 
     public void OnClickExit()
     {
@@ -107,6 +108,7 @@ public class StoreUIManager : MonoBehaviour
             equipBtn[(int)type].transform.Find("Img").GetComponent<Image>().sprite = equipment[(int)type].EqSprite;
             equipBtn[(int)type].transform.Find("Price").GetComponent<TextMeshProUGUI>().text = equipment[(int)type].Price.ToString();
         }
+        shipLock = Player.Instance.GetAverageLevel() < equipment[3].Level;
     }
 
     public void OnClickEquip(int index)
@@ -168,6 +170,17 @@ public class StoreUIManager : MonoBehaviour
             {
                 equipBtn[(int)type].GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
             }
+        }
+
+        int shipIdx = (int)Etype.Ship;
+        if(shipLock)
+        {
+            equipBtn[shipIdx].transform.Find("Lock").gameObject.SetActive(true);
+            equipBtn[shipIdx].transform.Find("Lock").Find("Text").GetComponent<TextMeshProUGUI>().text = "평균 Lv." + equipment[shipIdx].Level + " 필요";
+        }
+        else
+        {
+            equipBtn[shipIdx].transform.Find("Lock").gameObject.SetActive(false);
         }
 
         showPrice();

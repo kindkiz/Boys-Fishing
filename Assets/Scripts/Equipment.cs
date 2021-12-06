@@ -26,7 +26,7 @@ public class Equipment
     public string Naming()
     {
         string[] typeName = {"낚싯대", "릴", "낚싯줄", "배"};
-        string[] levelName = {"0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        string[] levelName = {"0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
         return typeName[(int)Type] + " " + levelName[Level];
     }
 
@@ -52,8 +52,8 @@ public class Ship : Equipment
 {
     public int Capacity { get; }
     public float MaxHp { get; }
-    public float Hp { get; set; }
-    public int RepairCostPerHp { get; }
+    public float Hp { get; private set; }
+    public float RepairCostPerHp { get; }
     public bool IsDead { get; set; }
 
     public Ship(Etype type, Dictionary<string, object> data) : base(Etype.Ship, data)
@@ -61,7 +61,7 @@ public class Ship : Equipment
         Capacity = (int)data["Capacity"];
         MaxHp = (int)data["Hp"];
         Hp = MaxHp;
-        RepairCostPerHp = (int)data["RepairCost"];
+        RepairCostPerHp = float.Parse(data["RepairCost"].ToString());
         IsDead = false;
     }
 
@@ -73,5 +73,10 @@ public class Ship : Equipment
             Hp = 0;
             IsDead = true;
         }
+    }
+
+    public void Repair()
+    {
+        Hp = MaxHp;
     }
 }
