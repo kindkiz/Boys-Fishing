@@ -16,7 +16,7 @@ public class PlayerEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerAnimator.GetBool("isMoving"))
+        if (playerAnimator.GetBool("isMoving") && !playerAnimator.GetBool("isFishing"))
         {
             waterEff.SetActive(true);
         }
