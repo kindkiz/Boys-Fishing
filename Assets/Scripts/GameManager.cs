@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         }
         
         SetLocalText(0);
-        //RandomGenerateTest();
+        RandomGenerateTest();
         //PlayerFishTankTest();
     }
 
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0; i < 10; i++)
         {
-            Player.Instance.FishTank.Add(Fish.RandomGenerate(3, 0));
+            Player.Instance.FishTank.Add(Fish.RandomGenerate(2, 0));
         }
     }
 
@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
+    
     void RandomGenerateTest()
     {
         Dictionary<string, int> num = new Dictionary<string, int>();

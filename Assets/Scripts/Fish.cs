@@ -20,8 +20,8 @@ public struct FishInfo{
 
 public class Fish
 {
-    // 깊이마다 물고기의 각 희귀 등급마다 얼마나 더 안나오게 할지
-    private static float[] multiple = {0.1f, 0.5f, 0.9f};
+    // 물고기의 각 희귀 등급마다 얼마나 더 안나오게 할지
+    private static float multiple = 0.33f;
     // 각 지역별 최대 깊이 (최소는 1로 가정)
     private const int maxDepth = 2;
     private const int minDepth = 0;
@@ -122,7 +122,7 @@ public class Fish
 
         foreach(FishInfo fish in FishList)
         {
-            float w = Mathf.Pow(multiple[depth], fish.uniqueness);
+            float w = Mathf.Pow(multiple, Mathf.Abs(fish.uniqueness - depth - 1));
             weight.Add(w);
             sum += w;
         }
