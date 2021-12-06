@@ -126,8 +126,8 @@ public class GameManager : MonoBehaviour
             CameraAction();
             TimeAction();
             FishingAction();
-            // DieTest();
             ShowMeTheMoney();
+            //DieTest();
         }
     }
 
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < 10000; i++)
         {
-            Fish fish = Fish.RandomGenerate(3, 2);
+            Fish fish = Fish.RandomGenerate(2, 0);
 
             num[fish.Name]++;
             size[fish.Name] += fish.Size;

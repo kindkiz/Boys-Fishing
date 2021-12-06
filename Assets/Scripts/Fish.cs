@@ -20,13 +20,15 @@ public struct FishInfo{
 
 public class Fish
 {
-    // 물고기의 각 희귀 등급마다 얼마나 더 안나오게 할지
-    private const float multiple = 0.5f; 
+    // 깊이마다 물고기의 각 희귀 등급마다 얼마나 더 안나오게 할지
+    private static float[] multiple = {0.1f, 0.5f, 0.9f};
     // 각 지역별 최대 깊이 (최소는 1로 가정)
     private const int maxDepth = 2;
     private const int minDepth = 0;
     // 물고기 크기 소수점 (digit) 자리까지 표시
     private const int digit = 1;
+    // 미끼를 쓰지 않았을 시 크기 감소량
+    private const float noBaitSize = 0.7f;
 
     public static List<FishInfo> FishList { get; set; }
     public string Name { get; set; }
@@ -80,26 +82,39 @@ public class Fish
 
     public static Fish RandomGenerate(int depth, int bait)
     {
-        Fish output = null;
-        float correction = 1.0f;
-        if(bait == GameManager.BAIT_BLUE || bait == GameManager.BAIT_STRONG)
+        if(depth < minDepth || depth > maxDepth)
         {
-            correction = 1.3f;
+            Debug.Log("RandomGerate: 잘못 된 깊이 값 입력");
+            return null;
         }
-        int fishIndex = RandomIndex(correction);
+
+        int fishIndex = RandomIndex(depth);
+
         if(fishIndex > -1)
         {
             FishInfo fish = FishList[fishIndex];
-            float size = RandomSize(fish.minimumSize, fish.maximumSize, depth);
+
+            float correction = noBaitSize;
+            if(bait == GameManager.BAIT_BLUE || bait == GameManager.BAIT_STRONG)
+            {
+                correction = 1.0f;
+            }
+
+            float size = RandomSize(fish.minimumSize, fish.maximumSize, correction);
             int price = GetPrice(size, fish.minimumSize, fish.maximumSize, fish.minimumPrice, fish.maximumPrice);
 
             return new Fish(fish.name, size, price, fish.dexterity, fish.strength, fish.speed, fish.image);
         }
+        else
+        {
+            Debug.Log("RandomGerate: 인덱스 에러");
+            return null;
+        }
 
-        return output;
+        return null;
     }
 
-    private static int RandomIndex(float correction)
+    private static int RandomIndex(int depth)
     {
         int output = -1;
         float sum = 0;
@@ -107,7 +122,7 @@ public class Fish
 
         foreach(FishInfo fish in FishList)
         {
-            float w = Mathf.Pow(multiple * correction, fish.uniqueness);
+            float w = Mathf.Pow(multiple[depth], fish.uniqueness);
             weight.Add(w);
             sum += w;
         }
@@ -124,9 +139,9 @@ public class Fish
         return output;
     }
 
-    private static float RandomSize(float minSize, float maxSize, int depth)
+    private static float RandomSize(float minSize, float maxSize, float correction)
     {
-        return Mathf.Round(Random.Range(minSize, maxSize * ((float)(depth - minDepth + 2) / (maxDepth - minDepth + 2))) * Mathf.Pow(10, digit)) / Mathf.Pow(10, digit);
+        return Mathf.Round(Random.Range(minSize, (maxSize - minSize) * correction + minSize) * Mathf.Pow(10, digit)) / Mathf.Pow(10, digit);
     }
 
     private static int GetPrice(float size, float minSize, float maxSize, int minPrice, int maxPrice)
