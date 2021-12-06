@@ -2217,7 +2217,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 274.3, y: 94.13}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &250859781
 MonoBehaviour:
@@ -5511,6 +5511,7 @@ GameObject:
   - component: {fileID: 558622968}
   - component: {fileID: 558622967}
   - component: {fileID: 558622966}
+  - component: {fileID: 558622970}
   m_Layer: 5
   m_Name: ShipBtn
   m_TagString: Untagged
@@ -5635,6 +5636,52 @@ RectTransform:
   m_AnchoredPosition: {x: 1338.75, y: -266.819}
   m_SizeDelta: {x: 300, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &558622970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558622965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uBB3C\uACE0\uAE30 \uD1B5 \uC6A9\uB7C9 \uBC0F \uBC30\uC758
+              \uB0B4\uAD6C\uB3C4 \uC99D\uAC00"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &560134601
 GameObject:
   m_ObjectHideFlags: 0
@@ -8440,6 +8487,7 @@ GameObject:
   - component: {fileID: 984019958}
   - component: {fileID: 984019957}
   - component: {fileID: 984019956}
+  - component: {fileID: 984019959}
   m_Layer: 5
   m_Name: LineBtn
   m_TagString: Untagged
@@ -8563,6 +8611,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984019954}
   m_CullTransparentMesh: 1
+--- !u!114 &984019959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984019954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uBB3C\uACE0\uAE30\uAC00 \uB3C4\uB9DD\uAC00\uAE30\uAE4C\uC9C0\uC758
+              \uC2DC\uAC04 \uC99D\uAC00"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!198 &1002922134 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198405478074982118, guid: 4adffb0018aeda44e9263f901167af1f, type: 3}
@@ -8828,7 +8922,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 50, y: 20}
-  m_SizeDelta: {x: 400, y: 80}
+  m_SizeDelta: {x: 331.711, y: 80}
   m_Pivot: {x: 0, y: 0}
 --- !u!1001 &1032586915
 PrefabInstance:
@@ -9659,7 +9753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1139118827
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10431,7 +10525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10000
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: af05bb858a4165a47a4e6d8df3c60d84, type: 2}
   m_sharedMaterial: {fileID: -8818060740778546709, guid: af05bb858a4165a47a4e6d8df3c60d84, type: 2}
@@ -10522,11 +10616,11 @@ RectTransform:
   m_Father: {fileID: 1032219485}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 57, y: -0.73675156}
+  m_SizeDelta: {x: -80, y: 1.4735}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1269030788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10811,6 +10905,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275940360}
   m_CullTransparentMesh: 1
+--- !u!1 &1287058931
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1287058934}
+  - component: {fileID: 1287058933}
+  - component: {fileID: 1287058932}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1287058932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287058931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: af05bb858a4165a47a4e6d8df3c60d84, type: 2}
+  m_sharedMaterial: {fileID: -8818060740778546709, guid: af05bb858a4165a47a4e6d8df3c60d84, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294933029
+  m_fontColor: {r: 0.14528298, g: 0.47711432, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 55
+  m_fontSizeBase: 57.41
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 40
+  m_fontSizeMax: 55
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1287058933
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287058931}
+  m_CullTransparentMesh: 1
+--- !u!224 &1287058934
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287058931}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 321048027190561646}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.000032425, y: 20}
+  m_SizeDelta: {x: 851.1747, y: 80}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!4 &1293836202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4919613149310176, guid: 65ead04d94056194d871a15a66397d18, type: 3}
@@ -12100,6 +12328,7 @@ GameObject:
   - component: {fileID: 1547275326}
   - component: {fileID: 1547275325}
   - component: {fileID: 1547275324}
+  - component: {fileID: 1547275327}
   m_Layer: 5
   m_Name: ReelBtn
   m_TagString: Untagged
@@ -12223,6 +12452,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547275322}
   m_CullTransparentMesh: 1
+--- !u!114 &1547275327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547275322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uBB3C\uACE0\uAE30\uB97C \uB4E4\uC5B4\uC62C\uB9AC\uB294
+              \uD798 \uC99D\uAC00"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1549740402
 GameObject:
   m_ObjectHideFlags: 0
@@ -12903,7 +13178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4074452859421335405, guid: d7bf9acc5cff72f48ba64e3dc946520b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4074452859421335405, guid: d7bf9acc5cff72f48ba64e3dc946520b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13264,6 +13539,7 @@ GameObject:
   - component: {fileID: 1648828030}
   - component: {fileID: 1648828029}
   - component: {fileID: 1648828028}
+  - component: {fileID: 1648828032}
   m_Layer: 5
   m_Name: ShipBtn
   m_TagString: Untagged
@@ -13314,19 +13590,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1648828029}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 321048027190561648}
-        m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
-        m_MethodName: OnClickEquip
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1648828029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13382,11 +13646,56 @@ RectTransform:
   m_Father: {fileID: 1139118827}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 773.665, y: -260.85208}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1648828032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648828027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uBC30\uC758 \uB0B4\uAD6C\uB3C4 \uC644\uC804 \uC218\uB9AC"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1650259680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18520,7 +18829,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 321048027190561646}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -18596,6 +18905,7 @@ RectTransform:
   m_Children:
   - {fileID: 8410555127696111050}
   - {fileID: 1032219485}
+  - {fileID: 1287058934}
   - {fileID: 4154051721397655126}
   - {fileID: 321048026072524362}
   - {fileID: 1644326261}
@@ -18625,7 +18935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &321048027190561648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18657,6 +18967,7 @@ MonoBehaviour:
   - {fileID: 1188208277442624875}
   shipBtn: {fileID: 1648828027}
   buyBtnText: {fileID: 788587855}
+  description: {fileID: 1287058932}
 --- !u!114 &600675807404640773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18896,6 +19207,7 @@ GameObject:
   - component: {fileID: 8178110539413234460}
   - component: {fileID: 831290792673463095}
   - component: {fileID: 1188208277442624876}
+  - component: {fileID: 1188208277442624877}
   m_Layer: 5
   m_Name: Strong
   m_TagString: Untagged
@@ -18918,6 +19230,52 @@ MonoBehaviour:
   plusButton: {fileID: 586790328}
   minusButton: {fileID: 1888698500}
   countText: {fileID: 766114802}
+--- !u!114 &1188208277442624877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188208277442624875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uB354 \uBE68\uB9AC, \uB354 \uD76C\uADC0\uD55C \uBB3C\uACE0\uAE30\uAC00
+              \uC7A1\uD788\uB294 \uAC15\uB825 \uBBF8\uB07C"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1276102925144473936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19906,6 +20264,7 @@ GameObject:
   - component: {fileID: 8259933564230312494}
   - component: {fileID: 600675807404640773}
   - component: {fileID: 1414707279772122202}
+  - component: {fileID: 1414707279772122203}
   m_Layer: 5
   m_Name: Blue
   m_TagString: Untagged
@@ -19928,6 +20287,52 @@ MonoBehaviour:
   plusButton: {fileID: 359029612}
   minusButton: {fileID: 1012684695}
   countText: {fileID: 67534662}
+--- !u!114 &1414707279772122203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414707279772122201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uB354 \uD76C\uADC0\uD55C \uBB3C\uACE0\uAE30\uAC00
+              \uC7A1\uD788\uB294 \uD30C\uB780 \uBBF8\uB07C"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &1767567311441562291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20106,6 +20511,7 @@ GameObject:
   - component: {fileID: 9023075901370394903}
   - component: {fileID: 5188164366751276386}
   - component: {fileID: 2955259751836107542}
+  - component: {fileID: 2955259751836107543}
   m_Layer: 5
   m_Name: Basic
   m_TagString: Untagged
@@ -20128,6 +20534,52 @@ MonoBehaviour:
   plusButton: {fileID: 1664200056}
   minusButton: {fileID: 1275940362}
   countText: {fileID: 579821844}
+--- !u!114 &2955259751836107543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955259751836107541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uAE30\uBCF8\uC801\uC778 \uC131\uB2A5\uC744 \uAC00\uC9C4
+              \uAE30\uBCF8 \uBBF8\uB07C"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &3011805403052361609
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20506,6 +20958,7 @@ GameObject:
   - component: {fileID: 5927657193219795208}
   - component: {fileID: 2933090655547146531}
   - component: {fileID: 3693063678797051776}
+  - component: {fileID: 3693063678797051777}
   m_Layer: 5
   m_Name: Red
   m_TagString: Untagged
@@ -20528,6 +20981,52 @@ MonoBehaviour:
   plusButton: {fileID: 1176685660}
   minusButton: {fileID: 878345310}
   countText: {fileID: 438921919}
+--- !u!114 &3693063678797051777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3693063678797051775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uB354 \uBE68\uB9AC \uBB3C\uACE0\uAE30\uAC00 \uC7A1\uD788\uB294
+              \uBE68\uAC04 \uBBF8\uB07C"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &4099169650623084880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20555,7 +21054,7 @@ RectTransform:
   - {fileID: 1139118827}
   - {fileID: 5382295003175182307}
   m_Father: {fileID: 321048027190561646}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -21201,7 +21700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5712667159015488788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22192,6 +22691,7 @@ GameObject:
   - component: {fileID: 4099169650623084880}
   - component: {fileID: 998491441693855013}
   - component: {fileID: 8587361784664319246}
+  - component: {fileID: 7843154797490459475}
   m_Layer: 5
   m_Name: RodBtn
   m_TagString: Untagged
@@ -22199,6 +22699,52 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7843154797490459475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7843154797490459474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uB09A\uC2DC \uC131\uACF5\uC601\uC5ED\uC758 \uD06C\uAE30
+              \uC99D\uAC00"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 321048027190561648}
+          m_TargetAssemblyTypeName: StoreUIManager, Assembly-CSharp
+          m_MethodName: ShowDescription
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8026900405409444959
 GameObject:
   m_ObjectHideFlags: 0

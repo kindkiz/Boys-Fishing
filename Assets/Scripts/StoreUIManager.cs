@@ -23,6 +23,7 @@ public class StoreUIManager : MonoBehaviour
     public GameObject shipBtn;
     
     public TextMeshProUGUI buyBtnText;
+    public TextMeshProUGUI description;
 
     private Equipment[] equipment;
     private int tabIndex;
@@ -169,6 +170,7 @@ public class StoreUIManager : MonoBehaviour
             else
             {
                 equipBtn[(int)type].GetComponent<Image>().color = new Color(0.8867f, 0.8867f, 0.8867f, 1);
+                
             }
         }
 
@@ -204,6 +206,7 @@ public class StoreUIManager : MonoBehaviour
         {
             baitCounts[i] = baitBtn[i].GetComponent<BaitGoods>().BaitCount;
             priceSum += baitPrice[i] * baitCounts[i];
+            
         }
         showPrice();
     }
@@ -219,5 +222,10 @@ public class StoreUIManager : MonoBehaviour
             totalPrice.color = Color.black;
         }
         totalPrice.text = priceSum.ToString();
+    }
+
+    public void ShowDescription(string desc)
+    {
+        description.text = desc;
     }
 }
