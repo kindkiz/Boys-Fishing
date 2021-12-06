@@ -3,7 +3,7 @@ Shader "Custom/WaterShader"
     Properties
     {
         _BumpMap("BumpMap", 2D) = "Bump"{}
-        _WaveSpeed("Wave Speed", float) = 0.05
+        _WaveSpeed("Wave Speed", float) = 0.0005
         _WavePower("Wave Power", float) = 0.2
         _WaveTilling("Wave Tilling", float) = 25
 
@@ -59,7 +59,7 @@ Shader "Custom/WaterShader"
             float4 sky = texCUBE(_CubeMap, WorldReflectionVector(IN, o.Normal));
             float4 refrection = tex2D(_GrabTexture, (IN.screenPos / IN.screenPos.a).xy + o.Normal.xy * 0.03);
 
-            dotData = pow(saturate(1 - dot(o.Normal, IN.viewDir)), 0.6);
+            dotData = pow(saturate(1 - dot(o.Normal, IN.viewDir)), 0.7);
             float3 water = lerp(refrection, sky, dotData).rgb;
 
             o.Albedo = water;
