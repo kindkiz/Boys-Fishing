@@ -7,6 +7,7 @@ public class PlayerBehavior : MonoBehaviour
     public bool IsMarket { get; set; }
     public bool IsObstacle { get; set; }
     public bool IsStore { get; set; }
+    public GameObject gameManager;
     private List<GameObject> depthList = new List<GameObject>();
 
     // Start is called before the first frame update
@@ -86,7 +87,10 @@ public class PlayerBehavior : MonoBehaviour
         if(Player.Instance.Depth != depth)
         {
             Player.Instance.Depth = depth;
-            Debug.Log("깊이 " + depth + " 진입!");
+            if(gameManager)
+            {
+                gameManager.GetComponent<GameManager>().SetLocalText(depth);
+            }
         }
     }
 }

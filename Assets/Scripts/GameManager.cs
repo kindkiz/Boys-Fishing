@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public struct PlayerSetting{
@@ -17,6 +18,8 @@ public enum Daytime{
 
 [System.Serializable]
 public struct StageSetting{
+    public string name;
+    public string[] depthName;
     public float HPPerSecond;
     public float dayDuration;
     public float nightDuration;
@@ -29,6 +32,7 @@ public struct UISetting{
     public GameObject storeObject;
     public GameObject fishingManager;
     public GameObject bucket;
+    public GameObject localText;
 }
 
 public class GameManager : MonoBehaviour
@@ -112,7 +116,8 @@ public class GameManager : MonoBehaviour
         {
             playerAnimator = playerSetting.playerObject.transform.GetChild(0).GetComponent<Animator>();
         }
-
+        
+        SetLocalText(0);
         //RandomGenerateTest();
         //PlayerFishTankTest();
     }
@@ -559,5 +564,23 @@ public class GameManager : MonoBehaviour
     void OpenStore()
     {
         uiSetting.storeObject.SetActive(true);
+    }
+
+    public void SetLocalText(int depth)
+    {
+        if(uiSetting.localText)
+        {
+            string dName;
+            if(stageSetting.depthName.Length >= depth + 1)
+            {
+                dName = stageSetting.depthName[depth];
+            }
+            else
+            {
+                dName = "깊이 " + depth;
+
+            }
+            uiSetting.localText.GetComponent<TextMeshProUGUI>().SetText(stageSetting.name + " - " + dName);
+        }
     }
 }
