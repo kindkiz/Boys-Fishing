@@ -122,7 +122,8 @@ public class Fish
 
         foreach(FishInfo fish in FishList)
         {
-            float w = Mathf.Pow(multiple, Mathf.Abs(fish.uniqueness - depth - 1));
+            //float w = Mathf.Pow(multiple, Mathf.Abs(fish.uniqueness - depth - 1));
+            float w = Mathf.Pow(multiple, Mathf.Max(fish.uniqueness - depth - 1, 0));
             weight.Add(w);
             sum += w;
         }
