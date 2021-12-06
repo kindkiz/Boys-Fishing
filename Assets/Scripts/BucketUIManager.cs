@@ -103,7 +103,6 @@ public class BucketUIManager : MonoBehaviour
         
         // player currentbait¿Ã 0-3
         Player.Instance.CurrentBait = (int)Enum.Parse(typeof(Bait), clickedBait.name);
-        desc.GetComponent<TextMeshProUGUI>().text = descs[Player.Instance.CurrentBait];
         Sprite selectedBait = clickedBait.transform.GetChild(1).GetComponent<Image>().sprite;
         UIManager.Instance.EquipBait(selectedBait);
     }
@@ -120,6 +119,17 @@ public class BucketUIManager : MonoBehaviour
         for (int i = 0; i < obj.childCount; i++)
         {
             Destroy(obj.GetChild(i).gameObject);
+        }
+    }
+
+    public void ShowDescription(int descIdx)
+    {
+        if(descIdx == -1)
+        {
+            desc.GetComponent<TextMeshProUGUI>().text = "";
+        }
+        else{
+            desc.GetComponent<TextMeshProUGUI>().text = descs[descIdx];
         }
     }
 }
