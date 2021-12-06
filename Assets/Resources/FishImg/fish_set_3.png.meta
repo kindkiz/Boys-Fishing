@@ -1,7 +1,97 @@
 fileFormatVersion: 2
 guid: 51d9d09536eefe245acd339776a7515d
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8135729510198600079
+    second: fish_set_3_0
+  - first:
+      213: -3778566587521241012
+    second: fish_set_3_1
+  - first:
+      213: -6018954449523854352
+    second: fish_set_3_2
+  - first:
+      213: 5065032200424370266
+    second: fish_set_3_3
+  - first:
+      213: 8513852863370509348
+    second: fish_set_3_4
+  - first:
+      213: -2503145560332592326
+    second: fish_set_3_5
+  - first:
+      213: -3483845470400606343
+    second: "\uD770\uB3D9\uAC00\uB9AC"
+  - first:
+      213: -5584059548326934863
+    second: "\uAE08\uBD95\uC5B4"
+  - first:
+      213: -2927665122628237008
+    second: "\uBB38\uC5B4"
+  - first:
+      213: -2717953696345255987
+    second: "\uC624\uC9D5\uC5B4"
+  - first:
+      213: -169391499019796677
+    second: fish_set_3_10
+  - first:
+      213: 970609077157585237
+    second: fish_set_3_11
+  - first:
+      213: -6930834359169122161
+    second: fish_set_3_12
+  - first:
+      213: 5794323968985450635
+    second: fish_set_3_13
+  - first:
+      213: -8211250937897048540
+    second: fish_set_3_14
+  - first:
+      213: 23560367927646707
+    second: fish_set_3_15
+  - first:
+      213: -3039231308205991209
+    second: fish_set_3_16
+  - first:
+      213: -2292344186395326144
+    second: fish_set_3_17
+  - first:
+      213: -8535952219489853717
+    second: fish_set_3_18
+  - first:
+      213: 4406933349963129591
+    second: "\uD574\uB9C8"
+  - first:
+      213: -3280921844199773896
+    second: "\uACE0\uB4F1\uC5B4"
+  - first:
+      213: -6965261411508217889
+    second: "\u3147"
+  - first:
+      213: 4029672709835017983
+    second: fish_set_3_22
+  - first:
+      213: 5338365176258942149
+    second: fish_set_3_23
+  - first:
+      213: 2617113728377295897
+    second: fish_set_3_24
+  - first:
+      213: -4378000115543929671
+    second: fish_set_3_25
+  - first:
+      213: -5464999495336269149
+    second: fish_set_3_26
+  - first:
+      213: 7687483575893232306
+    second: fish_set_3_27
+  - first:
+      213: 3937950180488684444
+    second: "\uBBF8\uC5ED"
+  - first:
+      213: 4570917834426233790
+    second: fish_set_3_29
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +179,637 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: fish_set_3_0
+      rect:
+        serializedVersion: 2
+        x: 2021
+        y: 2855
+        width: 406
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f81ec0472eae7e070800000000000000
+      internalID: 8135729510198600079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_1
+      rect:
+        serializedVersion: 2
+        x: 2669
+        y: 2831
+        width: 385
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40f2a655b5df8bc0800000000000000
+      internalID: -3778566587521241012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_2
+      rect:
+        serializedVersion: 2
+        x: 4036
+        y: 2801
+        width: 125
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3bfd461d0687ca0800000000000000
+      internalID: -6018954449523854352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_3
+      rect:
+        serializedVersion: 2
+        x: 4111
+        y: 2750
+        width: 183
+        height: 459
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50b53a53fb9a4640800000000000000
+      internalID: 5065032200424370266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 2217
+        width: 441
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c34272218472670800000000000000
+      internalID: 8513852863370509348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_5
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 2191
+        width: 483
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b9747006a034dd0800000000000000
+      internalID: -2503145560332592326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD770\uB3D9\uAC00\uB9AC"
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 2145
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97f0b6cb005e6afc0800000000000000
+      internalID: -3483845470400606343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uAE08\uBD95\uC5B4"
+      rect:
+        serializedVersion: 2
+        x: 1996
+        y: 2114
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b648592d6f6182b0800000000000000
+      internalID: -5584059548326934863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uBB38\uC5B4"
+      rect:
+        serializedVersion: 2
+        x: 2710
+        y: 2178
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03981781518de57d0800000000000000
+      internalID: -2927665122628237008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC624\uC9D5\uC5B4"
+      rect:
+        serializedVersion: 2
+        x: 3276
+        y: 2140
+        width: 450
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf81657383e74ad0800000000000000
+      internalID: -2717953696345255987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_10
+      rect:
+        serializedVersion: 2
+        x: 3981
+        y: 2176
+        width: 346
+        height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f34f0445336adf0800000000000000
+      internalID: -169391499019796677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_11
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1477
+        width: 421
+        height: 485
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5516fbb20db487d00800000000000000
+      internalID: 970609077157585237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_12
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 1560
+        width: 518
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8007a81fdab0df90800000000000000
+      internalID: -6930834359169122161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_13
+      rect:
+        serializedVersion: 2
+        x: 1995
+        y: 1556
+        width: 432
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b88c8ec33f2996050800000000000000
+      internalID: 5794323968985450635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_14
+      rect:
+        serializedVersion: 2
+        x: 2617
+        y: 1595
+        width: 487
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426ad0de6c6cb0e80800000000000000
+      internalID: -8211250937897048540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_15
+      rect:
+        serializedVersion: 2
+        x: 3316
+        y: 1495
+        width: 386
+        height: 491
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f9da11a704b35000800000000000000
+      internalID: 23560367927646707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_16
+      rect:
+        serializedVersion: 2
+        x: 3903
+        y: 1517
+        width: 522
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dad22c4a3b72d5d0800000000000000
+      internalID: -3039231308205991209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_17
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 881
+        width: 376
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04989fa9b15ff20e0800000000000000
+      internalID: -2292344186395326144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_18
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 914
+        width: 389
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee99998ea43a8980800000000000000
+      internalID: -8535952219489853717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uD574\uB9C8"
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 869
+        width: 420
+        height: 420
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2ef596882982d30800000000000000
+      internalID: 4406933349963129591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uACE0\uB4F1\uC5B4"
+      rect:
+        serializedVersion: 2
+        x: 2595
+        y: 830
+        width: 550
+        height: 550
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83927ac37f2d772d0800000000000000
+      internalID: -3280921844199773896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u3147"
+      rect:
+        serializedVersion: 2
+        x: 3257
+        y: 977
+        width: 528
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd7115756ab665f90800000000000000
+      internalID: -6965261411508217889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_22
+      rect:
+        serializedVersion: 2
+        x: 3899
+        y: 901
+        width: 480
+        height: 307
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe4dcebaf54ce730800000000000000
+      internalID: 4029672709835017983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_23
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 265
+        width: 385
+        height: 369
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4da3c08dea51a40800000000000000
+      internalID: 5338365176258942149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_24
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 268
+        width: 314
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9141ab4e11bd15420800000000000000
+      internalID: 2617113728377295897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_25
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 259
+        width: 415
+        height: 369
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc826e27183e33c0800000000000000
+      internalID: -4378000115543929671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_26
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 296
+        width: 344
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aaeacee9eb6824b0800000000000000
+      internalID: -5464999495336269149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_27
+      rect:
+        serializedVersion: 2
+        x: 2615
+        y: 257
+        width: 504
+        height: 382
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba04cd059d6faa60800000000000000
+      internalID: 7687483575893232306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uBBF8\uC5ED"
+      rect:
+        serializedVersion: 2
+        x: 3266
+        y: 219
+        width: 474
+        height: 474
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c93a63333d866a630800000000000000
+      internalID: 3937950180488684444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fish_set_3_29
+      rect:
+        serializedVersion: 2
+        x: 3888
+        y: 191
+        width: 502
+        height: 494
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3397a7d892f6f30800000000000000
+      internalID: 4570917834426233790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
