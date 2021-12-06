@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         }
         
         SetLocalText(0);
-        RandomGenerateTest();
+        //RandomGenerateTest();
         //PlayerFishTankTest();
     }
 
