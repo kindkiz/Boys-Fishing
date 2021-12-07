@@ -28,6 +28,7 @@ public class Player
 
     public void Restart()
     {
+        Store.Instance.Restart();
         instance = new Player();
     }
     

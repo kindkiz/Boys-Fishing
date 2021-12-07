@@ -17,6 +17,10 @@ public class Store
             return instance;
         }
     }
+    public void Restart()
+    {
+        instance = new Store();
+    }
     public Dictionary<Etype, List<Equipment>> Equipments { get; }
     public Store()
     {
