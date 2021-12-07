@@ -20,16 +20,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject fillGage;
     [SerializeField] Image hp;
 
-    void Awake()
-    {
-        if (null == instance)
-        {
+    void Awake() {
+        if (instance == null) {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
+    
+        } else if (instance != this) {
+            Destroy(instance.gameObject);
+            instance = this;
         }
     }
 

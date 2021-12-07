@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
             TimeAction();
             FishingAction();
             ShowMeTheMoney();
-            //DieTest();
+            DieTest();
         }
     }
 
@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
 
     void DieTest()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.D) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.E))
         {
             GameOver();
         }
