@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameStart : MonoBehaviour
 {
-/*    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }*/
+    [SerializeField] GameObject story;
+    [SerializeField] GameObject help;
 
     public void onClickStart()
     {
         SceneManager.LoadScene("Scene_1");
+    }
+
+    public void OnClickStory() {
+        story.SetActive(true);
+    }
+
+    public void OnClickHelp() {
+        help.SetActive(true);
+    }
+
+    public void OnClickExit() {
+        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
+        clickedButton.transform.parent.gameObject.SetActive(false);
     }
 }
