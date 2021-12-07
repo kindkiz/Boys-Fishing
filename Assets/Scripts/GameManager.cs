@@ -33,6 +33,7 @@ public struct UISetting{
     public GameObject fishingManager;
     public GameObject bucket;
     public GameObject localText;
+    public GameObject gameOver;
 }
 
 public class GameManager : MonoBehaviour
@@ -534,6 +535,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("내구도 0.. 게임오버");
             playerAnimator.SetBool("isDie", true);
         }
+        StartCoroutine(ShowGameOverUI());
+    }
+
+    IEnumerator ShowGameOverUI() {
+        yield return new WaitForSeconds(4f);
+        uiSetting.gameOver.SetActive(true);
     }
 
     bool CheckUIOpen()
