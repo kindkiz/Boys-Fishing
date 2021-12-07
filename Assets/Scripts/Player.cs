@@ -25,6 +25,11 @@ public class Player
     public Dictionary<Etype, Equipment> Equip { get; set; }
     public List<Fish> FishTank { get; set; }
     public List<Fish> SelectedFish { get; set; }
+
+    public void Restart()
+    {
+        instance = new Player();
+    }
     
     public Player()
     {
