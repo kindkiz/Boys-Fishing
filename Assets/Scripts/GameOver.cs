@@ -16,7 +16,7 @@ public class GameOver : MonoBehaviour
 
     public void OnClickReplay()
     {
-        // TODO: 재시작할 때 초기화 해야하는 문제
+        Player.Instance.Restart();
         gameObject.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
