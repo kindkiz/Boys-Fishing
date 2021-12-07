@@ -5,7 +5,13 @@ using UnityEngine;
 public class SettingUIManager : MonoBehaviour
 {
     public void ChangeAudioSetting(bool onAudio) {
-        gameObject.GetComponentInParent<AudioSource>().mute = !onAudio;
+        if (onAudio)
+        {
+            gameObject.GetComponentInParent<AudioSource>().Play();
+        }
+        else {
+            gameObject.GetComponentInParent<AudioSource>().Stop();
+        }
     }
 
     public void OnClickSettingBtn() {
