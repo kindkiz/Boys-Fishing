@@ -624,30 +624,40 @@ MonoBehaviour:
   - name: "\uBBF8\uC5ED"
     image: {fileID: 3937950180488684444, guid: 51d9d09536eefe245acd339776a7515d, type: 3}
     uniqueness: 1
-    minimumSize: 10
-    maximumSize: 30
-    minimumPrice: 10
+    minimumSize: 30
+    maximumSize: 40
+    minimumPrice: 20
     maximumPrice: 30
     dexterity: 2
     strength: 1
     speed: 1
-  - name: "\uAE08\uBD95\uC5B4"
+  - name: "\uAD6C\uD53C"
     image: {fileID: -5584059548326934863, guid: 51d9d09536eefe245acd339776a7515d, type: 3}
     uniqueness: 1
     minimumSize: 5
-    maximumSize: 20
-    minimumPrice: 10
-    maximumPrice: 40
+    maximumSize: 15
+    minimumPrice: 20
+    maximumPrice: 50
     dexterity: 1
     strength: 2
     speed: 1
   - name: "\uD770\uB3D9\uAC00\uB9AC"
     image: {fileID: -3483845470400606343, guid: 51d9d09536eefe245acd339776a7515d, type: 3}
+    uniqueness: 1
+    minimumSize: 10
+    maximumSize: 20
+    minimumPrice: 30
+    maximumPrice: 60
+    dexterity: 1
+    strength: 1
+    speed: 2
+  - name: "\uBB38\uC5B4"
+    image: {fileID: -2927665122628237008, guid: 51d9d09536eefe245acd339776a7515d, type: 3}
     uniqueness: 2
-    minimumSize: 60
-    maximumSize: 100
-    minimumPrice: 60
-    maximumPrice: 120
+    minimumSize: 40
+    maximumSize: 60
+    minimumPrice: 70
+    maximumPrice: 110
     dexterity: 2
     strength: 2
     speed: 3
@@ -15559,7 +15569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -43520,7 +43530,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "\uB354 \uBE68\uB9AC, \uB354 \uD76C\uADC0\uD55C \uBB3C\uACE0\uAE30\uAC00
+            m_StringArgument: "\uB354 \uBE68\uB9AC, \uB354 \uD070 \uBB3C\uACE0\uAE30\uAC00
               \uC7A1\uD788\uB294 \uAC15\uB825 \uBBF8\uB07C"
             m_BoolArgument: 0
           m_CallState: 2
@@ -44577,8 +44587,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "\uB354 \uD76C\uADC0\uD55C \uBB3C\uACE0\uAE30\uAC00
-              \uC7A1\uD788\uB294 \uD30C\uB780 \uBBF8\uB07C"
+            m_StringArgument: "\uB354 \uD070 \uBB3C\uACE0\uAE30\uAC00 \uC7A1\uD788\uB294
+              \uD30C\uB780 \uBBF8\uB07C"
             m_BoolArgument: 0
           m_CallState: 2
   - eventID: 1
